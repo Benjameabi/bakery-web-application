@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { Navigation } from "./components/Navigation";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
+import { CookieConsent } from "./components/CookieConsent";
 import { heroImages, deliveryZones, instagramPosts, contactInfo } from "./lib/constants";
 import { fadeInUp, fadeIn, staggerContainer, staggerItem } from "./lib/animations";
 import { MapPin, Phone, Clock, Mail, Star, Instagram, Facebook, Truck, CheckCircle, Menu, ArrowRight, X, Heart, ShoppingCart } from "lucide-react";
@@ -1757,6 +1758,9 @@ export default function App() {
           </motion.div>
         </div>
       </motion.footer>
+
+      {/* Cookie Consent Banner */}
+      <CookieConsent />
     </div>
   );
 }
