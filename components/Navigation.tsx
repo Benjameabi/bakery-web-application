@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Menu, Search, ShoppingCart } from "lucide-react";
-const logoIcon = "/full-logomj.webp";
+const logoIcon = "/icon-mj.webp";
 
 interface NavigationProps {
   isScrolled: boolean;
