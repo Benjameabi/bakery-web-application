@@ -99,7 +99,7 @@ export function Navigation({
                   MÄSTER JACOBS
                 </div>
                 <div className="text-xs text-white/90 font-body tracking-[0.15em] md:tracking-[0.2em] drop-shadow-md leading-tight">
-                  BAGERI & KONDITORI SEDAN 1984
+                  BAGERI & KONDITORI SEDAN 1982
                 </div>
               </motion.div>
             )}

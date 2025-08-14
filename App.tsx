@@ -451,11 +451,11 @@ export default function App() {
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 font-body mb-8 md:mb-12 leading-relaxed max-w-3xl mx-auto drop-shadow-lg text-center px-2"
           >
             <span className="block sm:hidden">
-              Från traditionella svenska recept till moderna tolkningar. Hantverksmässiga bakverk sedan 1984.
+              Från traditionella svenska recept till moderna tolkningar. Hantverksmässiga bakverk sedan 1982.
             </span>
             <span className="hidden sm:block">
               Från traditionella svenska recept till moderna tolkningar. Vårt bageri har serverat färska, 
-              hantverksmässiga bakverk sedan 1984 med samma passion för kvalitet och smak.
+              hantverksmässiga bakverk sedan 1982 med samma passion för kvalitet och smak.
             </span>
           </motion.p>
 
@@ -545,7 +545,7 @@ export default function App() {
               viewport={{ once: true }}
             >
               Från våra berömda prinsesstårtor till färskt bröd, konditoriprodukter och näringsrika frukostprodukter - 
-              allt handgjort med kärlek och de finaste ingredienserna sedan 1984.
+              allt handgjort med kärlek och de finaste ingredienserna sedan 1982.
             </motion.p>
             
             <motion.div 
@@ -756,8 +756,8 @@ export default function App() {
               className="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-body leading-relaxed drop-shadow-lg"
             >
               Våra skickliga bagare arbetar med traditionella metoder för att skapa bakverk av högsta kvalitet, 
-              <span className="hidden md:inline"><br />precis som de gjort sedan 1984.</span>
-              <span className="md:hidden"> precis som de gjort sedan 1984.</span>
+              <span className="hidden md:inline"><br />precis som de gjort sedan 1982.</span>
+              <span className="md:hidden"> precis som de gjort sedan 1982.</span>
             </motion.p>
           </motion.div>
         </div>
@@ -1682,7 +1682,7 @@ export default function App() {
                 <span className="text-xl md:text-2xl font-heading font-bold">Mäster Jacobs</span>
               </div>
               <p className="text-warm-gray font-body text-base md:text-lg leading-relaxed">
-                Betjänar gemenskapen med färska, hantverksbakverk sedan 1984.
+                Betjänar gemenskapen med färska, hantverksbakverk sedan 1982.
               </p>
             </motion.div>
             
