@@ -9,7 +9,7 @@ import { Input } from "./components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 
 // Import logo and favorite categories image
-const logoIcon = "/logo.png";
+const logoIcon = "/icon-mj.webp";
 const favoriteCategoriesImage = "/favorite-categories.png";
 
 // External service URLs - Replace these with your actual URLs
