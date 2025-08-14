@@ -36,6 +36,8 @@
   --input: transparent;
   --input-background: #f3f3f5;
   --switch-background: #cbced4;
+  /* Global control for button radius */
+  --button-radius: 18px;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
   --ring: #D0B05D;
@@ -283,22 +285,24 @@
   .btn-primary {
     @apply relative inline-flex items-center justify-center;
     font-family: var(--font-heading);
-    @apply font-semibold tracking-wide rounded-lg;
+    @apply font-semibold tracking-wide;
+    border-radius: var(--button-radius);
     @apply px-8 py-4 text-base text-black;
-    background: linear-gradient(to right, var(--gold), #f1c40f, var(--gold));
-    @apply border border-gold/20;
-    @apply transition-all duration-300 ease-out;
-    box-shadow: 0 10px 15px -3px rgb(208 176 93 / 0.25), 0 4px 6px -4px rgb(208 176 93 / 0.25);
-    @apply hover:shadow-xl;
-    @apply hover:scale-105 hover:-translate-y-1;
+    /* Warm gold gradient fill */
+    background: linear-gradient(135deg, #f4ce3e, #d0b05d);
+    /* Subtle luminous border */
+    @apply border-2 border-white/40;
+    /* Depth + hover lift */
+    @apply transition-all duration-300 ease-out shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-0.5;
     @apply active:scale-95 active:translate-y-0;
-    @apply focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2;
+    @apply focus:outline-none focus:ring-2 focus:ring-gold/60 focus:ring-offset-2;
   }
 
   .btn-raised {
     @apply relative inline-flex items-center justify-center;
     font-family: var(--font-heading);
-    @apply font-bold tracking-wide rounded-2xl;
+    @apply font-bold tracking-wide;
+    border-radius: var(--button-radius);
     @apply px-10 py-5 text-lg text-black;
     background: linear-gradient(135deg, var(--gold), #f1c40f, var(--gold));
     @apply border-2 border-gold/30;
@@ -329,23 +333,24 @@
   .btn-secondary {
     @apply relative inline-flex items-center justify-center;
     font-family: var(--font-heading);
-    @apply font-semibold tracking-wide rounded-lg;
-    @apply px-8 py-4 text-base text-gold;
-    @apply bg-transparent;
-    @apply border-2 border-gold;
-    @apply transition-all duration-300 ease-out;
-    @apply hover:bg-gold hover:text-black;
-    @apply hover:shadow-lg;
-    box-shadow: 0 4px 6px -1px rgb(208 176 93 / 0.25);
-    @apply hover:scale-105 hover:-translate-y-1;
+    @apply font-semibold tracking-wide;
+    border-radius: var(--button-radius);
+    @apply px-8 py-4 text-base text-white;
+    /* Dark glass gradient with subtle blur */
+    background: linear-gradient(135deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35));
+    @apply backdrop-blur-sm;
+    /* Soft white border like in the screenshot */
+    @apply border-2 border-white/30;
+    @apply transition-all duration-300 ease-out hover:bg-white/10 hover:shadow-lg hover:scale-105 hover:-translate-y-0.5;
     @apply active:scale-95 active:translate-y-0;
-    @apply focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2;
+    @apply focus:outline-none focus:ring-2 focus:ring-white/40 focus:ring-offset-2;
   }
 
   .btn-ghost {
     @apply relative inline-flex items-center justify-center;
     font-family: var(--font-heading);
-    @apply font-medium tracking-wide rounded-lg;
+    @apply font-medium tracking-wide;
+    border-radius: var(--button-radius);
     @apply px-6 py-3 text-base text-warm-gray;
     @apply bg-transparent;
     @apply border border-transparent;
