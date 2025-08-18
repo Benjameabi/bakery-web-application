@@ -36,7 +36,8 @@ const menuProducts = [
   { id: 6, name: "Räkmacka med ost", variant: "Frälsost", price: "29 kr", category: "frukost", image: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=400&h=300&fit=crop" },
   { id: 7, name: "Smoothie (laktosfri)", variant: "Mango", price: "35 kr", category: "frukost", image: "https://images.unsplash.com/photo-1553530979-4c9d4e0d4b42?w=400&h=300&fit=crop" },
   
-  // Matbröd/Bullar
+  // Matbröd/Bullar (including real Mäster Jacobs products)
+  { id: 20814, name: "Foccacia", variant: "per enhet", price: "89 kr", category: "matbrod", image: "https://images.unsplash.com/photo-1585478259715-876acc5be8eb?w=400&h=300&fit=crop", ingredients: "vetemjöl, vatten, jäst, salt, socker, surdeg av vete, rapsolja, druvsocker, kalciumkarbonat(E170), (E472e), mjölbehandlingsmedel (askorbinsyra; E300), enzymer, rosemarine, olivolja" },
   { id: 8, name: "Kanelknut", variant: "Standard", price: "20 kr", category: "matbrod", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop" },
   { id: 9, name: "Rosenbröd", variant: "Standard", price: "5 kr", category: "matbrod", image: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&h=300&fit=crop" },
   { id: 10, name: "Baguette", variant: "Stor baguette", price: "22 kr", category: "matbrod", image: "https://images.unsplash.com/photo-1585478259715-876acc5be8eb?w=400&h=300&fit=crop" },
@@ -47,12 +48,14 @@ const menuProducts = [
   { id: 13, name: "Wienerbröd", variant: "Hallon", price: "22 kr", category: "fika", image: "https://images.unsplash.com/photo-1603532648955-039310d9ed75?w=400&h=300&fit=crop" }
 ];
 
+// Real categories from Mäster Jacobs website with actual URLs  
 const menuCategories = [
   { id: "allt", name: "Allt", description: "Alla produkter" },
-  { id: "tartor", name: "Tårtor & bakelser", description: "Tårtor och konditoriprodukter" },
-  { id: "frukost", name: "Frukost", description: "Frukostprodukter" },
-  { id: "matbrod", name: "Matbröd/Bullar", description: "Bröd och bullar" },
-  { id: "fika", name: "Fika", description: "Fika-godsaker" }
+  { id: "tartor-bakelser", name: "Tårtor & Bakelser", description: "Tårtor och konditoriprodukter", url: "https://www.masterjacobs.se/shop/kategori/tartor-bakelser-3753" },
+  { id: "fika", name: "Fika", description: "Fika-godsaker", url: "https://www.masterjacobs.se/shop/kategori/fika-3919" },
+  { id: "lunch", name: "Lunch", description: "Lunchtillägg och sallader", url: "https://www.masterjacobs.se/shop/kategori/lunch-3756" },
+  { id: "matbrod-bullar", name: "Matbröd & Bullar", description: "Bröd och bullar", url: "https://www.masterjacobs.se/shop/kategori/matbrod-bullar-3755" },
+  { id: "frukost", name: "Frukost", description: "Frukostprodukter", url: "https://www.masterjacobs.se/shop/kategori/frukost-4791" }
 ];
 
 export default function App() {
@@ -60,7 +63,11 @@ export default function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [postalCode, setPostalCode] = useState("");
-  const [deliveryResult, setDeliveryResult] = useState(null);
+  const [deliveryResult, setDeliveryResult] = useState<{
+    available: boolean;
+    message: string;
+    zone: string | null;
+  } | null>(null);
   const [selectedCategory, setSelectedCategory] = useState("allt");
 
   useEffect(() => {
@@ -129,33 +136,37 @@ export default function App() {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
-  const iconComponents = { MapPin, Phone, Clock, Mail };
+  const iconComponents: Record<string, any> = { MapPin, Phone, Clock, Mail };
 
-  // Product categories data for the 4-image grid
+  // Product categories data for the 4-image grid (using real Mäster Jacobs categories)
   const favoriteCategories = [
     {
-      id: "tartor",
+      id: "tartor-bakelser",
       name: "Favorit tårtan!",
-      description: "Våra mest populära tårtor",
-      category: "tårtor"
+      description: "Våra mest populära tårtor och bakelser",
+      category: "tårtor",
+      url: "https://www.masterjacobs.se/shop/kategori/tartor-bakelser-3753"
     },
     {
       id: "fika",
       name: "Fika till jobbet!",
       description: "Perfekt för arbetsplatsen",
-      category: "fika"
+      category: "fika",
+      url: "https://www.masterjacobs.se/shop/kategori/fika-3919"
     },
     {
       id: "frukost", 
       name: "Frukost",
       description: "Färska frukostprodukter",
-      category: "frukost"
+      category: "frukost",
+      url: "https://www.masterjacobs.se/shop/kategori/frukost-4791"
     },
     {
-      id: "matbrod",
+      id: "matbrod-bullar",
       name: "Nybakat matbröd",
-      description: "Dagligt bakat och färskt",
-      category: "bröd"
+      description: "Dagligt bakat bröd och bullar",
+      category: "bröd",
+      url: "https://www.masterjacobs.se/shop/kategori/matbrod-bullar-3755"
     }
   ];
 
@@ -203,13 +214,30 @@ export default function App() {
   };
 
   const handleCategoryClick = (categoryId: string) => {
-    handleExternalRedirect(EXTERNAL_URLS.products);
+    // Find the category and redirect to its actual URL
+    const category = menuCategories.find(cat => cat.id === categoryId);
+    if (category && category.url) {
+      handleExternalRedirect(category.url);
+    } else {
+      handleExternalRedirect(EXTERNAL_URLS.products);
+    }
   };
 
-  // Filter products based on selected category
+  // Filter products based on selected category (with legacy category mapping)
+  const mapLegacyCategory = (category: string) => {
+    const mapping: Record<string, string> = {
+      'tartor': 'tartor-bakelser',
+      'matbrod': 'matbrod-bullar'
+    };
+    return mapping[category] || category;
+  };
+
   const filteredProducts = selectedCategory === "allt" 
     ? menuProducts 
-    : menuProducts.filter(product => product.category === selectedCategory);
+    : menuProducts.filter(product => {
+        const mappedCategory = mapLegacyCategory(product.category);
+        return mappedCategory === selectedCategory || product.category === selectedCategory;
+      });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-cream/20 to-white">
@@ -224,7 +252,7 @@ export default function App() {
           <div className="flex items-center justify-center space-x-1 md:space-x-2">
             <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gold rounded-full animate-pulse"></div>
             <span className="text-center leading-tight">
-              <span className="hidden sm:inline">HEMLEVERANS ERBJUDANDE: Fri frakt över 200kr - </span>
+              <span className="hidden sm:inline">HEMLEVERANS ERBJUDANDE: Fri frakt över 299kr - </span>
               <span className="underline text-gold font-semibold">
                 <span className="sm:hidden">LEVERANS IMORGON</span>
                 <span className="hidden sm:inline">BESTÄLL IDAG MED LEVERANS IMORGON</span>
