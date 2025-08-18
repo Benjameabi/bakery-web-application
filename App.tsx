@@ -95,6 +95,15 @@ export default function App() {
   }, [isMobileMenuOpen]);
 
   // CSV loaders
+  const getProductPlaceholder = (category: string) => {
+    const c = (category || '').toLowerCase();
+    if (c.includes('tårtor')) return 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=300&fit=crop';
+    if (c.includes('fika')) return 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=400&h=300&fit=crop';
+    if (c.includes('matbröd') || c.includes('bröd') || c.includes('bullar')) return 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop';
+    if (c.includes('lunch')) return 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=400&h=300&fit=crop';
+    if (c.includes('frukost')) return 'https://images.unsplash.com/photo-1555507036-ab794f4aaab3?w=400&h=300&fit=crop';
+    return 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&h=300&fit=crop';
+  };
   useEffect(() => {
     const loadCsvData = async () => {
       try {
@@ -119,14 +128,14 @@ export default function App() {
         const productRows = parseCsv(productsCsv);
         const header = productRows.shift();
         if (header) {
-          // category,name,variant,price_kr,image_url
+          // Columns: Category,Product Name,Size,Variant,Price (SEK)
           const products: MenuProduct[] = productRows.filter(r => r.length >= 5).map((r, idx) => ({
             id: idx + 1,
             category: r[0],
             name: r[1],
-            variant: r[2] || undefined,
-            price: `${r[3]} kr`,
-            image: /^https?:\/\//.test(r[4]) ? r[4] : `/${r[4]}`
+            variant: [r[2], r[3]].filter(Boolean).join(' — '),
+            price: `${r[4]} kr`,
+            image: getProductPlaceholder(r[0])
           }));
           setMenuProducts(products);
 
@@ -243,10 +252,14 @@ export default function App() {
     handleExternalRedirect(EXTERNAL_URLS.products);
   };
 
-  // Filter products based on selected category
-  const filteredProducts = selectedCategory === "allt" 
-    ? menuProducts 
-    : menuProducts.filter(product => product.category === selectedCategory);
+  // De-duplicate products by name and show a single card; optionally filter by category
+  const dedupedProducts = Array.from(
+    new Map(menuProducts.map(p => [p.name, p])).values()
+  );
+
+  const filteredProducts = selectedCategory === "allt"
+    ? dedupedProducts
+    : dedupedProducts.filter(product => product.category === selectedCategory);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-cream/20 to-white">
@@ -929,19 +942,17 @@ export default function App() {
                     </motion.div>
                   </motion.div>
                   
-                  {/* Product Information - Name, Variant & Price on same line */}
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1 pr-4">
-                      <h3 className="font-body text-black mb-1 leading-tight">
-                        {product.name}
-                      </h3>
-                      {product.variant && (
-                        <p className="font-body text-warm-gray text-sm">
-                          {product.variant}
-                        </p>
-                      )}
-                    </div>
-                    <p className="font-body text-gold font-medium flex-shrink-0">
+                  {/* Product Information - Name, Variant on one block and Price below */}
+                  <div className="flex flex-col">
+                    <h3 className="font-body text-black mb-1 leading-tight">
+                      {product.name}
+                    </h3>
+                    {product.variant && (
+                      <p className="font-body text-warm-gray text-sm">
+                        {product.variant}
+                      </p>
+                    )}
+                    <p className="font-body text-gold font-medium mt-1">
                       {product.price}
                     </p>
                   </div>
