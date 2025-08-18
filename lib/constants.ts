@@ -310,21 +310,22 @@ export const instagramPosts = [
 ];
 
 // Contact info data
+// Real contact information from Mäster Jacobs API
 export const contactInfo = [
   { 
     icon: "MapPin", 
     title: "Adress", 
-    content: "Drottninggatan 45\n111 21 Stockholm\nSverige" 
+    content: "Pettersbergatan 37\nVästerås\nSverige" 
   },
   { 
     icon: "Phone", 
     title: "Telefon", 
-    content: "08-123 45 67\n070-123 45 67" 
+    content: "+46 021-30 15 09" 
   },
   { 
     icon: "Clock", 
     title: "Öppettider", 
-    content: "Mån-Fre: 07:00-19:00\nLör-Sön: 08:00-17:00" 
+    content: "Mån-Fre: Beställ före 12:00\nOns: Beställ före 13:00\nLör-Sön: Stängt för beställningar" 
   },
   { 
     icon: "Mail", 

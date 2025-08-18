@@ -13,13 +13,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 const logoIcon = "/icon-mj.webp";
 const favoriteCategoriesImage = "/favorite-categories.png";
 
-// External service URLs - Replace these with your actual URLs
+// Mäster Jacobs API URLs - Real endpoints discovered
 const EXTERNAL_URLS = {
-  webbshop: "https://your-webshop-url.com",
-  search: "https://your-webshop-url.com/search",
-  cart: "https://your-webshop-url.com/cart",
-  products: "https://your-webshop-url.com/products",
-  addToCart: "https://your-webshop-url.com/add-to-cart"
+  webbshop: "https://www.masterjacobs.se/shop/",
+  search: "https://www.masterjacobs.se/shop/search",
+  cart: "https://www.masterjacobs.se/shop/api/store/cart/",
+  products: "https://www.masterjacobs.se/shop/products",
+  addToCart: "https://www.masterjacobs.se/shop/api/store/cart/",
+  bakeryInfo: "https://www.masterjacobs.se/shop/api/store/bakeries/master-jacobs-bageri-konditori/web-shop/"
 };
 
 // Updated product data from Mäster Jacobs
@@ -94,22 +95,27 @@ export default function App() {
 
   const checkDelivery = () => {
     const cleanedPostal = postalCode.replace(/\s/g, '');
-    if (cleanedPostal.length === 5 && deliveryZones.includes(cleanedPostal)) {
-      setDeliveryResult({
-        available: true,
-        message: "Fantastiskt! Vi levererar till ditt område. Fri frakt över 500kr.",
-        zone: "Stockholm Centrum"
-      });
-    } else if (cleanedPostal.length === 5) {
+    
+    if (cleanedPostal.length !== 5 || !/^\d{5}$/.test(cleanedPostal)) {
       setDeliveryResult({
         available: false,
-        message: "Tyvärr levererar vi inte till detta postnummer ännu. Besök vår butik eller ring oss!",
+        message: "Ange ett giltigt 5-siffrigt postnummer.",
         zone: null
+      });
+      return;
+    }
+    
+    // Check if postal code is in Västerås area (72x codes)
+    if (cleanedPostal.startsWith('72')) {
+      setDeliveryResult({
+        available: true,
+        message: "Fantastiskt! Vi levererar till ditt område i Västerås. Fri frakt över 299kr, minimum 200kr för leverans.",
+        zone: "Västerås"
       });
     } else {
       setDeliveryResult({
         available: false,
-        message: "Vänligen ange ett giltigt postnummer (5 siffror).",
+        message: "Tyvärr levererar vi endast till Västerås kommun. Besök vår butik på Pettersbergatan 37 eller ring oss på 021-30 15 09!",
         zone: null
       });
     }
