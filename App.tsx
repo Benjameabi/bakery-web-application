@@ -126,7 +126,7 @@ export default function App() {
             name: r[1],
             variant: r[2] || undefined,
             price: `${r[3]} kr`,
-            image: `/images/${r[4]}`
+            image: /^https?:\/\//.test(r[4]) ? r[4] : `/${r[4]}`
           }));
           setMenuProducts(products);
 
@@ -150,7 +150,7 @@ export default function App() {
           name: r[1],
           variant: r[2] || undefined,
           price: `${r[3]} kr`,
-          image: `/images/${r[4]}`
+          image: /^https?:\/\//.test(r[4]) ? r[4] : `/${r[4]}`
         }));
         setGiftItems(extras);
       } catch (e) {
