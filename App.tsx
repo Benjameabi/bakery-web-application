@@ -8,19 +8,18 @@ import { fadeInUp, fadeIn, staggerContainer, staggerItem } from "./lib/animation
 import { MapPin, Phone, Clock, Mail, Star, Instagram, Facebook, Truck, CheckCircle, Menu, ArrowRight, X, Heart, ShoppingCart } from "lucide-react";
 import { Input } from "./components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
-import { useCatalog } from "./hooks/useCatalog";
 
 // Import logo and favorite categories image
 const logoIcon = "/icon-mj.webp";
 const favoriteCategoriesImage = "/favorite-categories.png";
 
-// Mäster Jacobs API URLs - Real endpoints discovered
+// Mäster Jacobs URLs - All redirect to main shop
 const EXTERNAL_URLS = {
   webbshop: "https://www.masterjacobs.se/shop/",
-  search: "https://www.masterjacobs.se/shop/search",
-  cart: "https://www.masterjacobs.se/shop/api/store/cart/",
-  products: "https://www.masterjacobs.se/shop/products",
-  addToCart: "https://www.masterjacobs.se/shop/api/store/cart/",
+  search: "https://www.masterjacobs.se/shop/",
+  cart: "https://www.masterjacobs.se/shop/",
+  products: "https://www.masterjacobs.se/shop/",
+  addToCart: "https://www.masterjacobs.se/shop/",
   bakeryInfo: "https://www.masterjacobs.se/shop/api/store/bakeries/master-jacobs-bageri-konditori/web-shop/"
 };
 
@@ -37,8 +36,7 @@ const menuProducts = [
   { id: 6, name: "Räkmacka med ost", variant: "Frälsost", price: "29 kr", category: "frukost", image: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=400&h=300&fit=crop" },
   { id: 7, name: "Smoothie (laktosfri)", variant: "Mango", price: "35 kr", category: "frukost", image: "https://images.unsplash.com/photo-1553530979-4c9d4e0d4b42?w=400&h=300&fit=crop" },
   
-  // Matbröd/Bullar (including real Mäster Jacobs products)
-  { id: 20814, name: "Foccacia", variant: "per enhet", price: "89 kr", category: "matbrod", image: "https://images.unsplash.com/photo-1585478259715-876acc5be8eb?w=400&h=300&fit=crop", ingredients: "vetemjöl, vatten, jäst, salt, socker, surdeg av vete, rapsolja, druvsocker, kalciumkarbonat(E170), (E472e), mjölbehandlingsmedel (askorbinsyra; E300), enzymer, rosemarine, olivolja" },
+  // Matbröd/Bullar
   { id: 8, name: "Kanelknut", variant: "Standard", price: "20 kr", category: "matbrod", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop" },
   { id: 9, name: "Rosenbröd", variant: "Standard", price: "5 kr", category: "matbrod", image: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&h=300&fit=crop" },
   { id: 10, name: "Baguette", variant: "Stor baguette", price: "22 kr", category: "matbrod", image: "https://images.unsplash.com/photo-1585478259715-876acc5be8eb?w=400&h=300&fit=crop" },
@@ -49,14 +47,12 @@ const menuProducts = [
   { id: 13, name: "Wienerbröd", variant: "Hallon", price: "22 kr", category: "fika", image: "https://images.unsplash.com/photo-1603532648955-039310d9ed75?w=400&h=300&fit=crop" }
 ];
 
-// Real categories from Mäster Jacobs website with actual URLs  
 const menuCategories = [
   { id: "allt", name: "Allt", description: "Alla produkter" },
-  { id: "tartor-bakelser", name: "Tårtor & Bakelser", description: "Tårtor och konditoriprodukter", url: "https://www.masterjacobs.se/shop/kategori/tartor-bakelser-3753" },
-  { id: "fika", name: "Fika", description: "Fika-godsaker", url: "https://www.masterjacobs.se/shop/kategori/fika-3919" },
-  { id: "lunch", name: "Lunch", description: "Lunchtillägg och sallader", url: "https://www.masterjacobs.se/shop/kategori/lunch-3756" },
-  { id: "matbrod-bullar", name: "Matbröd & Bullar", description: "Bröd och bullar", url: "https://www.masterjacobs.se/shop/kategori/matbrod-bullar-3755" },
-  { id: "frukost", name: "Frukost", description: "Frukostprodukter", url: "https://www.masterjacobs.se/shop/kategori/frukost-4791" }
+  { id: "tartor", name: "Tårtor & bakelser", description: "Tårtor och konditoriprodukter" },
+  { id: "frukost", name: "Frukost", description: "Frukostprodukter" },
+  { id: "matbrod", name: "Matbröd/Bullar", description: "Bröd och bullar" },
+  { id: "fika", name: "Fika", description: "Fika-godsaker" }
 ];
 
 export default function App() {
@@ -69,20 +65,7 @@ export default function App() {
     message: string;
     zone: string | null;
   } | null>(null);
-
-  // WordPress-style catalog system
-  const catalog = useCatalog();
   const [selectedCategory, setSelectedCategory] = useState("allt");
-
-  // Debug logging
-  useEffect(() => {
-    console.log('Catalog state:', {
-      isLoading: catalog.isLoading,
-      error: catalog.error,
-      productsCount: catalog.products?.length || 0,
-      selectedCategory
-    });
-  }, [catalog.isLoading, catalog.error, catalog.products?.length, selectedCategory]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -147,40 +130,42 @@ export default function App() {
   };
 
   const handleExternalRedirect = (url: string) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
+    // For search and cart, redirect to the main shop in the same tab
+    if (url.includes('masterjacobs.se/shop')) {
+      window.location.href = url;
+    } else {
+      // For other external links (social media), open in new tab
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
   };
 
   const iconComponents: Record<string, any> = { MapPin, Phone, Clock, Mail };
 
-  // Product categories data for the 4-image grid (using real Mäster Jacobs categories)
+  // Product categories data for the 4-image grid
   const favoriteCategories = [
     {
-      id: "tartor-bakelser",
+      id: "tartor",
       name: "Favorit tårtan!",
-      description: "Våra mest populära tårtor och bakelser",
-      category: "tårtor",
-      url: "https://www.masterjacobs.se/shop/kategori/tartor-bakelser-3753"
+      description: "Våra mest populära tårtor",
+      category: "tårtor"
     },
     {
       id: "fika",
       name: "Fika till jobbet!",
       description: "Perfekt för arbetsplatsen",
-      category: "fika",
-      url: "https://www.masterjacobs.se/shop/kategori/fika-3919"
+      category: "fika"
     },
     {
       id: "frukost", 
       name: "Frukost",
       description: "Färska frukostprodukter",
-      category: "frukost",
-      url: "https://www.masterjacobs.se/shop/kategori/frukost-4791"
+      category: "frukost"
     },
     {
-      id: "matbrod-bullar",
+      id: "matbrod",
       name: "Nybakat matbröd",
-      description: "Dagligt bakat bröd och bullar",
-      category: "bröd",
-      url: "https://www.masterjacobs.se/shop/kategori/matbrod-bullar-3755"
+      description: "Dagligt bakat och färskt",
+      category: "bröd"
     }
   ];
 
@@ -223,66 +208,18 @@ export default function App() {
     }
   ];
 
-  // WordPress-style product click → SaaS commerce handoff
-  const handleProductClick = (productId: string | number) => {
-    const product = catalog.getProduct(productId.toString());
-    if (product) {
-      // Track product view (WordPress-style analytics)
-      catalog.trackProductView(product);
-      // Redirect to SaaS commerce for purchase
-      catalog.redirectToCommerce(product, 'buy');
-    } else {
-      handleExternalRedirect(EXTERNAL_URLS.products);
-    }
+  const handleProductClick = (productId: number) => {
+    handleExternalRedirect(EXTERNAL_URLS.products);
   };
 
-  // WordPress-style category click → SaaS commerce handoff  
   const handleCategoryClick = (categoryId: string) => {
-    const category = catalog.getCategory(categoryId);
-    if (category) {
-      // Track category view
-      catalog.trackCategoryView(category);
-      // Find matching menu category for external URL
-      const menuCategory = menuCategories.find(cat => cat.id === categoryId);
-      if (menuCategory && menuCategory.url) {
-        handleExternalRedirect(menuCategory.url);
-      } else {
-        // Filter catalog locally for WordPress-style browsing
-        catalog.filterByCategory(categoryId);
-      }
-    } else {
-      handleExternalRedirect(EXTERNAL_URLS.products);
-    }
+    handleExternalRedirect(EXTERNAL_URLS.products);
   };
 
-  // WordPress-style "Add to Cart" → SaaS commerce
-  const handleAddToCart = (productId: string | number) => {
-    const product = catalog.getProduct(productId.toString());
-    if (product) {
-      catalog.addToCart(product, 1);
-    }
-  };
-
-  // Get filtered products based on selected category
-  const getFilteredProducts = () => {
-    if (!catalog.products || catalog.products.length === 0) {
-      return [];
-    }
-    
-    if (selectedCategory === "allt") {
-      return catalog.products;
-    }
-    
-    return catalog.products.filter(product => {
-      const categorySlug = product.category.toLowerCase().replace(/[^a-z0-9]/g, '-');
-      const categoryNormalized = product.category.toLowerCase().replace(/\s+/g, '-');
-      return categorySlug === selectedCategory || 
-             categoryNormalized === selectedCategory || 
-             product.category === selectedCategory;
-    });
-  };
-
-  const filteredProducts = getFilteredProducts();
+  // Filter products based on selected category
+  const filteredProducts = selectedCategory === "allt" 
+    ? menuProducts 
+    : menuProducts.filter(product => product.category === selectedCategory);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-cream/20 to-white">
@@ -918,29 +855,7 @@ export default function App() {
             animate="whileInView"
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 max-w-7xl mx-auto"
           >
-            {/* Show loading state */}
-            {catalog.isLoading && (
-              <div className="col-span-full text-center py-12">
-                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gold"></div>
-                <p className="text-warm-gray mt-4">Laddar produkter...</p>
-              </div>
-            )}
-            
-            {/* Show error state */}
-            {catalog.error && (
-              <div className="col-span-full text-center py-12">
-                <p className="text-red-500 mb-4">{catalog.error}</p>
-                <button 
-                  onClick={() => catalog.loadCatalogData()} 
-                  className="bg-gold text-white px-4 py-2 rounded-lg"
-                >
-                  Försök igen
-                </button>
-              </div>
-            )}
-            
-            {/* Show products */}
-            {!catalog.isLoading && !catalog.error && filteredProducts.map((product: any, index: number) => (
+            {filteredProducts.map((product, index) => (
               <motion.div 
                 key={product.id} 
                 variants={staggerItem}
