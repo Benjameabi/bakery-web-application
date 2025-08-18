@@ -29,6 +29,7 @@ type MenuProduct = {
   name: string;
   variant?: string;
   price: string;
+  priceNumber?: number;
   category: string; // Human-readable category name from CSV
   image: string;
 };
@@ -135,6 +136,7 @@ export default function App() {
             name: r[1],
             variant: [r[2], r[3]].filter(Boolean).join(' — '),
             price: `${r[4]} kr`,
+            priceNumber: Number(r[4]),
             image: getProductPlaceholder(r[0])
           }));
           setMenuProducts(products);
@@ -254,7 +256,22 @@ export default function App() {
 
   // De-duplicate products by name and show a single card; optionally filter by category
   const dedupedProducts = Array.from(
-    new Map(menuProducts.map(p => [p.name, p])).values()
+    new Map(
+      // For each name, keep the lowest priced variant and annotate with min price
+      menuProducts
+        .reduce((acc: Map<string, MenuProduct>, curr) => {
+          const existing = acc.get(curr.name);
+          if (!existing) {
+            acc.set(curr.name, { ...curr });
+          } else {
+            const currPrice = curr.priceNumber ?? parseFloat((curr.price || '0').replace(/[^0-9.,]/g, '').replace(',', '.'));
+            const existPrice = existing.priceNumber ?? parseFloat((existing.price || '0').replace(/[^0-9.,]/g, '').replace(',', '.'));
+            if (currPrice < existPrice) acc.set(curr.name, { ...curr });
+          }
+          return acc;
+        }, new Map())
+        .entries()
+    ).values()
   );
 
   const filteredProducts = selectedCategory === "allt"
@@ -953,7 +970,7 @@ export default function App() {
                       </p>
                     )}
                     <p className="font-body text-gold font-medium mt-1">
-                      {product.price}
+                      från {product.price}
                     </p>
                   </div>
                 </motion.div>
