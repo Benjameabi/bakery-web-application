@@ -218,12 +218,12 @@ export default function App() {
           <div className="flex items-center justify-center space-x-1 md:space-x-2">
             <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gold rounded-full animate-pulse"></div>
             <span className="text-center leading-tight">
-              <span className="hidden sm:inline">HEMLEVERANS ERBJUDANDE: Fri frakt över 500kr - </span>
+              <span className="hidden sm:inline">HEMLEVERANS ERBJUDANDE: Fri frakt över 200kr - </span>
               <span className="underline text-gold font-semibold">
                 <span className="sm:hidden">LEVERANS IMORGON</span>
                 <span className="hidden sm:inline">BESTÄLL IDAG MED LEVERANS IMORGON</span>
               </span>
-              <span className="hidden sm:inline"> HELA STOCKHOLM OMRÅDET</span>
+              <span className="hidden sm:inline"> HELA VÄSTERÅS OMRÅDET</span>
             </span>
             <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gold rounded-full animate-pulse"></div>
           </div>
@@ -341,7 +341,7 @@ export default function App() {
               <p className="text-sm font-body text-warm-gray mb-6 font-semibold">Följ oss på sociala medier</p>
               <div className="flex space-x-4">
                 <motion.a 
-                  href="https://instagram.com/masterjacobs_bakery" 
+                  href="https://www.instagram.com/stories/masterjacobsbageriochkonditori/3298971008419114295/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-gold to-yellow-600 hover:from-yellow-600 hover:to-gold text-black transition-all duration-300 rounded-xl shadow-lg"
@@ -351,7 +351,7 @@ export default function App() {
                   <Instagram className="w-6 h-6" />
                 </motion.a>
                 <motion.a 
-                  href="https://facebook.com/masterjacobsbageri" 
+                  href="https://www.facebook.com/masterjacobsbageriochkonditori/?locale=sv_SE" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-gold to-yellow-600 hover:from-yellow-600 hover:to-gold text-black transition-all duration-300 rounded-xl shadow-lg"
