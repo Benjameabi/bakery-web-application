@@ -69,8 +69,13 @@ export class CatalogDataProcessor {
   // Parse CSV file
   private async parseCSV(filePath: string): Promise<any[]> {
     try {
+      console.log('Loading CSV from:', filePath);
       const response = await fetch(filePath);
+      if (!response.ok) {
+        throw new Error(`Failed to load CSV: ${response.status} ${response.statusText}`);
+      }
       const csvText = await response.text();
+      console.log('CSV loaded successfully, length:', csvText.length);
       
       const lines = csvText.trim().split('\n');
       const headers = lines[0].split(',');
@@ -250,7 +255,7 @@ export class CatalogDataProcessor {
         variant: '6 bitar',
         price: 149,
         currency: 'kr',
-        imageUrl: 'prinsesstarta.jpg',
+        imageUrl: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&h=300&fit=crop',
         slug: 'prinsesstarta-6-bitar',
         description: 'Klassisk svensk prinsesstårta med grön marsipan',
         seoTitle: 'Prinsesstårta 6 bitar - 149 kr | Mäster Jacobs',
@@ -259,6 +264,40 @@ export class CatalogDataProcessor {
         featured: true,
         catalogUrl: '/produkter/prinsesstarta-6-bitar',
         commerceUrl: 'https://www.masterjacobs.se/shop/bestill/prinsesstarta-6-bitar-1001'
+      },
+      {
+        id: 'chokladboll-strossel-2001',
+        category: 'Fika',
+        name: 'Chokladboll',
+        variant: 'Strössel',
+        price: 20,
+        currency: 'kr',
+        imageUrl: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=400&h=300&fit=crop',
+        slug: 'chokladboll-strossel',
+        description: 'Klassisk chokladboll rullade i kokosströssel',
+        seoTitle: 'Chokladboll Strössel - 20 kr | Mäster Jacobs',
+        seoDescription: 'Beställ traditionella chokladbollar från Mäster Jacobs bageri',
+        inStock: true,
+        featured: true,
+        catalogUrl: '/produkter/chokladboll-strossel',
+        commerceUrl: 'https://www.masterjacobs.se/shop/bestill/chokladboll-strossel-2001'
+      },
+      {
+        id: 'kanelknut-standard-3001',
+        category: 'Matbröd/Bullar',
+        name: 'Kanelknut',
+        variant: 'Standard',
+        price: 20,
+        currency: 'kr',
+        imageUrl: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop',
+        slug: 'kanelknut-standard',
+        description: 'Nybakad kanelknut med äkta kanel och socker',
+        seoTitle: 'Kanelknut Standard - 20 kr | Mäster Jacobs',
+        seoDescription: 'Färska kanelknutar bakade dagligen med traditionella recept',
+        inStock: true,
+        featured: false,
+        catalogUrl: '/produkter/kanelknut-standard',
+        commerceUrl: 'https://www.masterjacobs.se/shop/bestill/kanelknut-standard-3001'
       }
     ];
   }

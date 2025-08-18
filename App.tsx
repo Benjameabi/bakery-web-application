@@ -72,6 +72,7 @@ export default function App() {
 
   // WordPress-style catalog system
   const catalog = useCatalog();
+  const [selectedCategory, setSelectedCategory] = useState("allt");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -251,6 +252,14 @@ export default function App() {
       catalog.addToCart(product, 1);
     }
   };
+
+  // Get filtered products based on selected category
+  const filteredProducts = selectedCategory === "allt" 
+    ? catalog.paginatedProducts 
+    : catalog.paginatedProducts.filter(product => {
+        const categorySlug = product.category.toLowerCase().replace(/[^a-z0-9]/g, '-');
+        return categorySlug === selectedCategory || product.category === selectedCategory;
+      });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-cream/20 to-white">
@@ -886,7 +895,29 @@ export default function App() {
             animate="whileInView"
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 max-w-7xl mx-auto"
           >
-            {filteredProducts.map((product, index) => (
+            {/* Show loading state */}
+            {catalog.isLoading && (
+              <div className="col-span-full text-center py-12">
+                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gold"></div>
+                <p className="text-warm-gray mt-4">Laddar produkter...</p>
+              </div>
+            )}
+            
+            {/* Show error state */}
+            {catalog.error && (
+              <div className="col-span-full text-center py-12">
+                <p className="text-red-500 mb-4">{catalog.error}</p>
+                <button 
+                  onClick={() => catalog.loadCatalogData()} 
+                  className="bg-gold text-white px-4 py-2 rounded-lg"
+                >
+                  Försök igen
+                </button>
+              </div>
+            )}
+            
+            {/* Show products */}
+            {!catalog.isLoading && !catalog.error && filteredProducts.map((product: any, index: number) => (
               <motion.div 
                 key={product.id} 
                 variants={staggerItem}
