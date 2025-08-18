@@ -23,37 +23,29 @@ const EXTERNAL_URLS = {
   bakeryInfo: "https://www.masterjacobs.se/shop/api/store/bakeries/master-jacobs-bageri-konditori/web-shop/"
 };
 
-// Updated product data from Mäster Jacobs
-const menuProducts = [
-  // Tårtor & bakelser
-  { id: 1, name: "Prinsesstårta", variant: "6 bitar", price: "149 kr", category: "tartor", image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&h=300&fit=crop" },
-  { id: 2, name: "Carl Gustav-tårta", variant: "10 bitar", price: "289 kr", category: "tartor", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop" },
-  { id: 3, name: "Gräddrårta", variant: "12 bitar", price: "299 kr", category: "tartor", image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=300&fit=crop" },
-  { id: 4, name: "Budapest tårta", variant: "10 bitar", price: "349 kr", category: "tartor", image: "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=400&h=300&fit=crop" },
-  
-  // Frukost
-  { id: 5, name: "Croissant smörgås", variant: "Frälsost/prosciutto", price: "35 kr", category: "frukost", image: "https://images.unsplash.com/photo-1555507036-ab794f4aaab3?w=400&h=300&fit=crop" },
-  { id: 6, name: "Räkmacka med ost", variant: "Frälsost", price: "29 kr", category: "frukost", image: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=400&h=300&fit=crop" },
-  { id: 7, name: "Smoothie (laktosfri)", variant: "Mango", price: "35 kr", category: "frukost", image: "https://images.unsplash.com/photo-1553530979-4c9d4e0d4b42?w=400&h=300&fit=crop" },
-  
-  // Matbröd/Bullar
-  { id: 8, name: "Kanelknut", variant: "Standard", price: "20 kr", category: "matbrod", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop" },
-  { id: 9, name: "Rosenbröd", variant: "Standard", price: "5 kr", category: "matbrod", image: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&h=300&fit=crop" },
-  { id: 10, name: "Baguette", variant: "Stor baguette", price: "22 kr", category: "matbrod", image: "https://images.unsplash.com/photo-1585478259715-876acc5be8eb?w=400&h=300&fit=crop" },
-  
-  // Fika
-  { id: 11, name: "Kladdkaka", variant: "Standard", price: "29 kr", category: "fika", image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=300&fit=crop" },
-  { id: 12, name: "Chokladboll", variant: "Strössel", price: "20 kr", category: "fika", image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=400&h=300&fit=crop" },
-  { id: 13, name: "Wienerbröd", variant: "Hallon", price: "22 kr", category: "fika", image: "https://images.unsplash.com/photo-1603532648955-039310d9ed75?w=400&h=300&fit=crop" }
-];
+// CSV-driven data types
+type MenuProduct = {
+  id: number;
+  name: string;
+  variant?: string;
+  price: string;
+  category: string; // Human-readable category name from CSV
+  image: string;
+};
 
-const menuCategories = [
-  { id: "allt", name: "Allt", description: "Alla produkter" },
-  { id: "tartor", name: "Tårtor & bakelser", description: "Tårtor och konditoriprodukter" },
-  { id: "frukost", name: "Frukost", description: "Frukostprodukter" },
-  { id: "matbrod", name: "Matbröd/Bullar", description: "Bröd och bullar" },
-  { id: "fika", name: "Fika", description: "Fika-godsaker" }
-];
+type MenuCategory = {
+  id: string; // Use the human-readable category name for filtering to keep UI unchanged
+  name: string;
+  description: string;
+};
+
+type GiftItem = {
+  id: number;
+  name: string;
+  variant?: string;
+  price: string;
+  image: string;
+};
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -66,6 +58,11 @@ export default function App() {
     zone: string | null;
   } | null>(null);
   const [selectedCategory, setSelectedCategory] = useState("allt");
+  const [menuProducts, setMenuProducts] = useState<MenuProduct[]>([]);
+  const [menuCategories, setMenuCategories] = useState<MenuCategory[]>([
+    { id: "allt", name: "Allt", description: "Alla produkter" }
+  ]);
+  const [giftItems, setGiftItems] = useState<GiftItem[]>([]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -96,6 +93,73 @@ export default function App() {
       return () => window.removeEventListener('resize', handleResize);
     }
   }, [isMobileMenuOpen]);
+
+  // CSV loaders
+  useEffect(() => {
+    const loadCsvData = async () => {
+      try {
+        const [productsRes, extrasRes] = await Promise.all([
+          fetch('/master_jacobs_products.csv'),
+          fetch('/master_jacobs_extras.csv')
+        ]);
+
+        const [productsCsv, extrasCsv] = await Promise.all([
+          productsRes.text(),
+          extrasRes.text()
+        ]);
+
+        // Parse CSV (simple parser assuming no commas in fields except separator)
+        const parseCsv = (csv: string) => {
+          return csv
+            .trim()
+            .split('\n')
+            .map(line => line.split(',').map(s => s.trim()));
+        };
+
+        const productRows = parseCsv(productsCsv);
+        const header = productRows.shift();
+        if (header) {
+          // category,name,variant,price_kr,image_url
+          const products: MenuProduct[] = productRows.filter(r => r.length >= 5).map((r, idx) => ({
+            id: idx + 1,
+            category: r[0],
+            name: r[1],
+            variant: r[2] || undefined,
+            price: `${r[3]} kr`,
+            image: `/images/${r[4]}`
+          }));
+          setMenuProducts(products);
+
+          // Build categories from CSV
+          const uniqueCategories = Array.from(new Set(products.map(p => p.category)));
+          const categories: MenuCategory[] = [
+            { id: 'allt', name: 'Allt', description: 'Alla produkter' },
+            ...uniqueCategories.map(cat => ({
+              id: cat,
+              name: cat,
+              description: ''
+            }))
+          ];
+          setMenuCategories(categories);
+        }
+
+        const extrasRows = parseCsv(extrasCsv);
+        extrasRows.shift();
+        const extras: GiftItem[] = extrasRows.filter(r => r.length >= 5).map((r, idx) => ({
+          id: 100 + idx + 1,
+          name: r[1],
+          variant: r[2] || undefined,
+          price: `${r[3]} kr`,
+          image: `/images/${r[4]}`
+        }));
+        setGiftItems(extras);
+      } catch (e) {
+        console.error('Failed to load CSV data', e);
+      }
+    };
+
+    loadCsvData();
+  }, []);
 
   const checkDelivery = () => {
     const cleanedPostal = postalCode.replace(/\s/g, '');
@@ -169,44 +233,7 @@ export default function App() {
     }
   ];
 
-  // Updated gift items from master_jacobs_extras
-  const giftItems = [
-    {
-      id: 101,
-      name: "Födelsedagsjus",
-      variant: "10-pack",
-      price: "29 kr",
-      image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop"
-    },
-    {
-      id: 102,
-      name: "Tårtdekorationer",
-      variant: "Happy Birthday",
-      price: "35 kr",
-      image: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=400&h=300&fit=crop"
-    },
-    {
-      id: 103,
-      name: "Gratulationskort",
-      variant: "Blommotiv",
-      price: "25 kr",
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop"
-    },
-    {
-      id: 104,
-      name: "Presentask",
-      variant: "Röd med rosett",
-      price: "49 kr",
-      image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop"
-    },
-    {
-      id: 105,
-      name: "Ballonger",
-      variant: "Flerfärgade 5-pack",
-      price: "39 kr",
-      image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop"
-    }
-  ];
+  // giftItems now loaded from CSV above
 
   const handleProductClick = (productId: number) => {
     handleExternalRedirect(EXTERNAL_URLS.products);
