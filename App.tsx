@@ -347,7 +347,7 @@ export default function App() {
               <p className="text-sm font-body text-warm-gray mb-6 font-semibold">Följ oss på sociala medier</p>
               <div className="flex space-x-4">
                 <motion.a 
-                  href="https://www.instagram.com/stories/masterjacobsbageriochkonditori/3298971008419114295/" 
+                  href="https://www.instagram.com/masterjacobsbageriochkonditori?igsh=aGxtcnJnbnF4Mmpu" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-gold to-yellow-600 hover:from-yellow-600 hover:to-gold text-black transition-all duration-300 rounded-xl shadow-lg"
