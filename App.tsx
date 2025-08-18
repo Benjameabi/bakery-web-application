@@ -921,55 +921,13 @@ export default function App() {
                 whileHover={{ y: -4, scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                {/* Minimalist Product Card */}
-                <motion.div className="w-full">
-                  {/* Product Image */}
-                  <motion.div 
-                    className="relative w-full aspect-square mb-6 overflow-hidden"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <motion.div 
-                      className="relative w-full h-full overflow-hidden"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.4 }}
-                    >
-                      <ImageWithFallback
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full h-full object-cover"
-                      />
-                      {/* Hover overlay */}
-                      <motion.div 
-                        className="absolute inset-0 bg-gold/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                        initial={{ opacity: 0 }}
-                        whileHover={{ opacity: 1 }}
-                      >
-                        <motion.div
-                          className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <span className="font-body font-medium text-black text-sm flex items-center space-x-2">
-                            <ShoppingCart className="w-4 h-4" />
-                            <span>Lägg till</span>
-                          </span>
-                        </motion.div>
-                      </motion.div>
-                    </motion.div>
-                  </motion.div>
-                  
-                  {/* Product Information - Name, Variant on one block and Price below */}
-                  <div className="flex flex-col">
-                    <h3 className="font-body text-black mb-1 leading-tight">
+                {/* Ultra-minimal card: only product name and price */}
+                <motion.div className="w-full p-4 border border-gold/20 bg-white/80 hover:bg-gold/5">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-body text-black leading-tight mr-4">
                       {product.name}
                     </h3>
-                    {product.variant && (
-                      <p className="font-body text-warm-gray text-sm">
-                        {product.variant}
-                      </p>
-                    )}
-                    <p className="font-body text-gold font-medium mt-1">
+                    <p className="font-body text-gold font-semibold whitespace-nowrap">
                       från {product.price}
                     </p>
                   </div>
