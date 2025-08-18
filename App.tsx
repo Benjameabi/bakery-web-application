@@ -8,6 +8,7 @@ import { fadeInUp, fadeIn, staggerContainer, staggerItem } from "./lib/animation
 import { MapPin, Phone, Clock, Mail, Star, Instagram, Facebook, Truck, CheckCircle, Menu, ArrowRight, X, Heart, ShoppingCart } from "lucide-react";
 import { Input } from "./components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
+import { useCatalog } from "./hooks/useCatalog";
 
 // Import logo and favorite categories image
 const logoIcon = "/icon-mj.webp";
@@ -68,7 +69,9 @@ export default function App() {
     message: string;
     zone: string | null;
   } | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState("allt");
+
+  // WordPress-style catalog system
+  const catalog = useCatalog();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -209,35 +212,45 @@ export default function App() {
     }
   ];
 
-  const handleProductClick = (productId: number) => {
-    handleExternalRedirect(EXTERNAL_URLS.products);
-  };
-
-  const handleCategoryClick = (categoryId: string) => {
-    // Find the category and redirect to its actual URL
-    const category = menuCategories.find(cat => cat.id === categoryId);
-    if (category && category.url) {
-      handleExternalRedirect(category.url);
+  // WordPress-style product click → SaaS commerce handoff
+  const handleProductClick = (productId: string | number) => {
+    const product = catalog.getProduct(productId.toString());
+    if (product) {
+      // Track product view (WordPress-style analytics)
+      catalog.trackProductView(product);
+      // Redirect to SaaS commerce for purchase
+      catalog.redirectToCommerce(product, 'buy');
     } else {
       handleExternalRedirect(EXTERNAL_URLS.products);
     }
   };
 
-  // Filter products based on selected category (with legacy category mapping)
-  const mapLegacyCategory = (category: string) => {
-    const mapping: Record<string, string> = {
-      'tartor': 'tartor-bakelser',
-      'matbrod': 'matbrod-bullar'
-    };
-    return mapping[category] || category;
+  // WordPress-style category click → SaaS commerce handoff  
+  const handleCategoryClick = (categoryId: string) => {
+    const category = catalog.getCategory(categoryId);
+    if (category) {
+      // Track category view
+      catalog.trackCategoryView(category);
+      // Find matching menu category for external URL
+      const menuCategory = menuCategories.find(cat => cat.id === categoryId);
+      if (menuCategory && menuCategory.url) {
+        handleExternalRedirect(menuCategory.url);
+      } else {
+        // Filter catalog locally for WordPress-style browsing
+        catalog.filterByCategory(categoryId);
+      }
+    } else {
+      handleExternalRedirect(EXTERNAL_URLS.products);
+    }
   };
 
-  const filteredProducts = selectedCategory === "allt" 
-    ? menuProducts 
-    : menuProducts.filter(product => {
-        const mappedCategory = mapLegacyCategory(product.category);
-        return mappedCategory === selectedCategory || product.category === selectedCategory;
-      });
+  // WordPress-style "Add to Cart" → SaaS commerce
+  const handleAddToCart = (productId: string | number) => {
+    const product = catalog.getProduct(productId.toString());
+    if (product) {
+      catalog.addToCart(product, 1);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-cream/20 to-white">
