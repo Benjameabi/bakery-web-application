@@ -74,6 +74,16 @@ export default function App() {
   const catalog = useCatalog();
   const [selectedCategory, setSelectedCategory] = useState("allt");
 
+  // Debug logging
+  useEffect(() => {
+    console.log('Catalog state:', {
+      isLoading: catalog.isLoading,
+      error: catalog.error,
+      productsCount: catalog.products?.length || 0,
+      selectedCategory
+    });
+  }, [catalog.isLoading, catalog.error, catalog.products?.length, selectedCategory]);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -254,12 +264,25 @@ export default function App() {
   };
 
   // Get filtered products based on selected category
-  const filteredProducts = selectedCategory === "allt" 
-    ? catalog.paginatedProducts 
-    : catalog.paginatedProducts.filter(product => {
-        const categorySlug = product.category.toLowerCase().replace(/[^a-z0-9]/g, '-');
-        return categorySlug === selectedCategory || product.category === selectedCategory;
-      });
+  const getFilteredProducts = () => {
+    if (!catalog.products || catalog.products.length === 0) {
+      return [];
+    }
+    
+    if (selectedCategory === "allt") {
+      return catalog.products;
+    }
+    
+    return catalog.products.filter(product => {
+      const categorySlug = product.category.toLowerCase().replace(/[^a-z0-9]/g, '-');
+      const categoryNormalized = product.category.toLowerCase().replace(/\s+/g, '-');
+      return categorySlug === selectedCategory || 
+             categoryNormalized === selectedCategory || 
+             product.category === selectedCategory;
+    });
+  };
+
+  const filteredProducts = getFilteredProducts();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-cream/20 to-white">
