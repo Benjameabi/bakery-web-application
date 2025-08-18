@@ -144,12 +144,12 @@ export default function App() {
           // Build categories from CSV
           const uniqueCategories = Array.from(new Set(products.map(p => p.category)));
           const categories: MenuCategory[] = [
-            { id: 'allt', name: 'Allt', description: 'Alla produkter' },
             ...uniqueCategories.map(cat => ({
               id: cat,
               name: cat,
               description: ''
-            }))
+            })),
+            { id: 'allt', name: 'Allt', description: 'Alla produkter' }
           ];
           setMenuCategories(categories);
         }
