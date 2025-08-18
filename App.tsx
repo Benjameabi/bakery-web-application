@@ -721,7 +721,7 @@ export default function App() {
                 <motion.div className="w-full">
                   {/* Product Image */}
                   <motion.div 
-                    className="relative w-full aspect-square mb-6 overflow-hidden"
+                    className="relative w-full aspect-square mb-4 overflow-hidden"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -1077,19 +1077,12 @@ export default function App() {
                     </motion.div>
                   </motion.div>
                   
-                  {/* Product Information - Name, Variant & Price on same line */}
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1 pr-4">
-                      <h3 className="font-body text-black mb-1 leading-tight">
-                        {item.name}
-                      </h3>
-                      {item.variant && (
-                        <p className="font-body text-warm-gray text-sm">
-                          {item.variant}
-                        </p>
-                      )}
-                    </div>
-                    <p className="font-body text-gold font-medium flex-shrink-0">
+                  {/* Product Information - Name left, Price right (no variant) */}
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-body text-black leading-tight mr-4">
+                      {item.name}
+                    </h3>
+                    <p className="font-body text-gold font-semibold whitespace-nowrap">
                       {item.price}
                     </p>
                   </div>
