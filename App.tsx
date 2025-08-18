@@ -118,12 +118,35 @@ export default function App() {
           extrasRes.text()
         ]);
 
-        // Parse CSV (simple parser assuming no commas in fields except separator)
+        // Parse CSV with quoted field support
         const parseCsv = (csv: string) => {
-          return csv
-            .trim()
-            .split('\n')
-            .map(line => line.split(',').map(s => s.trim()));
+          const rows: string[][] = [];
+          const lines = csv.replace(/\r/g, '').trim().split('\n');
+          for (const line of lines) {
+            const fields: string[] = [];
+            let current = '';
+            let inQuotes = false;
+            for (let i = 0; i < line.length; i++) {
+              const ch = line[i];
+              if (ch === '"') {
+                if (inQuotes && line[i + 1] === '"') {
+                  // Escaped quote
+                  current += '"';
+                  i++;
+                } else {
+                  inQuotes = !inQuotes;
+                }
+              } else if (ch === ',' && !inQuotes) {
+                fields.push(current.trim());
+                current = '';
+              } else {
+                current += ch;
+              }
+            }
+            fields.push(current.trim());
+            rows.push(fields);
+          }
+          return rows;
         };
 
         const productRows = parseCsv(productsCsv);
@@ -134,7 +157,8 @@ export default function App() {
             id: idx + 1,
             category: r[0],
             name: r[1],
-            variant: [r[2], r[3]].filter(Boolean).join(' — '),
+            // Keep variant strictly as flavors; show price separately with 'från'
+            variant: r[3] ? r[3] : undefined,
             price: `${r[4]} kr`,
             priceNumber: Number(r[4]),
             image: getProductPlaceholder(r[0])
