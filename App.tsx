@@ -707,86 +707,7 @@ export default function App() {
 
       {/* Presenter & Tillbehör section removed per request */}
 
-      {/* 5. Second Full-Width Image Break - Bakery Interior */}
-      <section className="relative h-[70vh] overflow-hidden">
-        <motion.div
-          className="absolute inset-0"
-          initial={{ scale: 1.1 }}
-          whileInView={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1590741861173-85035e8af62c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3p5JTIwYmFrZXJ5JTIwaW50ZXJpb3IlMjB3YXJtJTIwd2VsY29taW5nJTIwY2FmZXxlbnwxfHx8fDE3NTQ2NTYwODV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-            alt="Ett Hem för Alla" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50"></div>
-        </motion.div>
-        
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="text-center text-white px-4 md:px-6 max-w-4xl"
-          >
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              viewport={{ once: true }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 md:mb-6 drop-shadow-2xl"
-            >
-              Ett Hem för Alla
-            </motion.h2>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              viewport={{ once: true }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-body leading-relaxed drop-shadow-lg"
-            >
-              Vårt varma och välkomnande bageri är en plats där vänskap blomstrar över kaffe och kanel, 
-              <span className="hidden md:inline"><br />där varje besök känns som att komma hem.</span>
-              <span className="md:hidden"> där varje besök känns som att komma hem.</span>
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1 }}
-              viewport={{ once: true }}
-              className="mt-6 md:mt-8"
-            >
-              <motion.button
-                className="btn-primary btn-large"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                BESÖK OSS IDAG
-              </motion.button>
-            </motion.div>
-          </motion.div>
-        </div>
-
-        <motion.div
-          className="absolute top-1/4 left-10 w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-gold/20 to-transparent rounded-full blur-lg hidden md:block"
-          animate={{ y: [0, -20, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-1/3 right-16 w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-cream/30 to-transparent rounded-full blur-md hidden md:block"
-          animate={{ y: [0, 15, 0], scale: [1.1, 1, 1.1] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </section>
-
-      {/* 6. About Section - Vår Historia */}
+      {/* 6. About Section - Vår Historia (moved between full-width images) */}
       <section id="about" className="py-16 md:py-24 bg-gradient-to-b from-cream/20 via-white to-cream/10">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
@@ -884,6 +805,88 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* 5. Second Full-Width Image Break - Delivery CTA */}
+      <section className="relative h-[70vh] overflow-hidden">
+        <motion.div
+          className="absolute inset-0"
+          initial={{ scale: 1.1 }}
+          whileInView={{ scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          <ImageWithFallback
+            src="/composite 2.png"
+            alt="Fri hemleverans i Västerås" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50"></div>
+        </motion.div>
+        
+        <div className="relative z-10 h-full flex items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-center text-white px-4 md:px-6 max-w-4xl"
+          >
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 md:mb-6 drop-shadow-2xl"
+            >
+              Fri hemleverans i Västerås – över 299 kr
+            </motion.h2>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              viewport={{ once: true }}
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-body leading-relaxed drop-shadow-lg"
+            >
+              Beställ dina favoriter direkt i mobilen – snabbt, enkelt och smidigt. 
+              <span className="hidden md:inline"><br />Fri hemleverans inom Västerås vid köp över 299 kr.</span>
+              <span className="md:hidden"> Fri hemleverans inom Västerås över 299 kr.</span>
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              viewport={{ once: true }}
+              className="mt-6 md:mt-8"
+            >
+              <motion.button
+                className="btn-primary btn-large"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
+              >
+                Beställ idag
+              </motion.button>
+              <div className="text-white/95 font-body mt-3 md:mt-4 text-sm md:text-base">Leverans imorgon</div>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        <motion.div
+          className="absolute top-1/4 left-10 w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-gold/20 to-transparent rounded-full blur-lg hidden md:block"
+          animate={{ y: [0, -20, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 right-16 w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-cream/30 to-transparent rounded-full blur-md hidden md:block"
+          animate={{ y: [0, 15, 0], scale: [1.1, 1, 1.1] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </section>
+
+      
 
       {/* 7. Instagram Feed Section - Följ oss */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-white via-cream/10 to-white">
@@ -1127,32 +1130,23 @@ export default function App() {
                       initial="initial"
                       whileInView="whileInView"
                       viewport={{ once: true }}
-                      className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6"
+                      className="space-y-4 md:space-y-5"
                     >
                       {contactInfo.map((item, index) => {
                         const IconComponent = iconComponents[item.icon];
                         return (
                           <motion.div key={item.title} variants={staggerItem}>
-                            <motion.div
-                              className="p-4 md:p-6 bg-white/80 backdrop-blur-sm border-2 border-gold/20 shadow-lg hover:shadow-xl transition-all duration-300"
-                              whileHover={{ scale: 1.02, y: -4 }}
-                            >
-                              <div className="flex items-start space-x-3 md:space-x-4">
-                                <motion.div
-                                  className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-gold/20 to-yellow-100 rounded-xl flex items-center justify-center flex-shrink-0"
-                                  animate={{ rotate: [0, 5, 0] }}
-                                  transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
-                                >
-                                  <IconComponent className="w-5 h-5 md:w-6 md:h-6 text-gold" />
-                                </motion.div>
-                                <div>
-                                  <h4 className="font-heading font-bold text-black mb-1 md:mb-2 text-sm md:text-base">{item.title}</h4>
-                                  <p className="text-xs md:text-sm text-warm-gray font-body whitespace-pre-line leading-relaxed">
-                                    {item.content}
-                                  </p>
-                                </div>
+                            <div className="flex items-start space-x-3 md:space-x-4">
+                              <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <IconComponent className="w-5 h-5 md:w-6 md:h-6 text-gold" />
                               </div>
-                            </motion.div>
+                              <div>
+                                <h4 className="font-heading font-bold text-black mb-1 md:mb-1.5 text-sm md:text-base">{item.title}</h4>
+                                <p className="text-xs md:text-sm text-warm-gray font-body whitespace-pre-line leading-relaxed">
+                                  {item.content}
+                                </p>
+                              </div>
+                            </div>
                           </motion.div>
                         );
                       })}
@@ -1305,6 +1299,32 @@ export default function App() {
         </div>
       </section>
 
+      {/* Promotion Banner above Footer */}
+      <section className="py-8 md:py-10 bg-gradient-to-r from-gold to-yellow-500 text-black">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div 
+            className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="text-center md:text-left">
+              <div className="font-heading font-bold text-lg md:text-2xl tracking-wide">KAMPANJ: Fri hemleverans i Västerås över 299 kr</div>
+              <div className="font-body text-sm md:text-base opacity-90">Beställ enkelt i mobilen – smidigt och bekvämt.</div>
+            </div>
+            <motion.button
+              className="btn-primary btn-large"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
+            >
+              Beställ nu
+            </motion.button>
+          </motion.div>
+        </div>
+      </section>
+
       {/* 9. Footer */}
       <motion.footer 
         initial={{ opacity: 0 }}
@@ -1339,6 +1359,18 @@ export default function App() {
               <p className="text-warm-gray font-body text-base md:text-lg leading-relaxed">
                 Betjänar gemenskapen med färska, hantverksbakverk sedan 1982.
               </p>
+              <div className="pt-2 md:pt-3">
+                <div className="flex items-center space-x-3">
+                  <img 
+                    src="/Swish Logo Primary Dark-BG SVG.svg" 
+                    alt="Swish" 
+                    className="w-8 h-8 md:w-10 md:h-10 object-contain"
+                  />
+                  <div className="font-body text-sm md:text-base">
+                    <span className="font-semibold">Swish</span>: 123 456 78 90
+                  </div>
+                </div>
+              </div>
             </motion.div>
             
             <motion.div variants={staggerItem} className="space-y-4 md:space-y-6">
