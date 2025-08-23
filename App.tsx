@@ -3,15 +3,14 @@ import { motion } from "motion/react";
 import { Navigation } from "./components/Navigation";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import { CookieConsent } from "./components/CookieConsent";
-import { heroImages, deliveryZones, instagramPosts, contactInfo } from "./lib/constants";
+import { heroImages, heroSlideTexts, instagramPosts, contactInfo } from "./lib/constants";
 import { fadeInUp, fadeIn, staggerContainer, staggerItem } from "./lib/animations";
-import { MapPin, Phone, Clock, Mail, Star, Instagram, Facebook, Truck, CheckCircle, Menu, ArrowRight, X, Heart, ShoppingCart } from "lucide-react";
+import { MapPin, Phone, Clock, Mail, Star, Instagram, Facebook, Truck, CheckCircle, ArrowRight, X, ShoppingCart } from "lucide-react";
 import { Input } from "./components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 
-// Import logo and favorite categories image
+// Import logo
 const logoIcon = "/icon-mj.webp";
-const favoriteCategoriesImage = "/favorite-categories.png";
 
 // Mäster Jacobs URLs - All redirect to main shop
 const EXTERNAL_URLS = {
@@ -23,30 +22,7 @@ const EXTERNAL_URLS = {
   bakeryInfo: "https://www.masterjacobs.se/shop/api/store/bakeries/master-jacobs-bageri-konditori/web-shop/"
 };
 
-// CSV-driven data types
-type MenuProduct = {
-  id: number;
-  name: string;
-  variant?: string;
-  price: string;
-  priceNumber?: number;
-  category: string; // Human-readable category name from CSV
-  image: string;
-};
-
-type MenuCategory = {
-  id: string; // Use the human-readable category name for filtering to keep UI unchanged
-  name: string;
-  description: string;
-};
-
-type GiftItem = {
-  id: number;
-  name: string;
-  variant?: string;
-  price: string;
-  image: string;
-};
+// Types for removed menu/gifts sections have been deleted
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -58,12 +34,16 @@ export default function App() {
     message: string;
     zone: string | null;
   } | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState("allt");
-  const [menuProducts, setMenuProducts] = useState<MenuProduct[]>([]);
-  const [menuCategories, setMenuCategories] = useState<MenuCategory[]>([
-    { id: "allt", name: "Allt", description: "Alla produkter" }
-  ]);
-  const [giftItems, setGiftItems] = useState<GiftItem[]>([]);
+  // Removed menu and gifts state as sections were deleted
+  const [favoriteCategoryTiles, setFavoriteCategoryTiles] = useState<{ id: string; name: string; image: string }[]>([]);
+
+  const slideText = heroSlideTexts[currentSlide] || {
+    line1: "Bakverk som",
+    line2: "berikar din",
+    accent: "vardag",
+    descriptionMobile: "Från traditionella svenska recept till moderna tolkningar. Hantverksmässiga bakverk sedan 1982.",
+    descriptionDesktop: "Från traditionella svenska recept till moderna tolkningar. Vårt bageri har serverat färska, \n              hantverksmässiga bakverk sedan 1982 med samma passion för kvalitet och smak."
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,105 +75,95 @@ export default function App() {
     }
   }, [isMobileMenuOpen]);
 
-  // CSV loaders
-  const getProductPlaceholder = (category: string) => {
-    const c = (category || '').toLowerCase();
-    if (c.includes('tårtor')) return 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=300&fit=crop';
-    if (c.includes('fika')) return 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=400&h=300&fit=crop';
-    if (c.includes('matbröd') || c.includes('bröd') || c.includes('bullar')) return 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop';
-    if (c.includes('lunch')) return 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=400&h=300&fit=crop';
-    if (c.includes('frukost')) return 'https://images.unsplash.com/photo-1555507036-ab794f4aaab3?w=400&h=300&fit=crop';
-    return 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&h=300&fit=crop';
-  };
+  // Removed CSV loaders as related sections were deleted
+  // Load categories for favorites grid from CSVs
   useEffect(() => {
-    const loadCsvData = async () => {
+    const getCategoryImage = (name: string) => {
+      const n = name.toLowerCase();
+      if (n.includes('tårtor') || n === 'tårtor') return 'https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=800&h=600&fit=crop';
+      if (n.includes('bullar') || n === 'bullar') return 'https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=800&h=600&fit=crop';
+      if (n.includes('bröd') || n === 'bröd' || n.includes('matbröd')) return 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=800&h=600&fit=crop';
+      if (n.includes('fika')) return 'https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=800&h=600&fit=crop';
+      if (n.includes('lunch') || n.includes('sallad')) return 'https://images.unsplash.com/photo-1546793665-c74683f339c1?w=800&h=600&fit=crop';
+      if (n.includes('ballong')) return 'https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?w=800&h=600&fit=crop';
+      if (n.includes('kort')) return 'https://images.unsplash.com/photo-1578662345648-7a6d1e2b8fdc?w=800&h=600&fit=crop';
+      if (n.includes('dekoration')) return 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop';
+      if (n.includes('presentask')) return 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&h=600&fit=crop';
+      if (n.includes('ljus')) return 'https://images.unsplash.com/photo-1464207687429-7505649dae38?w=800&h=600&fit=crop';
+      return 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop';
+    };
+
+    const parseCsv = (csv: string) => {
+      const rows: string[][] = [];
+      const lines = csv.replace(/\r/g, '').trim().split('\n');
+      for (const line of lines) {
+        const fields: string[] = [];
+        let current = '';
+        let inQuotes = false;
+        for (let i = 0; i < line.length; i++) {
+          const ch = line[i];
+          if (ch === '"') {
+            if (inQuotes && line[i + 1] === '"') {
+              current += '"';
+              i++;
+            } else {
+              inQuotes = !inQuotes;
+            }
+          } else if (ch === ',' && !inQuotes) {
+            fields.push(current.trim());
+            current = '';
+          } else {
+            current += ch;
+          }
+        }
+        fields.push(current.trim());
+        rows.push(fields);
+      }
+      return rows;
+    };
+
+    const loadCategories = async () => {
       try {
         const [productsRes, extrasRes] = await Promise.all([
           fetch('/master_jacobs_products.csv'),
           fetch('/master_jacobs_extras.csv')
         ]);
-
         const [productsCsv, extrasCsv] = await Promise.all([
           productsRes.text(),
           extrasRes.text()
         ]);
 
-        // Parse CSV with quoted field support
-        const parseCsv = (csv: string) => {
-          const rows: string[][] = [];
-          const lines = csv.replace(/\r/g, '').trim().split('\n');
-          for (const line of lines) {
-            const fields: string[] = [];
-            let current = '';
-            let inQuotes = false;
-            for (let i = 0; i < line.length; i++) {
-              const ch = line[i];
-              if (ch === '"') {
-                if (inQuotes && line[i + 1] === '"') {
-                  // Escaped quote
-                  current += '"';
-                  i++;
-                } else {
-                  inQuotes = !inQuotes;
-                }
-              } else if (ch === ',' && !inQuotes) {
-                fields.push(current.trim());
-                current = '';
-              } else {
-                current += ch;
-              }
-            }
-            fields.push(current.trim());
-            rows.push(fields);
-          }
-          return rows;
-        };
-
         const productRows = parseCsv(productsCsv);
-        const header = productRows.shift();
-        if (header) {
-          // Columns: Category,Product Name,Size,Variant,Price (SEK)
-          const products: MenuProduct[] = productRows.filter(r => r.length >= 5).map((r, idx) => ({
-            id: idx + 1,
-            category: r[0],
-            name: r[1],
-            // Keep variant strictly as flavors; show price separately with 'från'
-            variant: r[3] ? r[3] : undefined,
-            price: `${r[4]} kr`,
-            priceNumber: Number(r[4]),
-            image: getProductPlaceholder(r[0])
-          }));
-          setMenuProducts(products);
-
-          // Build categories from CSV
-          const uniqueCategories = Array.from(new Set(products.map(p => p.category)));
-          const categories: MenuCategory[] = [
-            ...uniqueCategories.map(cat => ({
-              id: cat,
-              name: cat,
-              description: ''
-            })),
-            { id: 'allt', name: 'Allt', description: 'Alla produkter' }
-          ];
-          setMenuCategories(categories);
-        }
+        productRows.shift();
+        const productCategories = Array.from(new Set(productRows.map(r => r[0]).filter(Boolean)));
 
         const extrasRows = parseCsv(extrasCsv);
         extrasRows.shift();
-        const extras: GiftItem[] = extrasRows.filter(r => r.length >= 5).map((r, idx) => ({
-          id: 100 + idx + 1,
-          name: r[1],
-          variant: r[2] || undefined,
-          price: `${r[3]} kr`,
-          image: /^https?:\/\//.test(r[4]) ? r[4] : `/${r[4]}`
-        }));
-        setGiftItems(extras);
+        const extrasNames = Array.from(new Set(extrasRows.map(r => r[1]).filter(Boolean)));
+        // Pick key extras as separate tiles
+        const desiredExtras = ['Gratulationskort', 'Ballonger', 'Tårtdekorationer', 'Presentask', 'Födelsedagsljus'];
+        const presentExtras = desiredExtras.filter(n => extrasNames.includes(n));
+
+        const tilesBase: { id: string; name: string; image: string }[] = [];
+        if (productCategories.includes('Tårtor & bakelser')) {
+          tilesBase.push({ id: 'tårtor', name: 'Tårtor', image: getCategoryImage('Tårtor') });
+        }
+        if (productCategories.includes('Matbröd/Bullar')) {
+          tilesBase.push({ id: 'bullar', name: 'Bullar', image: getCategoryImage('Bullar') });
+          tilesBase.push({ id: 'bröd', name: 'Bröd', image: getCategoryImage('Bröd') });
+        }
+        const tiles = [
+          ...tilesBase,
+          ...presentExtras.map(name => ({ id: name.toLowerCase(), name, image: getCategoryImage(name) }))
+        ];
+
+        setFavoriteCategoryTiles(tiles);
       } catch (e) {
-        console.error('Failed to load CSV data', e);
+        console.error('Failed to load categories for favorites', e);
       }
     };
 
-    loadCsvData();
+    loadCategories();
   }, []);
 
   const checkDelivery = () => {
@@ -240,33 +210,7 @@ export default function App() {
 
   const iconComponents: Record<string, any> = { MapPin, Phone, Clock, Mail };
 
-  // Product categories data for the 4-image grid
-  const favoriteCategories = [
-    {
-      id: "tartor",
-      name: "Favorit tårtan!",
-      description: "Våra mest populära tårtor",
-      category: "tårtor"
-    },
-    {
-      id: "fika",
-      name: "Fika till jobbet!",
-      description: "Perfekt för arbetsplatsen",
-      category: "fika"
-    },
-    {
-      id: "frukost", 
-      name: "Frukost",
-      description: "Färska frukostprodukter",
-      category: "frukost"
-    },
-    {
-      id: "matbrod",
-      name: "Nybakat matbröd",
-      description: "Dagligt bakat och färskt",
-      category: "bröd"
-    }
-  ];
+  // Removed unused favoriteCategories data
 
   // giftItems now loaded from CSV above
 
@@ -274,33 +218,9 @@ export default function App() {
     handleExternalRedirect(EXTERNAL_URLS.products);
   };
 
-  const handleCategoryClick = (categoryId: string) => {
-    handleExternalRedirect(EXTERNAL_URLS.products);
-  };
+  // Removed category click handler as menu section was deleted
 
-  // De-duplicate products by name and show a single card; optionally filter by category
-  const dedupedProducts = Array.from(
-    new Map(
-      // For each name, keep the lowest priced variant and annotate with min price
-      menuProducts
-        .reduce((acc: Map<string, MenuProduct>, curr) => {
-          const existing = acc.get(curr.name);
-          if (!existing) {
-            acc.set(curr.name, { ...curr });
-          } else {
-            const currPrice = curr.priceNumber ?? parseFloat((curr.price || '0').replace(/[^0-9.,]/g, '').replace(',', '.'));
-            const existPrice = existing.priceNumber ?? parseFloat((existing.price || '0').replace(/[^0-9.,]/g, '').replace(',', '.'));
-            if (currPrice < existPrice) acc.set(curr.name, { ...curr });
-          }
-          return acc;
-        }, new Map())
-        .entries()
-    ).values()
-  );
-
-  const filteredProducts = selectedCategory === "allt"
-    ? dedupedProducts
-    : dedupedProducts.filter(product => product.category === selectedCategory);
+  // Removed product aggregation and filtering
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-cream/20 to-white">
@@ -386,7 +306,6 @@ export default function App() {
             {[
               { name: 'Hem', href: '#home', external: false },
               { name: 'Våra Favoriter', href: '#favorites', external: false },
-              { name: 'Sortiment', href: '#menu', external: false },
               { name: 'Webbshop', href: EXTERNAL_URLS.webbshop, external: true },
               { name: 'Om oss', href: '#about', external: false },
               { name: 'Våra butiker', href: '#contact', external: false },
@@ -535,9 +454,9 @@ export default function App() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold text-white mb-6 md:mb-8 leading-tight drop-shadow-2xl text-center"
           >
-            <span className="block">Bakverk som</span>
-            <span className="block">berikar din</span>{" "}
-            <span className="text-gold drop-shadow-lg">vardag</span>
+            <span className="block">{slideText.line1}</span>
+            <span className="block">{slideText.line2}</span>{" "}
+            <span className="text-gold drop-shadow-lg">{slideText.accent}</span>
           </motion.h1>
 
           {/* Description */}
@@ -548,11 +467,10 @@ export default function App() {
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 font-body mb-8 md:mb-12 leading-relaxed max-w-3xl mx-auto drop-shadow-lg text-center px-2"
           >
             <span className="block sm:hidden">
-              Från traditionella svenska recept till moderna tolkningar. Hantverksmässiga bakverk sedan 1982.
+              {slideText.descriptionMobile}
             </span>
             <span className="hidden sm:block">
-              Från traditionella svenska recept till moderna tolkningar. Vårt bageri har serverat färska, 
-              hantverksmässiga bakverk sedan 1982 med samma passion för kvalitet och smak.
+              {slideText.descriptionDesktop}
             </span>
           </motion.p>
 
@@ -611,68 +529,7 @@ export default function App() {
         />
       </section>
 
-      {/* Call-to-Action Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-cream/30 via-white to-cream/20 relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-gold/5 to-transparent rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-br from-cream/50 to-transparent rounded-full blur-2xl"></div>
-        </div>
-
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div 
-            {...fadeInUp}
-            viewport={{ once: true }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <motion.h2 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-subheading font-bold text-black mb-8"
-              initial={{ opacity: 0, y: -50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-            >
-              Upptäck Vårt Sortiment
-            </motion.h2>
-            
-            <motion.p 
-              className="text-lg md:text-xl text-warm-gray max-w-3xl mx-auto font-body leading-relaxed mb-12"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              Från våra berömda prinsesstårtor till färskt bröd, konditoriprodukter och näringsrika frukostprodukter - 
-              allt handgjort med kärlek och de finaste ingredienserna sedan 1982.
-            </motion.p>
-            
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <motion.button
-                className="btn-primary btn-large"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => handleExternalRedirect(EXTERNAL_URLS.products)}
-              >
-                Se Alla Produkter
-              </motion.button>
-              
-              <motion.button
-                className="btn-secondary btn-large"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
-              >
-                Handla Online
-              </motion.button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Call-to-Action Section removed per request */}
 
       {/* 1. Favorites Section - Minimalist Product Cards */}
       <section id="favorites" className="py-16 md:py-24 bg-gradient-to-b from-white via-cream/10 to-white">
@@ -689,7 +546,7 @@ export default function App() {
               transition={{ duration: 1 }}
               viewport={{ once: true }}
             >
-              Våra Favoriter
+              Välj Bland Våra Favoriter
             </motion.h2>
             
             <motion.p 
@@ -703,7 +560,7 @@ export default function App() {
             </motion.p>
           </motion.div>
 
-          {/* Minimalist Product Cards Grid */}
+          {/* Categories Grid (from CSV main categories + key extras) */}
           <motion.div 
             variants={staggerContainer}
             initial="initial"
@@ -711,39 +568,16 @@ export default function App() {
             viewport={{ once: true }}
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 max-w-7xl mx-auto"
           >
-            {[
-              {
-                id: 1,
-                name: "Prinsesstårta",
-                image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&h=300&fit=crop"
-              },
-              {
-                id: 2,
-                name: "Kanelbullar",
-                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop"
-              },
-              {
-                id: 3,
-                name: "Kladdkaka",
-                image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=300&fit=crop"
-              },
-              {
-                id: 4,
-                name: "Croissant smörgås",
-                image: "https://images.unsplash.com/photo-1555507036-ab794f4aaab3?w=400&h=300&fit=crop"
-              }
-            ].map((product, index) => (
+            {favoriteCategoryTiles.map((tile, index) => (
               <motion.div 
-                key={product.id} 
+                key={tile.id} 
                 variants={staggerItem}
                 className="group cursor-pointer"
-                onClick={() => handleProductClick(product.id)}
+                onClick={() => handleExternalRedirect(EXTERNAL_URLS.products)}
                 whileHover={{ y: -4, scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                {/* Minimalist Product Card */}
                 <motion.div className="w-full">
-                  {/* Product Image */}
                   <motion.div 
                     className="relative w-full aspect-square mb-4 overflow-hidden"
                     whileHover={{ scale: 1.02 }}
@@ -755,11 +589,10 @@ export default function App() {
                       transition={{ duration: 0.4 }}
                     >
                       <ImageWithFallback
-                        src={product.image}
-                        alt={product.name}
+                        src={tile.image}
+                        alt={tile.name}
                         className="w-full h-full object-cover"
                       />
-                      {/* Hover overlay */}
                       <motion.div 
                         className="absolute inset-0 bg-gold/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
                         initial={{ opacity: 0 }}
@@ -771,18 +604,17 @@ export default function App() {
                           whileTap={{ scale: 0.95 }}
                         >
                           <span className="font-body font-medium text-black text-sm flex items-center space-x-2">
-                            <ShoppingCart className="w-4 h-4" />
-                            <span>Lägg till</span>
+                            <ArrowRight className="w-4 h-4" />
+                            <span>Visa</span>
                           </span>
                         </motion.div>
                       </motion.div>
                     </motion.div>
                   </motion.div>
                   
-                  {/* Product Information - Name only */}
                   <div className="text-center">
                     <h3 className="font-body text-black leading-tight">
-                      {product.name}
+                      {tile.name}
                     </h3>
                   </div>
                 </motion.div>
@@ -871,269 +703,9 @@ export default function App() {
         />
       </section>
 
-      {/* 3. Full Menu Section - Fullständig Meny */}
-      <section id="menu" className="py-16 md:py-24 bg-gradient-to-b from-cream/20 via-white to-cream/10">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div 
-            {...fadeInUp}
-            viewport={{ once: true }}
-            className="flex flex-col lg:flex-row lg:justify-between lg:items-end mb-16 gap-6 md:gap-8"
-          >
-            <motion.h2 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-subheading font-bold text-black"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-            >
-              Fullständig Meny
-            </motion.h2>
-            
-            <motion.p 
-              className="text-lg md:text-xl text-warm-gray max-w-lg text-left lg:text-right font-body leading-relaxed"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              Bläddra genom vårt kompletta utbud av autentiska svenska bakverk och konditoriprodukter.
-            </motion.p>
-          </motion.div>
+      {/* Fullständig Meny section removed per request */}
 
-          {/* Category Filter Tabs */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12"
-          >
-            {menuCategories.map((category, index) => (
-              <motion.button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`px-4 md:px-6 py-2 md:py-3 rounded-full font-heading font-semibold transition-all duration-300 ${
-                  selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-gold to-yellow-500 text-black shadow-lg'
-                    : 'bg-white/80 text-warm-gray hover:text-gold hover:bg-gold/10 border border-gold/20'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 + index * 0.1 }}
-              >
-                {category.name}
-              </motion.button>
-            ))}
-          </motion.div>
-
-          {/* Product Grid */}
-          <motion.div 
-            key={selectedCategory}
-            variants={staggerContainer}
-            initial="initial"
-            animate="whileInView"
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 max-w-7xl mx-auto"
-          >
-            {filteredProducts.map((product, index) => (
-              <motion.div 
-                key={product.id} 
-                variants={staggerItem}
-                className="group cursor-pointer"
-                onClick={() => handleProductClick(product.id)}
-                whileHover={{ y: -4, scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              >
-                {/* Product Card with image, hover overlay, name and price */}
-                <motion.div className="w-full">
-                  {/* Product Image */}
-                  <motion.div 
-                    className="relative w-full aspect-square mb-4 overflow-hidden"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <motion.div 
-                      className="relative w-full h-full overflow-hidden"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.4 }}
-                    >
-                      <ImageWithFallback
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full h-full object-cover"
-                      />
-                      {/* Hover overlay */}
-                      <motion.div 
-                        className="absolute inset-0 bg-gold/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                        initial={{ opacity: 0 }}
-                        whileHover={{ opacity: 1 }}
-                      >
-                        <motion.div
-                          className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <span className="font-body font-medium text-black text-sm flex items-center space-x-2">
-                            <ShoppingCart className="w-4 h-4" />
-                            <span>Lägg till</span>
-                          </span>
-                        </motion.div>
-                      </motion.div>
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Product Information: name + price (with 'från') */}
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-body text-black leading-tight mr-4">
-                      {product.name}
-                    </h3>
-                    <p className="font-body text-gold font-semibold whitespace-nowrap">
-                      från {product.price}
-                    </p>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Show all products button */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
-          >
-            <motion.button
-              className="btn-secondary px-12 py-4"
-              onClick={() => handleExternalRedirect(EXTERNAL_URLS.products)}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              SE ALLA PRODUKTER
-            </motion.button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 4. Accessories & Gifts Section - Full-Width Product Cards */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-white via-gold/5 to-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div 
-            {...fadeInUp}
-            viewport={{ once: true }}
-            className="flex flex-col lg:flex-row lg:justify-between lg:items-end mb-16 gap-6 md:gap-8"
-          >
-            <motion.h2 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-subheading font-bold text-black"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-            >
-              Presenter & Tillbehör
-            </motion.h2>
-            
-            <motion.p 
-              className="text-lg md:text-xl text-warm-gray max-w-lg text-left lg:text-right font-body leading-relaxed"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              Perfekta presenter för bakälskare och tillbehör för att göra dina firanden extra speciella.
-            </motion.p>
-          </motion.div>
-
-          {/* Product Cards Grid */}
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 max-w-7xl mx-auto"
-          >
-            {giftItems.map((item, index) => (
-              <motion.div 
-                key={item.id} 
-                variants={staggerItem}
-                className="group cursor-pointer"
-                onClick={() => handleProductClick(item.id)}
-                whileHover={{ y: -8, scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              >
-                {/* Minimalist Product Card */}
-                <motion.div className="w-full">
-                  {/* Product Image */}
-                  <motion.div 
-                    className="relative w-full aspect-square mb-6 overflow-hidden"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <motion.div 
-                      className="relative w-full h-full overflow-hidden"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.4 }}
-                    >
-                      <ImageWithFallback
-                        src={item.image}
-                        alt={item.name}
-                        className="w-full h-full object-cover"
-                      />
-                      {/* Add to cart overlay */}
-                      <motion.div 
-                        className="absolute inset-0 bg-gold/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                        initial={{ opacity: 0 }}
-                        whileHover={{ opacity: 1 }}
-                      >
-                        <motion.div
-                          className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <span className="font-body font-medium text-black text-sm flex items-center space-x-2">
-                            <ShoppingCart className="w-4 h-4" />
-                            <span>Lägg till</span>
-                          </span>
-                        </motion.div>
-                      </motion.div>
-                    </motion.div>
-                  </motion.div>
-                  
-                  {/* Product Information - Name left, Price right (no variant) */}
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-body text-black leading-tight mr-4">
-                      {item.name}
-                    </h3>
-                    <p className="font-body text-gold font-semibold whitespace-nowrap">
-                      {item.price}
-                    </p>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* See All Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
-          >
-            <motion.button
-              className="btn-secondary px-12 py-4"
-              onClick={() => handleExternalRedirect(EXTERNAL_URLS.products)}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              SE ALLT
-            </motion.button>
-          </motion.div>
-        </div>
-      </section>
+      {/* Presenter & Tillbehör section removed per request */}
 
       {/* 5. Second Full-Width Image Break - Bakery Interior */}
       <section className="relative h-[70vh] overflow-hidden">
@@ -1775,7 +1347,6 @@ export default function App() {
                 {[
                   { name: 'Hem', href: '#home', external: false },
                   { name: 'Favoriter', href: '#favorites', external: false },
-                  { name: 'Sortiment', href: '#menu', external: false },
                   { name: 'Produkter', href: EXTERNAL_URLS.products, external: true },
                   { name: 'Om oss', href: '#about', external: false },
                   { name: 'Kontakt', href: '#contact', external: false }

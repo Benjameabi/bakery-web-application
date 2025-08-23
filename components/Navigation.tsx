@@ -49,9 +49,9 @@ export function Navigation({
           {/* Desktop Left Menu */}
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8 flex-1">
             {[
-              { name: 'Våra butiker', href: '#contact', external: false },
+              { name: 'Vår butik', href: '#contact', external: false },
               { name: 'Kontakta oss', href: '#contact', external: false },
-              { name: 'Webbshop', href: null, external: true, onClick: onWebbshopClick }
+              { name: 'Webbshop', href: "", external: true, onClick: onWebbshopClick }
             ].map((item, index) => (
               <motion.a
                 key={item.name}
@@ -78,7 +78,7 @@ export function Navigation({
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <motion.div 
-              className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 flex items-center justify-center mb-1"
+              className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 flex items-center justify-center mb-1 md:mb-2 lg:mb-1"
               whileHover={{ scale: 1.05, rotate: 5 }}
               transition={{ duration: 0.3 }}
             >

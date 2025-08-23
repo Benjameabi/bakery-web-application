@@ -247,6 +247,32 @@ export const heroImages = [
   "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=1200&h=800&fit=crop" // Fresh bread
 ];
 
+// Text content to pair with each hero image
+// The array order must match heroImages indexes
+export const heroSlideTexts = [
+  {
+    line1: "Kanelbullar som",
+    line2: "förgyller din",
+    accent: "fika",
+    descriptionMobile: "Klassiska kanelbullar bakade varje dag.",
+    descriptionDesktop: "Klassiska kanelbullar bakade på äkta smör och kanel. Alltid nygräddade för den perfekta fikastunden."
+  },
+  {
+    line1: "Prinsesstårtor",
+    line2: "bakade med",
+    accent: "kärlek",
+    descriptionMobile: "Prinsesstårtor för alla tillfällen.",
+    descriptionDesktop: "Handgjorda prinsesstårtor med len grädde och marsipan. Beställ för födelsedag, bröllop och fest."
+  },
+  {
+    line1: "Nybakat bröd",
+    line2: "varje",
+    accent: "morgon",
+    descriptionMobile: "Nybakat bröd från gryning till lunch.",
+    descriptionDesktop: "Nybakade limpor och baguetter varje morgon. Perfekta till frukost, lunch eller middag."
+  }
+];
+
 // Stockholm delivery zones (sample postal codes)
 export const deliveryZones = [
   "11111", "11121", "11127", "11129", "11133", "11135", "11136", "11137", "11141", "11143",
