@@ -470,7 +470,7 @@ export default function App() {
           <motion.div 
             {...fadeInUp}
             viewport={{ once: true }}
-            className="flex flex-col lg:flex-row lg:justify-between lg:items-end mb-16 gap-6 md:gap-8"
+            className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-16 gap-6 md:gap-8"
           >
             <motion.h2 
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-subheading font-bold text-black"
@@ -499,7 +499,7 @@ export default function App() {
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 max-w-7xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto"
           >
             {favoriteCategoryTiles.map((tile, index) => (
               <motion.div 
@@ -827,7 +827,7 @@ export default function App() {
           <motion.div 
             {...fadeInUp}
             viewport={{ once: true }}
-            className="flex flex-col lg:flex-row lg:justify-between lg:items-end mb-12 md:mb-20 gap-6 md:gap-8"
+            className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-12 md:mb-20 gap-6 md:gap-8"
           >
             <motion.h2 
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-subheading font-bold text-black"
@@ -943,7 +943,7 @@ export default function App() {
           <motion.div 
             {...fadeInUp}
             viewport={{ once: true }}
-            className="flex flex-col lg:flex-row lg:justify-between lg:items-end mb-12 md:mb-20 gap-6 md:gap-8"
+            className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-12 md:mb-20 gap-6 md:gap-8"
           >
             <motion.h2 
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-subheading font-bold text-black"
