@@ -5,24 +5,23 @@ import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import { CookieConsent } from "./components/CookieConsent";
 import { heroImages, heroSlideTexts, instagramPosts, contactInfo } from "./lib/constants";
 import { fadeInUp, fadeIn, staggerContainer, staggerItem } from "./lib/animations";
-import { MapPin, Phone, Clock, Mail, Star, Instagram, Facebook, Truck, CheckCircle, ArrowRight, X, ShoppingCart } from "lucide-react";
+import { MapPin, Phone, Clock, Mail, Star, Instagram, Facebook, Truck, CheckCircle, ArrowRight, X } from "lucide-react";
 import { Input } from "./components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 
 // Import logo
 const logoIcon = "/icon-mj.webp";
 
-// Mäster Jacobs URLs - All redirect to main shop
+// CakeItEasy URLs - All ordering/checkout handled by CakeItEasy backend
 const EXTERNAL_URLS = {
-  webbshop: "https://www.masterjacobs.se/shop/",
-  search: "https://www.masterjacobs.se/shop/",
-  cart: "https://www.masterjacobs.se/shop/",
-  products: "https://www.masterjacobs.se/shop/",
-  addToCart: "https://www.masterjacobs.se/shop/",
-  bakeryInfo: "https://www.masterjacobs.se/shop/api/store/bakeries/master-jacobs-bageri-konditori/web-shop/"
+  webbshop: "https://mybakery.cakeiteasy.se/",
+  search: "https://mybakery.cakeiteasy.se/search",
+  cart: "https://mybakery.cakeiteasy.se/cart",
+  products: "https://mybakery.cakeiteasy.se/products",
+
+  bakeryInfo: "https://mybakery.cakeiteasy.se/api/store/info"
 };
 
-// Types for removed menu/gifts sections have been deleted
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,7 +33,7 @@ export default function App() {
     message: string;
     zone: string | null;
   } | null>(null);
-  // Removed menu and gifts state as sections were deleted
+
   const [favoriteCategoryTiles, setFavoriteCategoryTiles] = useState<{ id: string; name: string; image: string }[]>([]);
 
   const slideText = heroSlideTexts[currentSlide] || {
@@ -75,14 +74,16 @@ export default function App() {
     }
   }, [isMobileMenuOpen]);
 
-  // Removed CSV loaders as related sections were deleted
-  // Load categories for favorites grid from CSVs
+  // Favorites categories: static six tiles
   useEffect(() => {
     const getCategoryImage = (name: string) => {
       const n = name.toLowerCase();
-      if (n.includes('tårtor') || n === 'tårtor') return 'https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=800&h=600&fit=crop';
+      if (n.includes('tårtor') || n === 'tårtor' || n.includes('tartor') || n === 'tartor') return 'https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=800&h=600&fit=crop';
       if (n.includes('bullar') || n === 'bullar') return 'https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=800&h=600&fit=crop';
-      if (n.includes('bröd') || n === 'bröd' || n.includes('matbröd')) return 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=800&h=600&fit=crop';
+      if (n.includes('bröd') || n === 'bröd' || n.includes('brod') || n === 'brod' || n.includes('matbröd')) return 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=800&h=600&fit=crop';
+      if (n.includes('frukost')) return 'https://images.unsplash.com/photo-1555507036-ab794f4ade0a?w=800&h=600&fit=crop';
+      if (n.includes('smörgåstårta') || n.includes('smorgastarta')) return 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=800&h=600&fit=crop';
+      if (n.includes('tillbehör') || n.includes('tillbehor')) return 'https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=800&h=600&fit=crop';
       if (n.includes('fika')) return 'https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=800&h=600&fit=crop';
       if (n.includes('lunch') || n.includes('sallad')) return 'https://images.unsplash.com/photo-1546793665-c74683f339c1?w=800&h=600&fit=crop';
       if (n.includes('ballong')) return 'https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?w=800&h=600&fit=crop';
@@ -93,77 +94,16 @@ export default function App() {
       return 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop';
     };
 
-    const parseCsv = (csv: string) => {
-      const rows: string[][] = [];
-      const lines = csv.replace(/\r/g, '').trim().split('\n');
-      for (const line of lines) {
-        const fields: string[] = [];
-        let current = '';
-        let inQuotes = false;
-        for (let i = 0; i < line.length; i++) {
-          const ch = line[i];
-          if (ch === '"') {
-            if (inQuotes && line[i + 1] === '"') {
-              current += '"';
-              i++;
-            } else {
-              inQuotes = !inQuotes;
-            }
-          } else if (ch === ',' && !inQuotes) {
-            fields.push(current.trim());
-            current = '';
-          } else {
-            current += ch;
-          }
-        }
-        fields.push(current.trim());
-        rows.push(fields);
-      }
-      return rows;
-    };
+    const tiles: { id: string; name: string; image: string }[] = [
+      { id: 'tårtor', name: 'Tårtor', image: getCategoryImage('Tårtor') },
+      { id: 'bullar', name: 'Bullar', image: getCategoryImage('Bullar') },
+      { id: 'bröd', name: 'Bröd', image: getCategoryImage('Bröd') },
+      { id: 'frukost', name: 'Frukost', image: getCategoryImage('Frukost') },
+      { id: 'smörgåstårta', name: 'Smörgåstårta', image: getCategoryImage('Smörgåstårta') },
+      { id: 'tillbehor', name: 'Tillbehör', image: getCategoryImage('Tillbehör') }
+    ];
 
-    const loadCategories = async () => {
-      try {
-        const [productsRes, extrasRes] = await Promise.all([
-          fetch('/master_jacobs_products.csv'),
-          fetch('/master_jacobs_extras.csv')
-        ]);
-        const [productsCsv, extrasCsv] = await Promise.all([
-          productsRes.text(),
-          extrasRes.text()
-        ]);
-
-        const productRows = parseCsv(productsCsv);
-        productRows.shift();
-        const productCategories = Array.from(new Set(productRows.map(r => r[0]).filter(Boolean)));
-
-        const extrasRows = parseCsv(extrasCsv);
-        extrasRows.shift();
-        const extrasNames = Array.from(new Set(extrasRows.map(r => r[1]).filter(Boolean)));
-        // Pick key extras as separate tiles
-        const desiredExtras = ['Gratulationskort', 'Ballonger', 'Tårtdekorationer', 'Presentask', 'Födelsedagsljus'];
-        const presentExtras = desiredExtras.filter(n => extrasNames.includes(n));
-
-        const tilesBase: { id: string; name: string; image: string }[] = [];
-        if (productCategories.includes('Tårtor & bakelser')) {
-          tilesBase.push({ id: 'tårtor', name: 'Tårtor', image: getCategoryImage('Tårtor') });
-        }
-        if (productCategories.includes('Matbröd/Bullar')) {
-          tilesBase.push({ id: 'bullar', name: 'Bullar', image: getCategoryImage('Bullar') });
-          tilesBase.push({ id: 'bröd', name: 'Bröd', image: getCategoryImage('Bröd') });
-        }
-        const tiles = [
-          ...tilesBase,
-          ...presentExtras.map(name => ({ id: name.toLowerCase(), name, image: getCategoryImage(name) }))
-        ];
-
-        setFavoriteCategoryTiles(tiles);
-      } catch (e) {
-        console.error('Failed to load categories for favorites', e);
-      }
-    };
-
-    loadCategories();
+    setFavoriteCategoryTiles(tiles);
   }, []);
 
   const checkDelivery = () => {
@@ -199,8 +139,8 @@ export default function App() {
   };
 
   const handleExternalRedirect = (url: string) => {
-    // For search and cart, redirect to the main shop in the same tab
-    if (url.includes('masterjacobs.se/shop')) {
+    // For CakeItEasy ordering/checkout, redirect in the same tab
+    if (url.includes('cakeiteasy.se')) {
       window.location.href = url;
     } else {
       // For other external links (social media), open in new tab
@@ -210,13 +150,6 @@ export default function App() {
 
   const iconComponents: Record<string, any> = { MapPin, Phone, Clock, Mail };
 
-  // Removed unused favoriteCategories data
-
-  // giftItems now loaded from CSV above
-
-  const handleProductClick = (productId: number) => {
-    handleExternalRedirect(EXTERNAL_URLS.products);
-  };
 
   // Removed category click handler as menu section was deleted
 
@@ -660,7 +593,7 @@ export default function App() {
               <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 bg-gradient-to-br from-gold/20 to-yellow-100/20 rounded-full flex items-center justify-center backdrop-blur-sm">
                 <img 
                   src={logoIcon} 
-                  alt="Mäster Jacobs Logo" 
+                  alt="Mäster Jacobs Logo small" 
                   className="w-6 h-6 md:w-10 md:h-10 object-contain brightness-0 invert"
                   style={{ filter: 'brightness(0) invert(1) sepia(1) saturate(10000%) hue-rotate(35deg)' }}
                 />
