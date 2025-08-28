@@ -78,20 +78,16 @@ export default function App() {
   useEffect(() => {
     const getCategoryImage = (name: string) => {
       const n = name.toLowerCase();
-      if (n.includes('tårtor') || n === 'tårtor' || n.includes('tartor') || n === 'tartor') return 'https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=800&h=600&fit=crop';
-      if (n.includes('bullar') || n === 'bullar') return 'https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=800&h=600&fit=crop';
-      if (n.includes('bröd') || n === 'bröd' || n.includes('brod') || n === 'brod' || n.includes('matbröd')) return 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=800&h=600&fit=crop';
-      if (n.includes('frukost')) return 'https://images.unsplash.com/photo-1555507036-ab794f4ade0a?w=800&h=600&fit=crop';
-      if (n.includes('smörgåstårta') || n.includes('smorgastarta')) return 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=800&h=600&fit=crop';
-      if (n.includes('tillbehör') || n.includes('tillbehor')) return 'https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=800&h=600&fit=crop';
-      if (n.includes('fika')) return 'https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=800&h=600&fit=crop';
-      if (n.includes('lunch') || n.includes('sallad')) return 'https://images.unsplash.com/photo-1546793665-c74683f339c1?w=800&h=600&fit=crop';
-      if (n.includes('ballong')) return 'https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?w=800&h=600&fit=crop';
-      if (n.includes('kort')) return 'https://images.unsplash.com/photo-1578662345648-7a6d1e2b8fdc?w=800&h=600&fit=crop';
-      if (n.includes('dekoration')) return 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop';
-      if (n.includes('presentask')) return 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&h=600&fit=crop';
-      if (n.includes('ljus')) return 'https://images.unsplash.com/photo-1464207687429-7505649dae38?w=800&h=600&fit=crop';
-      return 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop';
+      if (n.includes('tårtor') || n === 'tårtor' || n.includes('tartor') || n === 'tartor') return '/images/Prinsesstårta.webp';
+      if (n.includes('bullar') || n === 'bullar') return '/images/Sockerkringla.webp';
+      if (n.includes('bröd') || n === 'bröd' || n.includes('brod') || n === 'brod' || n.includes('matbröd')) return '/images/Aros grova.webp';
+      if (n.includes('frukost')) return '/images/Surdegsbräck vallmo.webp';
+      if (n.includes('smörgåstårta') || n.includes('smorgastarta')) return '/images/Morotskaka.webp';
+      if (n.includes('tillbehör') || n.includes('tillbehor')) return '/images/Tillbehor.webp';
+      // Fallback images for unused categories
+      if (n.includes('fika')) return '/images/Sockerkringla.webp';
+      if (n.includes('lunch') || n.includes('sallad')) return '/images/Aros grova.webp';
+      return '/images/Prinsesstårta.webp';
     };
 
     const tiles: { id: string; name: string; image: string }[] = [
