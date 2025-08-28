@@ -1,32 +1,32 @@
 export const heroImages = [
-  "https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=1200&h=800&fit=crop", // Cinnamon buns
-  "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1200&h=800&fit=crop", // Princess cake
-  "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=1200&h=800&fit=crop" // Fresh bread
+  "/images/Kanelknut.webp", // Kanelknut
+  "/images/Gräddtårta.webp", // Gräddtårta
+  "/images/Dansk Råglimpa.webp" // Dansk Råglimpa
 ];
 
 // Text content to pair with each hero image
 // The array order must match heroImages indexes
 export const heroSlideTexts = [
   {
-    line1: "Kanelbullar som",
+    line1: "Kanelknutar som",
     line2: "förgyller din",
     accent: "fika",
-    descriptionMobile: "Klassiska kanelbullar bakade varje dag.",
-    descriptionDesktop: "Klassiska kanelbullar bakade på äkta smör och kanel. Alltid nygräddade för den perfekta fikastunden."
+    descriptionMobile: "Klassiska kanelknutar bakade varje dag.",
+    descriptionDesktop: "Klassiska kanelknutar bakade på äkta smör och kanel. Alltid nygräddade för den perfekta fikastunden."
   },
   {
-    line1: "Prinsesstårtor",
+    line1: "Gräddtårtor", 
     line2: "bakade med",
     accent: "kärlek",
-    descriptionMobile: "Prinsesstårtor för alla tillfällen.",
-    descriptionDesktop: "Handgjorda prinsesstårtor med len grädde och marsipan. Beställ för födelsedag, bröllop och fest."
+    descriptionMobile: "Gräddtårtor för alla tillfällen.",
+    descriptionDesktop: "Handgjorda gräddtårtor med len grädde och färska bär. Beställ för födelsedag, bröllop och fest."
   },
   {
-    line1: "Nybakat bröd",
+    line1: "Dansk råglimpa",
     line2: "varje",
     accent: "morgon",
-    descriptionMobile: "Nybakat bröd från gryning till lunch.",
-    descriptionDesktop: "Nybakade limpor och baguetter varje morgon. Perfekta till frukost, lunch eller middag."
+    descriptionMobile: "Nybakat dansk råglimpa från gryning till lunch.",
+    descriptionDesktop: "Nybakat dansk råglimpa varje morgon. Perfekt till frukost, lunch eller middag med sitt rika smak."
   }
 ];
 
