@@ -1,6 +1,6 @@
 export const heroImages = [
-  "/images/Kanelknut.webp", // Kanelknut
   "/images/Gräddtårta.webp", // Gräddtårta
+  "/images/Kanelknut.webp", // Kanelknut
   "/images/Dansk Råglimpa.webp" // Dansk Råglimpa
 ];
 
@@ -8,18 +8,18 @@ export const heroImages = [
 // The array order must match heroImages indexes
 export const heroSlideTexts = [
   {
-    line1: "Kanelknutar som",
-    line2: "förgyller din",
-    accent: "fika",
-    descriptionMobile: "Klassiska kanelknutar bakade varje dag.",
-    descriptionDesktop: "Klassiska kanelknutar bakade på äkta smör och kanel. Alltid nygräddade för den perfekta fikastunden."
-  },
-  {
     line1: "Gräddtårtor", 
     line2: "bakade med",
     accent: "kärlek",
     descriptionMobile: "Gräddtårtor för alla tillfällen.",
     descriptionDesktop: "Handgjorda gräddtårtor med len grädde och färska bär. Beställ för födelsedag, bröllop och fest."
+  },
+  {
+    line1: "Kanelknutar som",
+    line2: "förgyller din",
+    accent: "fika",
+    descriptionMobile: "Klassiska kanelknutar bakade varje dag.",
+    descriptionDesktop: "Klassiska kanelknutar bakade på äkta smör och kanel. Alltid nygräddade för den perfekta fikastunden."
   },
   {
     line1: "Dansk råglimpa",
