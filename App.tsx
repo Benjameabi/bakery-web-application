@@ -711,7 +711,7 @@ export default function App() {
                 transition={{ duration: 0.4 }}
               >
                 <ImageWithFallback
-                  src="/images/historia.webp"
+                  src="/images/Historia.webp"
                   alt="Vår Historia - Mäster Jacobs Bageri"
                   className="w-full h-80 md:h-96 object-cover"
                 />
