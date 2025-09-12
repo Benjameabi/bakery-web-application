@@ -82,7 +82,7 @@ export default function App() {
       if (n.includes('bullar') || n === 'bullar') return '/images/Sockerkringla.webp';
       if (n.includes('bröd') || n === 'bröd' || n.includes('brod') || n === 'brod' || n.includes('matbröd')) return '/images/Aros grova.webp';
       if (n.includes('frukost')) return '/images/Surdegsbräck vallmo.webp';
-      if (n.includes('smörgåstårta') || n.includes('smorgastarta')) return '/images/Morotskaka.webp';
+      if (n.includes('smörgåstårta') || n.includes('smorgastarta')) return '/images/smorgastarta.webp';
       if (n.includes('tillbehör') || n.includes('tillbehor')) return '/images/Tillbehor.webp';
       // Fallback images for unused categories
       if (n.includes('fika')) return '/images/Sockerkringla.webp';
@@ -657,9 +657,7 @@ export default function App() {
               
               <div className="space-y-4 md:space-y-6 text-base md:text-lg">
                 {[
-                  "I över 40 år har Mäster Jacobs Bageri & Konditori serverat vår gemenskap med de finaste hantverksbröden, traditionella svenska bakverk och desserter. Vad som började som en liten familjeföretag har vuxit till en älskad stadsdels institution.",
-                  "Vi tror på att använda endast ingredienser av högsta kvalitet, traditionella svenska bakmetoder och recept som förts vidare genom generationer. Varje Prinsesstårta, Kladdkaka och Kanelknut bakas färskt dagligen av våra skickliga bagare som kommer före gryningen för att säkerställa att du får de bästa möjliga produkterna.",
-                  "Från våra signatur svenska specialiteter till våra dagliga fika-godsaker, varje tugga berättar historien om vår passion för exceptionell bakning och autentiska svenska smaker."
+                  "I över 40 år har Mäster Jacobs bageri & konditori bakat och levererat det finaste hantverksbrödet och traditionella svenska bakverk. Det började som ett litet familjeföretag i Skultuna, på Mäster Jacobs väg. Redan 2 år senare var det dags att bygga ut och flytta in till \"stan\" sedan dess har vi funnits i Västerås och du hittar oss på Pettersbergsgatan 37. Härifrån levererar vi dagligen, 7 dagar i veckan till hotell, caféer, restaurang, företag och privatpersoner. Numer kan även du med några enkla knappval lägga din beställning idag och få leverans imorgon. Vårt signum är svenska klassiker!"
                 ].map((text, index) => (
                   <motion.p
                     key={index}
@@ -713,8 +711,8 @@ export default function App() {
                 transition={{ duration: 0.4 }}
               >
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop"
-                  alt="Baker at work"
+                  src="/images/historia.webp"
+                  alt="Vår Historia - Mäster Jacobs Bageri"
                   className="w-full h-80 md:h-96 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -745,7 +743,7 @@ export default function App() {
           viewport={{ once: true }}
         >
           <ImageWithFallback
-            src="/composite 2.png"
+            src="/images/section-cake.webp"
             alt="Fri hemleverans i Västerås" 
             className="w-full h-full object-cover"
           />
@@ -910,7 +908,7 @@ export default function App() {
             className="flex justify-center items-center space-x-4 md:space-x-6"
           >
             <motion.a 
-              href="https://instagram.com/masterjacobs_bakery" 
+              href="https://www.instagram.com/masterjacobsbageriochkonditori?igsh=aGxtcnJnbnF4Mmpu" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-gold to-yellow-600 hover:from-yellow-600 hover:to-gold text-black transition-all duration-300 shadow-xl border border-gold/20"
@@ -1002,14 +1000,14 @@ export default function App() {
                       transition={{ duration: 0.3 }}
                     >
                       <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2034.5234567890123!2d18.064399!3d59.334591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f763119640bcb%3A0xa80d27d3679d7766!2sDrottninggatan%2C%20Stockholm%2C%20Sweden!5e0!3m2!1sen!2sse!4v1703025123456!5m2!1sen!2sse"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2019.234567890123!2d16.546399!3d59.611591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465dcb5119640bcb%3A0xa80d27d3679d7766!2sPettersbergatan%2037%2C%20V%C3%A4ster%C3%A5s%2C%20Sweden!5e0!3m2!1sen!2sse!4v1703025123456!5m2!1sen!2sse"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
                         allowFullScreen
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
-                        title="Mäster Jacobs Bageri Stockholm Location"
+                        title="Mäster Jacobs Bageri Västerås Location"
                       ></iframe>
                       <motion.div 
                         className="absolute top-3 md:top-6 left-3 md:left-6 bg-white/95 backdrop-blur-md p-3 md:p-6 shadow-xl max-w-xs border border-gold/20"
@@ -1027,11 +1025,11 @@ export default function App() {
                           <div>
                             <p className="font-heading font-bold text-black text-sm md:text-base">Mäster Jacobs Bageri</p>
                             <p className="text-xs md:text-sm text-warm-gray font-body mt-1 md:mt-2 leading-relaxed">
-                              Drottninggatan 45<br />
-                              111 21 Stockholm
+                              Pettersbergatan 37<br />
+                              Västerås, Sverige
                             </p>
                             <p className="text-xs text-warm-gray font-body mt-2 md:mt-3">
-                              T-bana: T-Centralen (200m)
+                              Västerås centrum (5 min promenad)
                             </p>
                           </div>
                         </div>
@@ -1049,7 +1047,7 @@ export default function App() {
                     <div className="space-y-4 md:space-y-6">
                       <h3 className="text-2xl md:text-3xl font-subheading font-bold text-black">Besök Vårt Bageri</h3>
                       <p className="text-warm-gray font-body text-base md:text-lg leading-relaxed">
-                        Beläget i hjärtat av Stockholm, mitt på Drottninggatan. Lätt att nå med kollektivtrafik, 
+                        Beläget i centrala Västerås på Pettersbergatan 37. Lätt att nå med kollektivtrafik, 
                         till fots eller cykel. Parkering finns på närliggande gator.
                       </p>
                     </div>
@@ -1347,7 +1345,7 @@ export default function App() {
                   Facebook
                 </motion.a>
                 <motion.a 
-                  href="https://instagram.com/masterjacobs_bakery" 
+                  href="https://www.instagram.com/masterjacobsbageriochkonditori?igsh=aGxtcnJnbnF4Mmpu" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="btn-ghost text-warm-gray hover:text-black text-sm md:text-base"

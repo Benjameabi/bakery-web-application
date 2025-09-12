@@ -30,55 +30,55 @@ export const heroSlideTexts = [
   }
 ];
 
-// Instagram posts data
+// Instagram posts data - using local bakery images
 export const instagramPosts = [
   {
-    image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=300&fit=crop",
+    image: "/images/Prinsesstårta.webp",
     likes: 342,
     comments: 28,
-    caption: "Färsk Prinsesstårta denna morgon! 🇸🇪"
+    caption: "Färsk Prinsesstårta denna morgon! Den svenska klassikern i all sin prakt 🇸🇪✨ #prinsesstårta #svenskklassiker"
   },
   {
-    image: "https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=300&h=300&fit=crop",
+    image: "/images/Kanelknut.webp",
     likes: 567,
     comments: 45,
-    caption: "Perfekt Kanelknut för fika"
+    caption: "Perfekt Kanelknut för dagens fika ☕️🥐 Bakad på äkta smör och kanel #kanelknut #fika #hantverksbageri"
   },
   {
-    image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=300&h=300&fit=crop",
+    image: "/images/Gräddtårta.webp",
     likes: 289,
     comments: 19,
-    caption: "Kladdkaka perfektion 🍰"
+    caption: "Gräddtårta med färska säsongens bär 🍓🫐 Perfekt för alla tillfällen! #gräddtårta #färskabär"
   },
   {
-    image: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=300&h=300&fit=crop",
+    image: "/images/Aros grova.webp",
     likes: 412,
     comments: 32,
-    caption: "Färska baguetter klara!"
+    caption: "Nybakat Aros grova bröd - perfekt till frukost! 🍞 Rikt på smak och näring #arosbröd #nybakat"
   },
   {
-    image: "https://images.unsplash.com/photo-1555507036-ab794f4ade0a?w=300&h=300&fit=crop",
+    image: "/images/smorgastarta.webp",
     likes: 234,
     comments: 15,
-    caption: "Croissant smörgås till frukost! 🥐"
+    caption: "Smörgåstårta för alla tillfällen! 🎉 Beställ för fest, kalas eller bara för att unna sig #smörgåstårta #fest"
   },
   {
-    image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=300&h=300&fit=crop",
+    image: "/images/Sockerkringla.webp",
     likes: 445,
     comments: 38,
-    caption: "Traditionell Chokladboll"
+    caption: "Klassisk Sockerkringla - en svensk favorit sedan generationer 🥨✨ #sockerkringla #tradition"
   },
   {
-    image: "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=300&h=300&fit=crop",
+    image: "/images/Surdegsbröd.webp",
     likes: 623,
     comments: 52,
-    caption: "Bakom kulisserna på Mäster Jacobs"
+    caption: "Vårt hantverksmässiga surdegsbröd - kärlek i varje skiva 🍞❤️ #surdegsbröd #hantverk #kärlek"
   },
   {
-    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300&h=300&fit=crop",
+    image: "/images/section-cake.webp",
     likes: 378,
     comments: 29,
-    caption: "Vår bagare i arbete 👨‍🍳"
+    caption: "Bakom kulisserna på Mäster Jacobs - våra bagare arbetar redan från gryningen 👨‍🍳🌅 #bakemkul #gryning"
   }
 ];
 
