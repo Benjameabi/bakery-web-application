@@ -466,27 +466,41 @@ export default function App() {
           <motion.div 
             {...fadeInUp}
             viewport={{ once: true }}
-            className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-16 gap-6 md:gap-8"
+            className="text-center mb-16 md:mb-20 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-subheading font-bold text-black"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-normal text-black mb-8 md:mb-12 leading-tight tracking-tight"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
             >
-              Välj Bland Våra Favoriter
+              Hantverksbageri & konditori i Västerås sedan 1982
             </motion.h2>
             
-            <motion.p 
-              className="text-lg md:text-xl text-warm-gray max-w-lg text-left lg:text-right font-body leading-relaxed"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+            <motion.div 
+              className="space-y-6 md:space-y-8 text-base md:text-lg text-gray-600 font-body leading-relaxed max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              De mest älskade bakverken från vårt sortiment - svenska klassiker som våra kunder återkommer för igen och igen.
-            </motion.p>
+              <p>
+                Sedan 1982 har vi varit en historisk pärla för alla som älskar riktigt hantverksmässigt bakat bröd och bakverk. Med rötterna djupt förankrade i tradition och en passion för kvalitet skapar vi allt från rustika surdegsbröd till himmelskt goda tårtor och bullar.
+              </p>
+              
+              <p>
+                Vårt lilla surdegsbageri i Västerås är hjärtat av vår verksamhet, där stenugnarna ger brödet dess unika karaktär och våra bagare varsamt formar varje skapelse för hand. Våra sex butiker runt om i Västerås har var och en sin egen charm och personlighet – precis som våra bakverk.
+              </p>
+              
+              <p>
+                Hos oss handlar det om mer än bara bröd och bakelser – det handlar om en upplevelse. Doften av nygrädddat, känslan av ett krispigt surdegsbröd och smaken av en perfekt balanserad bakelse.
+              </p>
+              
+              <p>
+                Välkommen att upptäcka vårt sortiment – där hantverk, tradition och kvalitet möts i varje tugga. Beställ dina favoriter via vår webbshop eller besök någon av våra butiker för en stund av äkta njutning.
+              </p>
+            </motion.div>
           </motion.div>
 
           {/* Categories Grid (from CSV main categories + key extras) */}
