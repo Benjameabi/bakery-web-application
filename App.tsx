@@ -217,8 +217,8 @@ export default function App() {
                 />
               </div>
               <div>
-                <div className="text-xl font-heading font-bold text-black">MÄSTER JACOBS</div>
-                <div className="text-xs text-warm-gray font-body tracking-widest">BAGERI & KONDITORI</div>
+                <div className="text-xl font-heading font-bold text-black" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 600 }}>MÄSTER JACOBS</div>
+                <div className="text-xs text-warm-gray font-body tracking-widest" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>BAGERI & KONDITORI</div>
               </div>
             </motion.div>
             <motion.button
@@ -226,6 +226,12 @@ export default function App() {
               className="text-black hover:text-gold p-2 rounded-xl hover:bg-gold/5 transition-all duration-300"
               whileHover={{ scale: 1.1, rotate: 90 }}
               whileTap={{ scale: 0.9 }}
+              style={{ 
+                fontFamily: 'Lato, sans-serif', 
+                fontWeight: 400, 
+                fontSize: '15px', 
+                lineHeight: '26px' 
+              }}
             >
               <X className="w-6 h-6" />
             </motion.button>
@@ -248,6 +254,7 @@ export default function App() {
                   closeMobileMenu();
                 } : closeMobileMenu}
                 className="block text-lg font-body text-black hover:text-gold transition-all duration-300 py-4 px-4 rounded-xl hover:bg-gold/5 border border-transparent hover:border-gold/20 cursor-pointer"
+                style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 + index * 0.1 }}
@@ -364,8 +371,14 @@ export default function App() {
           >
             <motion.button 
               onClick={() => handleExternalRedirect(EXTERNAL_URLS.products)}
-              className="inline-flex items-center px-3 md:px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm border border-gold/30 text-xs md:text-sm font-body text-gray-800 hover:text-gold transition-colors duration-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center px-3 md:px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm border border-gold/30 text-gray-800 hover:text-gold transition-colors duration-300 shadow-lg hover:shadow-xl"
               whileHover={{ scale: 1.02 }}
+              style={{ 
+                fontFamily: 'Lato, sans-serif', 
+                fontWeight: 400, 
+                fontSize: '15px', 
+                lineHeight: '26px' 
+              }}
             >
               <span className="text-center">
                 <span className="sm:hidden">Nytt sortiment av hantverksbröd.</span>
@@ -382,6 +395,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold text-white mb-6 md:mb-8 leading-tight drop-shadow-2xl text-center"
+            style={{ fontFamily: 'Lato, sans-serif', fontWeight: 700 }}
           >
             <span className="block">{slideText.line1}</span>
             <span className="block">{slideText.line2}</span>{" "}
@@ -394,6 +408,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 font-body mb-8 md:mb-12 leading-relaxed max-w-3xl mx-auto drop-shadow-lg text-center px-2"
+            style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}
           >
             <span className="block sm:hidden">
               {slideText.descriptionMobile}
@@ -469,22 +484,23 @@ export default function App() {
             className="text-center mb-16 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-black leading-tight tracking-tight mb-6 md:mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-semibold text-black leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato', fontWeight: 300 }}
+              style={{ fontFamily: 'Lato', fontWeight: 600 }}
             >
               Välj Bland Våra Favoriter
             </motion.h2>
             
             <motion.p 
-              className="text-base md:text-lg text-gray-600 font-body leading-relaxed"
+              className="text-base md:text-lg text-gray-600 font-body font-light leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
               viewport={{ once: true }}
+              style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
               De mest älskade bakverken från vårt sortiment - svenska klassiker som våra kunder återkommer för igen och igen.
             </motion.p>
@@ -602,8 +618,8 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
               viewport={{ once: true }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-white mb-6 md:mb-8 drop-shadow-2xl leading-tight tracking-tight text-center"
-              style={{ fontFamily: 'Lato', fontWeight: 300 }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-semibold text-white mb-6 md:mb-8 drop-shadow-2xl leading-tight tracking-tight text-center"
+              style={{ fontFamily: 'Lato', fontWeight: 600 }}
             >
               Hantverk i Varje Detalj
             </motion.h2>
@@ -615,10 +631,10 @@ export default function App() {
               viewport={{ once: true }}
               className="max-w-4xl mx-auto space-y-6 md:space-y-8"
             >
-              <p className="text-base sm:text-lg md:text-xl text-white font-body leading-relaxed drop-shadow-lg text-center">
+              <p className="text-base sm:text-lg md:text-xl text-white font-body font-light leading-relaxed drop-shadow-lg text-center" style={{ fontFamily: 'Lato', fontWeight: 300 }}>
                 Våra skickliga bagare arbetar med traditionella metoder för att skapa bakverk av högsta kvalitet, precis som de gjort sedan 1982.
               </p>
-              <p className="text-base sm:text-lg md:text-xl text-gray-200 font-body leading-relaxed drop-shadow-lg text-center">
+              <p className="text-base sm:text-lg md:text-xl text-gray-200 font-body font-light leading-relaxed drop-shadow-lg text-center" style={{ fontFamily: 'Lato', fontWeight: 300 }}>
                 Varje morgon före gryningen börjar arbetet med att forma, baka och förbereda dagens färska sortiment med samma noggrannhet och passion som alltid präglat vårt hantverk.
               </p>
             </motion.div>
@@ -646,12 +662,12 @@ export default function App() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-black leading-tight tracking-tight mb-8 md:mb-12"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-semibold text-black leading-tight tracking-tight mb-8 md:mb-12"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato', fontWeight: 300 }}
+              style={{ fontFamily: 'Lato', fontWeight: 600 }}
             >
               Vår Historia
             </motion.h2>
@@ -663,16 +679,16 @@ export default function App() {
               transition={{ duration: 1, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <p className="font-body text-gray-600 leading-relaxed">
+              <p className="font-body font-light text-gray-600 leading-relaxed" style={{ fontFamily: 'Lato', fontWeight: 300 }}>
                 I över 40 år har Mäster Jacobs bageri & konditori bakat och levererat det finaste hantverksbrödet och traditionella svenska bakverk.
               </p>
-              <p className="font-body text-gray-600 leading-relaxed">
+              <p className="font-body font-light text-gray-600 leading-relaxed" style={{ fontFamily: 'Lato', fontWeight: 300 }}>
                 Det började som ett litet familjeföretag i Skultuna, på Mäster Jacobs väg. Redan 2 år senare var det dags att bygga ut och flytta in till "stan" sedan dess har vi funnits i Västerås och du hittar oss på Pettersbergsgatan 37.
               </p>
-              <p className="font-body text-gray-600 leading-relaxed">
+              <p className="font-body font-light text-gray-600 leading-relaxed" style={{ fontFamily: 'Lato', fontWeight: 300 }}>
                 Härifrån levererar vi dagligen, 7 dagar i veckan till hotell, caféer, restaurang, företag och privatpersoner.
               </p>
-              <p className="font-body text-gray-600 leading-relaxed">
+              <p className="font-body font-light text-gray-600 leading-relaxed" style={{ fontFamily: 'Lato', fontWeight: 300 }}>
                 Numer kan även du med några enkla knappval lägga din beställning idag och få leverans imorgon. Vårt signum är svenska klassiker!
               </p>
             </motion.div>
@@ -777,8 +793,8 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               viewport={{ once: true }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-white mb-6 md:mb-8 drop-shadow-2xl leading-tight tracking-tight text-center"
-              style={{ fontFamily: 'Lato', fontWeight: 300 }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-semibold text-white mb-6 md:mb-8 drop-shadow-2xl leading-tight tracking-tight text-center"
+              style={{ fontFamily: 'Lato', fontWeight: 600 }}
             >
               Fri hemleverans i Västerås – över 299 kr
             </motion.h2>
@@ -790,10 +806,10 @@ export default function App() {
               viewport={{ once: true }}
               className="max-w-4xl mx-auto space-y-6 md:space-y-8"
             >
-              <p className="text-base sm:text-lg md:text-xl text-white font-body leading-relaxed drop-shadow-lg text-center">
+              <p className="text-base sm:text-lg md:text-xl text-white font-body font-light leading-relaxed drop-shadow-lg text-center" style={{ fontFamily: 'Lato', fontWeight: 300 }}>
                 Beställ dina favoriter direkt i mobilen – snabbt, enkelt och smidigt.
               </p>
-              <p className="text-base sm:text-lg md:text-xl text-gray-200 font-body leading-relaxed drop-shadow-lg text-center">
+              <p className="text-base sm:text-lg md:text-xl text-gray-200 font-body font-light leading-relaxed drop-shadow-lg text-center" style={{ fontFamily: 'Lato', fontWeight: 300 }}>
                 Fri hemleverans inom Västerås vid köp över 299 kr. Vi levererar dagligen till dörren med samma kvalitet och fräschör som i vårt bageri.
               </p>
             </motion.div>
@@ -841,21 +857,22 @@ export default function App() {
             className="text-center mb-12 md:mb-20 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-black leading-tight tracking-tight mb-6 md:mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-semibold text-black leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato', fontWeight: 300 }}
+              style={{ fontFamily: 'Lato', fontWeight: 600 }}
             >
               Följ oss på Instagram
             </motion.h2>
             <motion.p 
-              className="text-base md:text-lg text-gray-600 font-body leading-relaxed"
+              className="text-base md:text-lg text-gray-600 font-body font-light leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
               viewport={{ once: true }}
+              style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
               Se vad som är färskt ur våra ugnar dagligen och bli en del av vår gemenskap av bakentusiaster
             </motion.p>
@@ -958,21 +975,22 @@ export default function App() {
             className="text-center mb-12 md:mb-20 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-black leading-tight tracking-tight mb-6 md:mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-semibold text-black leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato', fontWeight: 300 }}
+              style={{ fontFamily: 'Lato', fontWeight: 600 }}
             >
               Hitta Oss
             </motion.h2>
             <motion.p 
-              className="text-base md:text-lg text-gray-600 font-body leading-relaxed"
+              className="text-base md:text-lg text-gray-600 font-body font-light leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
               viewport={{ once: true }}
+              style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
               Välkommen till vårt mysiga bageri där doften av nybakat bröd möter dig
             </motion.p>

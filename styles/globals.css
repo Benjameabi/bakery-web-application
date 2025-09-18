@@ -284,10 +284,13 @@
 @layer components {
   .btn-primary {
     @apply relative inline-flex items-center justify-center;
-    font-family: var(--font-heading);
-    @apply font-semibold tracking-wide;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 26px;
+    @apply tracking-wide;
     border-radius: var(--button-radius);
-    @apply px-8 py-4 text-base text-black;
+    @apply px-8 py-4 text-black;
     /* Warm gold gradient fill */
     background: linear-gradient(135deg, #f4ce3e, #d0b05d);
     /* Subtle luminous border */
@@ -300,10 +303,13 @@
 
   .btn-raised {
     @apply relative inline-flex items-center justify-center;
-    font-family: var(--font-heading);
-    @apply font-bold tracking-wide;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 26px;
+    @apply tracking-wide;
     border-radius: var(--button-radius);
-    @apply px-10 py-5 text-lg text-black;
+    @apply px-10 py-5 text-black;
     background: linear-gradient(135deg, var(--gold), #f1c40f, var(--gold));
     @apply border-2 border-gold/30;
     @apply transition-all duration-400 ease-out;
@@ -332,10 +338,13 @@
 
   .btn-secondary {
     @apply relative inline-flex items-center justify-center;
-    font-family: var(--font-heading);
-    @apply font-semibold tracking-wide;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 26px;
+    @apply tracking-wide;
     border-radius: var(--button-radius);
-    @apply px-8 py-4 text-base text-white;
+    @apply px-8 py-4 text-white;
     /* Dark glass gradient with subtle blur */
     background: linear-gradient(135deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35));
     @apply backdrop-blur-sm;
@@ -348,10 +357,13 @@
 
   .btn-ghost {
     @apply relative inline-flex items-center justify-center;
-    font-family: var(--font-heading);
-    @apply font-medium tracking-wide;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 26px;
+    @apply tracking-wide;
     border-radius: var(--button-radius);
-    @apply px-6 py-3 text-base text-warm-gray;
+    @apply px-6 py-3 text-warm-gray;
     @apply bg-transparent;
     @apply border border-transparent;
     @apply transition-all duration-300 ease-out;
