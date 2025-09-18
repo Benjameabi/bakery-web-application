@@ -228,7 +228,7 @@ export default function App() {
               whileTap={{ scale: 0.9 }}
               style={{ 
                 fontFamily: 'Lato, sans-serif', 
-                fontWeight: 400, 
+                fontWeight: 300, 
                 fontSize: '15px', 
                 lineHeight: '26px' 
               }}
@@ -375,7 +375,7 @@ export default function App() {
               whileHover={{ scale: 1.02 }}
               style={{ 
                 fontFamily: 'Lato, sans-serif', 
-                fontWeight: 400, 
+                fontWeight: 300, 
                 fontSize: '15px', 
                 lineHeight: '26px' 
               }}
@@ -484,12 +484,12 @@ export default function App() {
             className="text-center mb-16 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-normal text-black leading-tight tracking-tight mb-6 md:mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-black leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato', fontWeight: 400 }}
+              style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
               Välj Bland Våra Favoriter
             </motion.h2>
@@ -618,8 +618,8 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
               viewport={{ once: true }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-normal text-white mb-6 md:mb-8 drop-shadow-2xl leading-tight tracking-tight text-center"
-              style={{ fontFamily: 'Lato', fontWeight: 400 }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-white mb-6 md:mb-8 drop-shadow-2xl leading-tight tracking-tight text-center"
+              style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
               Hantverk i Varje Detalj
             </motion.h2>
@@ -662,12 +662,12 @@ export default function App() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-normal text-black leading-tight tracking-tight mb-8 md:mb-12"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-black leading-tight tracking-tight mb-8 md:mb-12"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato', fontWeight: 400 }}
+              style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
               Vår Historia
             </motion.h2>
@@ -793,8 +793,8 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               viewport={{ once: true }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-normal text-white mb-6 md:mb-8 drop-shadow-2xl leading-tight tracking-tight text-center"
-              style={{ fontFamily: 'Lato', fontWeight: 400 }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-white mb-6 md:mb-8 drop-shadow-2xl leading-tight tracking-tight text-center"
+              style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
               Fri hemleverans i Västerås – över 299 kr
             </motion.h2>
@@ -857,12 +857,12 @@ export default function App() {
             className="text-center mb-12 md:mb-20 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-normal text-black leading-tight tracking-tight mb-6 md:mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-black leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato', fontWeight: 400 }}
+              style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
               Följ oss på Instagram
             </motion.h2>
@@ -975,12 +975,12 @@ export default function App() {
             className="text-center mb-12 md:mb-20 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-normal text-black leading-tight tracking-tight mb-6 md:mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-black leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato', fontWeight: 400 }}
+              style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
               Hitta Oss
             </motion.h2>
