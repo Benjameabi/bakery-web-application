@@ -60,7 +60,7 @@ export function Navigation({
                 className={`font-body hover:text-gold transition-all duration-300 relative group cursor-pointer ${
                   isScrolled ? 'text-black' : 'text-white'
                 }`}
-                style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400, fontSize: '15px', lineHeight: '26px' }}
+                style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300, fontSize: '15px', lineHeight: '26px' }}
                 whileHover={{ y: -2 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -96,7 +96,7 @@ export function Navigation({
                 animate={{ opacity: isScrolled ? 0 : 1 }}
                 transition={{ duration: 0.4 }}
               >
-                <div className="text-lg md:text-xl lg:text-2xl font-heading font-bold text-white drop-shadow-lg leading-tight" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 600 }}>
+                <div className="text-lg md:text-xl lg:text-2xl font-heading font-bold text-white drop-shadow-lg leading-tight" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>
                   MÄSTER JACOBS
                 </div>
                 <div className="text-xs text-white/90 font-body tracking-[0.15em] md:tracking-[0.2em] drop-shadow-md leading-tight" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
@@ -136,7 +136,7 @@ export function Navigation({
               transition={{ delay: 0.6 }}
             >
               <Search className={`w-5 h-5 ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300 cursor-pointer`} />
-              <span className={`ml-2 font-body text-sm ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300`} style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>Sök produkter</span>
+              <span className={`ml-2 font-body text-sm ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300`} style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>Sök produkter</span>
             </motion.div>
             
             {/* Shopping Cart */}
@@ -149,7 +149,7 @@ export function Navigation({
               transition={{ delay: 0.7 }}
             >
               <ShoppingCart className={`w-5 h-5 ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300 cursor-pointer`} />
-              <span className={`font-body text-sm ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300`} style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>Varukorg</span>
+              <span className={`font-body text-sm ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300`} style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>Varukorg</span>
               <motion.div 
                 className="w-6 h-6 bg-gradient-to-br from-gold to-yellow-600 rounded-full flex items-center justify-center shadow-lg"
                 initial={{ scale: 1 }}

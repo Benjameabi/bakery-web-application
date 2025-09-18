@@ -217,7 +217,7 @@ export default function App() {
                 />
               </div>
               <div>
-                <div className="text-xl font-heading font-bold text-black" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 600 }}>MÄSTER JACOBS</div>
+                <div className="text-xl font-heading font-bold text-black" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>MÄSTER JACOBS</div>
                 <div className="text-xs text-warm-gray font-body tracking-widest" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>BAGERI & KONDITORI</div>
               </div>
             </motion.div>
@@ -254,7 +254,7 @@ export default function App() {
                   closeMobileMenu();
                 } : closeMobileMenu}
                 className="block text-lg font-body text-black hover:text-gold transition-all duration-300 py-4 px-4 rounded-xl hover:bg-gold/5 border border-transparent hover:border-gold/20 cursor-pointer"
-                style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}
+                style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 + index * 0.1 }}
@@ -395,7 +395,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold text-white mb-6 md:mb-8 leading-tight drop-shadow-2xl text-center"
-            style={{ fontFamily: 'Lato, sans-serif', fontWeight: 700 }}
+            style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}
           >
             <span className="block">{slideText.line1}</span>
             <span className="block">{slideText.line2}</span>{" "}
@@ -484,12 +484,12 @@ export default function App() {
             className="text-center mb-16 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-semibold text-black leading-tight tracking-tight mb-6 md:mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-normal text-black leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato', fontWeight: 600 }}
+              style={{ fontFamily: 'Lato', fontWeight: 400 }}
             >
               Välj Bland Våra Favoriter
             </motion.h2>
@@ -618,8 +618,8 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
               viewport={{ once: true }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-semibold text-white mb-6 md:mb-8 drop-shadow-2xl leading-tight tracking-tight text-center"
-              style={{ fontFamily: 'Lato', fontWeight: 600 }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-normal text-white mb-6 md:mb-8 drop-shadow-2xl leading-tight tracking-tight text-center"
+              style={{ fontFamily: 'Lato', fontWeight: 400 }}
             >
               Hantverk i Varje Detalj
             </motion.h2>
@@ -662,12 +662,12 @@ export default function App() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-semibold text-black leading-tight tracking-tight mb-8 md:mb-12"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-normal text-black leading-tight tracking-tight mb-8 md:mb-12"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato', fontWeight: 600 }}
+              style={{ fontFamily: 'Lato', fontWeight: 400 }}
             >
               Vår Historia
             </motion.h2>
@@ -793,8 +793,8 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               viewport={{ once: true }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-semibold text-white mb-6 md:mb-8 drop-shadow-2xl leading-tight tracking-tight text-center"
-              style={{ fontFamily: 'Lato', fontWeight: 600 }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-normal text-white mb-6 md:mb-8 drop-shadow-2xl leading-tight tracking-tight text-center"
+              style={{ fontFamily: 'Lato', fontWeight: 400 }}
             >
               Fri hemleverans i Västerås – över 299 kr
             </motion.h2>
@@ -857,12 +857,12 @@ export default function App() {
             className="text-center mb-12 md:mb-20 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-semibold text-black leading-tight tracking-tight mb-6 md:mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-normal text-black leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato', fontWeight: 600 }}
+              style={{ fontFamily: 'Lato', fontWeight: 400 }}
             >
               Följ oss på Instagram
             </motion.h2>
@@ -975,12 +975,12 @@ export default function App() {
             className="text-center mb-12 md:mb-20 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-semibold text-black leading-tight tracking-tight mb-6 md:mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-normal text-black leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato', fontWeight: 600 }}
+              style={{ fontFamily: 'Lato', fontWeight: 400 }}
             >
               Hitta Oss
             </motion.h2>
