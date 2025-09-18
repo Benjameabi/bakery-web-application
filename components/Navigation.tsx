@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Menu, Search, ShoppingCart } from "lucide-react";
 const logoHorizontal = "/images/logos/horizontal/Horizontal Logo inverse color lockup.svg";
-const logoStacked = "/images/logos/stacked/Stacked Logo inverse color lockup.svg";
+const logoStacked = "/images/logos/stacked/Stacked Logo full color lockup.svg";
 
 interface NavigationProps {
   isScrolled: boolean;
