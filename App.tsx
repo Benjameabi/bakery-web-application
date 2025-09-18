@@ -362,32 +362,6 @@ export default function App() {
         </div>
         
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 md:px-6">
-          {/* Announcement Banner */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-6 md:mb-8"
-          >
-            <motion.button 
-              onClick={() => handleExternalRedirect(EXTERNAL_URLS.products)}
-              className="inline-flex items-center px-3 md:px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm border border-gold/30 text-gray-800 hover:text-gold transition-colors duration-300 shadow-lg hover:shadow-xl"
-              whileHover={{ scale: 1.02 }}
-              style={{ 
-                fontFamily: 'Lato, sans-serif', 
-                fontWeight: 300, 
-                fontSize: '15px', 
-                lineHeight: '26px' 
-              }}
-            >
-              <span className="text-center">
-                <span className="sm:hidden">Nytt sortiment av hantverksbröd.</span>
-                <span className="hidden sm:inline">Lanserar vårt nya sortiment av hantverksbröd.</span>
-              </span>{" "}
-              <span className="text-gold font-semibold ml-1">Läs mer</span>
-              <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2 text-gold" />
-            </motion.button>
-          </motion.div>
 
           {/* Main Headline */}
           <motion.h1
@@ -423,25 +397,15 @@ export default function App() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center"
+            className="flex justify-center items-center"
           >
             <motion.button
-              className="btn-raised w-full sm:w-auto"
+              className="btn-raised"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
             >
               Beställ online
-            </motion.button>
-            
-            <motion.button
-              className="btn-ghost text-white/90 hover:text-gold inline-flex items-center border border-white/30 hover:border-gold/50 backdrop-blur-sm w-full sm:w-auto justify-center"
-              whileHover={{ scale: 1.02, x: 5 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => document.getElementById('favorites')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Utforska sortiment
-              <ArrowRight className="w-4 h-4 ml-2" />
             </motion.button>
           </motion.div>
         </div>
