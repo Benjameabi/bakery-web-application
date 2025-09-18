@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Menu, Search, ShoppingCart } from "lucide-react";
-const logoIcon = "/icon-mj.webp";
+const logoHorizontal = "/images/logos/horizontal/Horizontal Logo inverse color lockup.svg";
+const logoStacked = "/images/logos/stacked/Stacked Logo inverse color lockup.svg";
 
 interface NavigationProps {
   isScrolled: boolean;
@@ -79,31 +80,20 @@ export function Navigation({
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <motion.div 
-              className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 flex items-center justify-center mb-1 md:mb-2 lg:mb-1"
+              className="flex items-center justify-center"
               whileHover={{ scale: 1.05, rotate: 5 }}
               transition={{ duration: 0.3 }}
             >
               <img 
-                src={logoIcon} 
+                src={isScrolled ? logoStacked : logoHorizontal} 
                 alt="Mäster Jacobs Logo" 
-                className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain drop-shadow-lg"
+                className={`object-contain drop-shadow-lg transition-all duration-400 ${
+                  isScrolled 
+                    ? 'w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12' 
+                    : 'w-20 h-8 md:w-24 md:h-10 lg:w-28 lg:h-12'
+                }`}
               />
             </motion.div>
-            {!isScrolled && (
-              <motion.div 
-                className="text-center"
-                initial={{ opacity: 1 }}
-                animate={{ opacity: isScrolled ? 0 : 1 }}
-                transition={{ duration: 0.4 }}
-              >
-                <div className="text-lg md:text-xl lg:text-2xl font-heading font-bold text-white drop-shadow-lg leading-tight" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>
-                  MÄSTER JACOBS
-                </div>
-                <div className="text-xs text-white/90 font-body tracking-[0.15em] md:tracking-[0.2em] drop-shadow-md leading-tight" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
-                  BAGERI & KONDITORI SEDAN 1982
-                </div>
-              </motion.div>
-            )}
           </motion.div>
 
           {/* Mobile Cart */}

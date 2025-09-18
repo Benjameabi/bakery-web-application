@@ -10,7 +10,7 @@ import { Input } from "./components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 
 // Import logo
-const logoIcon = "/icon-mj.webp";
+const logoIcon = "/images/logos/stacked/Stacked Logo inverse color lockup.svg";
 
 // CakeItEasy URLs - All ordering/checkout handled by CakeItEasy backend
 const EXTERNAL_URLS = {
