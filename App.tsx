@@ -10,7 +10,7 @@ import { Input } from "./components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 
 // Import logo
-const logoIcon = "/images/logos/stacked/Stacked Logo inverse color lockup.svg";
+const logoIcon = "/images/logos/stacked/Stacked Logo full color lockup.svg";
 
 // CakeItEasy URLs - All ordering/checkout handled by CakeItEasy backend
 const EXTERNAL_URLS = {
@@ -209,11 +209,11 @@ export default function App() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-gold/10 to-gold/5 rounded-xl flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-gold/10 to-gold/5 rounded-xl flex items-center justify-center">
                 <img 
                   src={logoIcon} 
                   alt="Mäster Jacobs Logo" 
-                  className="w-8 h-8 object-contain"
+                  className="w-12 h-12 object-contain"
                 />
               </div>
               <div>
@@ -567,11 +567,11 @@ export default function App() {
               viewport={{ once: true }}
               className="mb-6 md:mb-8"
             >
-              <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 bg-gradient-to-br from-gold/20 to-yellow-100/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 bg-gradient-to-br from-gold/20 to-yellow-100/20 rounded-full flex items-center justify-center backdrop-blur-sm">
                 <img 
                   src={logoIcon} 
                   alt="Mäster Jacobs Logo small" 
-                  className="w-6 h-6 md:w-10 md:h-10 object-contain brightness-0 invert"
+                  className="w-8 h-8 md:w-12 md:h-12 object-contain brightness-0 invert"
                   style={{ filter: 'brightness(0) invert(1) sepia(1) saturate(10000%) hue-rotate(35deg)' }}
                 />
               </div>
@@ -1272,14 +1272,14 @@ export default function App() {
             <motion.div variants={staggerItem} className="space-y-4 md:space-y-6">
               <div className="flex items-center space-x-3 md:space-x-4">
                 <motion.div
-                  className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-gold/20 to-yellow-100/20 rounded-xl flex items-center justify-center"
+                  className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-gold/20 to-yellow-100/20 rounded-xl flex items-center justify-center"
                   animate={{ rotate: [0, 5, 0] }}
                   transition={{ duration: 4, repeat: Infinity }}
                 >
                   <img 
                     src={logoIcon} 
                     alt="Mäster Jacobs Logo" 
-                    className="w-6 h-6 md:w-8 md:h-8 object-contain brightness-0 invert"
+                    className="w-8 h-8 md:w-10 md:h-10 object-contain brightness-0 invert"
                   />
                 </motion.div>
                 <span className="text-xl md:text-2xl font-heading font-light" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>Mäster Jacobs</span>

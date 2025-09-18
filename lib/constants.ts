@@ -11,19 +11,19 @@ export const heroSlideTexts = [
     line1: "Tårtor", 
     line2: "bakade med",
     accent: "kärlek",
-    descriptionMobile: "Gräddtårtor för alla tillfällen.",
+    descriptionMobile: "Tårtor bakade med kärlek.",
     descriptionDesktop: "Handgjorda gräddtårtor med len grädde och färska bär. Beställ för födelsedag, bröllop och fest."
   },
   {
-    line1: "Kanelknutar som",
-    line2: "förgyller din",
-    accent: "fika",
-    descriptionMobile: "Klassiska kanelknutar bakade varje dag.",
-    descriptionDesktop: "Klassiska kanelknutar bakade på äkta smör och kanel. Alltid nygräddade för den perfekta fikastunden."
+    line1: "Bullar, längder & wienerbröd",
+    line2: "alltid",
+    accent: "nygräddade.",
+    descriptionMobile: "Bullar, längder & wienerbröd alltid nygräddade. ",
+    descriptionDesktop: "Från klassiska kanelbullar till saftiga längder och frasiga wienerbröd, bakade för att njutas varje dag."
   },
   {
-    line1: "Klassiska limpor/nybakat bröd",
-    line2: "varje",
+    line1: "Klassiska limpor/nybakat",
+    line2: "bröd varje",
     accent: "morgon",
     descriptionMobile: "Klassiska limpor och nybakat bröd varje morgon.",
     descriptionDesktop: "Klassiska limpor och nybakat bröd varje morgon. Perfekt till frukost, lunch eller middag med sitt rika smak."

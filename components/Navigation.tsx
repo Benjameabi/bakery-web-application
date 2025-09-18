@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Menu, Search, ShoppingCart } from "lucide-react";
-const logoHorizontal = "/images/logos/horizontal/Horizontal Logo inverse color lockup.svg";
-const logoStacked = "/images/logos/stacked/Stacked Logo inverse color lockup.svg";
+const logoHorizontal = "/images/logos/horizontal/Horizontal Logo full color lockup.svg";
+const logoStacked = "/images/logos/stacked/Stacked Logo full color lockup.svg";
 
 interface NavigationProps {
   isScrolled: boolean;
@@ -29,7 +29,7 @@ export function Navigation({
           : 'top-8 md:top-12 bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6" style={{ height: isScrolled ? '60px' : '80px' }}>
+      <div className="container mx-auto px-4 md:px-6" style={{ height: isScrolled ? '80px' : '120px' }}>
         <div className="flex items-center h-full relative">
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
@@ -89,8 +89,8 @@ export function Navigation({
                 alt="Mäster Jacobs Logo" 
                 className={`object-contain drop-shadow-lg transition-all duration-400 ${
                   isScrolled 
-                    ? 'w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12' 
-                    : 'w-20 h-8 md:w-24 md:h-10 lg:w-28 lg:h-12'
+                    ? 'w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20' 
+                    : 'w-32 h-12 md:w-40 md:h-16 lg:w-48 lg:h-20'
                 }`}
               />
             </motion.div>
