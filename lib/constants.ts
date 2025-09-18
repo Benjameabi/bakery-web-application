@@ -8,7 +8,7 @@ export const heroImages = [
 // The array order must match heroImages indexes
 export const heroSlideTexts = [
   {
-    line1: "Gräddtårtor", 
+    line1: "Tårtor", 
     line2: "bakade med",
     accent: "kärlek",
     descriptionMobile: "Gräddtårtor för alla tillfällen.",
@@ -22,11 +22,11 @@ export const heroSlideTexts = [
     descriptionDesktop: "Klassiska kanelknutar bakade på äkta smör och kanel. Alltid nygräddade för den perfekta fikastunden."
   },
   {
-    line1: "Dansk råglimpa",
+    line1: "Klassiska limpor/nybakat bröd",
     line2: "varje",
     accent: "morgon",
-    descriptionMobile: "Nybakat dansk råglimpa från gryning till lunch.",
-    descriptionDesktop: "Nybakat dansk råglimpa varje morgon. Perfekt till frukost, lunch eller middag med sitt rika smak."
+    descriptionMobile: "Klassiska limpor och nybakat bröd varje morgon.",
+    descriptionDesktop: "Klassiska limpor och nybakat bröd varje morgon. Perfekt till frukost, lunch eller middag med sitt rika smak."
   }
 ];
 
