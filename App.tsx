@@ -466,41 +466,28 @@ export default function App() {
           <motion.div 
             {...fadeInUp}
             viewport={{ once: true }}
-            className="text-center mb-16 md:mb-20 max-w-4xl mx-auto"
+            className="text-center mb-16 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-normal text-black mb-8 md:mb-12 leading-tight tracking-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-black leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
+              style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
-              Hantverksbageri & konditori i Västerås sedan 1982
+              Välj Bland Våra Favoriter
             </motion.h2>
             
-            <motion.div 
-              className="space-y-6 md:space-y-8 text-base md:text-lg text-gray-600 font-body leading-relaxed max-w-3xl mx-auto"
+            <motion.p 
+              className="text-base md:text-lg text-gray-600 font-body leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <p>
-                Sedan 1982 har vi varit en historisk pärla för alla som älskar riktigt hantverksmässigt bakat bröd och bakverk. Med rötterna djupt förankrade i tradition och en passion för kvalitet skapar vi allt från rustika surdegsbröd till himmelskt goda tårtor och bullar.
-              </p>
-              
-              <p>
-                Vårt lilla surdegsbageri i Västerås är hjärtat av vår verksamhet, där stenugnarna ger brödet dess unika karaktär och våra bagare varsamt formar varje skapelse för hand. Våra sex butiker runt om i Västerås har var och en sin egen charm och personlighet – precis som våra bakverk.
-              </p>
-              
-              <p>
-                Hos oss handlar det om mer än bara bröd och bakelser – det handlar om en upplevelse. Doften av nygrädddat, känslan av ett krispigt surdegsbröd och smaken av en perfekt balanserad bakelse.
-              </p>
-              
-              <p>
-                Välkommen att upptäcka vårt sortiment – där hantverk, tradition och kvalitet möts i varje tugga. Beställ dina favoriter via vår webbshop eller besök någon av våra butiker för en stund av äkta njutning.
-              </p>
-            </motion.div>
+              De mest älskade bakverken från vårt sortiment - svenska klassiker som våra kunder återkommer för igen och igen.
+            </motion.p>
           </motion.div>
 
           {/* Categories Grid (from CSV main categories + key extras) */}
@@ -615,22 +602,26 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
               viewport={{ once: true }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 md:mb-6 drop-shadow-2xl"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-white mb-6 md:mb-8 drop-shadow-2xl leading-tight tracking-tight text-center"
+              style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
               Hantverk i Varje Detalj
             </motion.h2>
             
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
               viewport={{ once: true }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-body leading-relaxed drop-shadow-lg"
+              className="max-w-4xl mx-auto space-y-6 md:space-y-8"
             >
-              Våra skickliga bagare arbetar med traditionella metoder för att skapa bakverk av högsta kvalitet, 
-              <span className="hidden md:inline"><br />precis som de gjort sedan 1982.</span>
-              <span className="md:hidden"> precis som de gjort sedan 1982.</span>
-            </motion.p>
+              <p className="text-base sm:text-lg md:text-xl text-white font-body leading-relaxed drop-shadow-lg text-center">
+                Våra skickliga bagare arbetar med traditionella metoder för att skapa bakverk av högsta kvalitet, precis som de gjort sedan 1982.
+              </p>
+              <p className="text-base sm:text-lg md:text-xl text-gray-200 font-body leading-relaxed drop-shadow-lg text-center">
+                Varje morgon före gryningen börjar arbetet med att forma, baka och förbereda dagens färska sortiment med samma noggrannhet och passion som alltid präglat vårt hantverk.
+              </p>
+            </motion.div>
           </motion.div>
         </div>
 
@@ -653,38 +644,46 @@ export default function App() {
       {/* 6. About Section - Vår Historia (moved between full-width images) */}
       <section id="about" className="py-16 md:py-24 bg-gradient-to-b from-cream/20 via-white to-cream/10">
         <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
+            <motion.h2 
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-black leading-tight tracking-tight mb-8 md:mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              style={{ fontFamily: 'Lato', fontWeight: 300 }}
+            >
+              Vår Historia
+            </motion.h2>
+            
+            <motion.div 
+              className="space-y-6 md:space-y-8 text-base md:text-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <p className="font-body text-gray-600 leading-relaxed">
+                I över 40 år har Mäster Jacobs bageri & konditori bakat och levererat det finaste hantverksbrödet och traditionella svenska bakverk.
+              </p>
+              <p className="font-body text-gray-600 leading-relaxed">
+                Det började som ett litet familjeföretag i Skultuna, på Mäster Jacobs väg. Redan 2 år senare var det dags att bygga ut och flytta in till "stan" sedan dess har vi funnits i Västerås och du hittar oss på Pettersbergsgatan 37.
+              </p>
+              <p className="font-body text-gray-600 leading-relaxed">
+                Härifrån levererar vi dagligen, 7 dagar i veckan till hotell, caféer, restaurang, företag och privatpersoner.
+              </p>
+              <p className="font-body text-gray-600 leading-relaxed">
+                Numer kan även du med några enkla knappval lägga din beställning idag och få leverans imorgon. Vårt signum är svenska klassiker!
+              </p>
+            </motion.div>
+          </div>
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <motion.div
               {...fadeInUp}
               viewport={{ once: true }}
-              className="space-y-6 md:space-y-8"
+              className="space-y-6 md:space-y-8 lg:order-2"
             >
-              <motion.h2 
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-subheading font-bold text-black"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1 }}
-                viewport={{ once: true }}
-              >
-                Vår Historia
-              </motion.h2>
-              
-              <div className="space-y-4 md:space-y-6 text-base md:text-lg">
-                {[
-                  "I över 40 år har Mäster Jacobs bageri & konditori bakat och levererat det finaste hantverksbrödet och traditionella svenska bakverk. Det började som ett litet familjeföretag i Skultuna, på Mäster Jacobs väg. Redan 2 år senare var det dags att bygga ut och flytta in till \"stan\" sedan dess har vi funnits i Västerås och du hittar oss på Pettersbergsgatan 37. Härifrån levererar vi dagligen, 7 dagar i veckan till hotell, caféer, restaurang, företag och privatpersoner. Numer kan även du med några enkla knappval lägga din beställning idag och få leverans imorgon. Vårt signum är svenska klassiker!"
-                ].map((text, index) => (
-                  <motion.p
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="font-body text-black leading-relaxed"
-                  >
-                    {text}
-                  </motion.p>
-                ))}
-              </div>
               
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
@@ -778,22 +777,26 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               viewport={{ once: true }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 md:mb-6 drop-shadow-2xl"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-white mb-6 md:mb-8 drop-shadow-2xl leading-tight tracking-tight text-center"
+              style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
               Fri hemleverans i Västerås – över 299 kr
             </motion.h2>
             
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
               viewport={{ once: true }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-body leading-relaxed drop-shadow-lg"
+              className="max-w-4xl mx-auto space-y-6 md:space-y-8"
             >
-              Beställ dina favoriter direkt i mobilen – snabbt, enkelt och smidigt. 
-              <span className="hidden md:inline"><br />Fri hemleverans inom Västerås vid köp över 299 kr.</span>
-              <span className="md:hidden"> Fri hemleverans inom Västerås över 299 kr.</span>
-            </motion.p>
+              <p className="text-base sm:text-lg md:text-xl text-white font-body leading-relaxed drop-shadow-lg text-center">
+                Beställ dina favoriter direkt i mobilen – snabbt, enkelt och smidigt.
+              </p>
+              <p className="text-base sm:text-lg md:text-xl text-gray-200 font-body leading-relaxed drop-shadow-lg text-center">
+                Fri hemleverans inom Västerås vid köp över 299 kr. Vi levererar dagligen till dörren med samma kvalitet och fräschör som i vårt bageri.
+              </p>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -835,21 +838,22 @@ export default function App() {
           <motion.div 
             {...fadeInUp}
             viewport={{ once: true }}
-            className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-12 md:mb-20 gap-6 md:gap-8"
+            className="text-center mb-12 md:mb-20 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-subheading font-bold text-black"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-black leading-tight tracking-tight mb-6 md:mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
+              style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
               Följ oss på Instagram
             </motion.h2>
             <motion.p 
-              className="text-lg md:text-xl text-warm-gray max-w-lg text-left lg:text-right font-body leading-relaxed"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="text-base md:text-lg text-gray-600 font-body leading-relaxed"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
               viewport={{ once: true }}
             >
@@ -951,21 +955,22 @@ export default function App() {
           <motion.div 
             {...fadeInUp}
             viewport={{ once: true }}
-            className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-12 md:mb-20 gap-6 md:gap-8"
+            className="text-center mb-12 md:mb-20 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-subheading font-bold text-black"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-black leading-tight tracking-tight mb-6 md:mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
+              style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
               Hitta Oss
             </motion.h2>
             <motion.p 
-              className="text-lg md:text-xl text-warm-gray max-w-lg text-left lg:text-right font-body leading-relaxed"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="text-base md:text-lg text-gray-600 font-body leading-relaxed"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
               viewport={{ once: true }}
             >
