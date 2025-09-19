@@ -74,7 +74,7 @@ export default function App() {
       if (n.includes('tårtor') || n === 'tårtor' || n.includes('tartor') || n === 'tartor') return '/images/Prinsesstårta.webp';
       if (n.includes('bullar') || n === 'bullar') return '/images/Sockerkringla.webp';
       if (n.includes('bröd') || n === 'bröd' || n.includes('brod') || n === 'brod' || n.includes('matbröd')) return '/images/Aros grova.webp';
-      if (n.includes('frukost')) return '/images/Surdegsbräck vallmo.webp';
+      if (n.includes('frukost')) return '/images/Frukost.webp';
       if (n.includes('smörgåstårta') || n.includes('smorgastarta')) return '/images/smorgastarta.webp';
       if (n.includes('tillbehör') || n.includes('tillbehor')) return '/images/Tillbehor.webp';
       // Fallback images for unused categories
@@ -533,11 +533,11 @@ export default function App() {
               viewport={{ once: true }}
               className="mb-6 md:mb-8"
             >
-              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 bg-gradient-to-br from-gold/20 to-yellow-100/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+              <div className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-4 md:mb-6 bg-gradient-to-br from-gold/20 to-yellow-100/20 rounded-full flex items-center justify-center backdrop-blur-sm">
                 <img 
                   src={logoIconInverse} 
                   alt="Mäster Jacobs Logo small" 
-                  className="w-8 h-8 md:w-12 md:h-12 object-contain"
+                  className="w-16 h-16 md:w-20 md:h-20 object-contain"
                 />
               </div>
             </motion.div>
