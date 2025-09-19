@@ -5,7 +5,9 @@ import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import { CookieConsent } from "./components/CookieConsent";
 import { heroImages, heroSlideTexts, instagramPosts, contactInfo } from "./lib/constants";
 import { fadeInUp, fadeIn, staggerContainer, staggerItem } from "./lib/animations";
-import { MapPin, Phone, Clock, Mail, Star, Instagram, Facebook, ArrowRight, X } from "lucide-react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faHeart, faComment, faLocationDot, faPhone, faClock, faEnvelope, faStar, faArrowRight, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 // Import logo
 const logoIcon = "/images/logos/stacked/Stacked Logo inverse color lockup.svg";
@@ -110,7 +112,12 @@ export default function App() {
     }
   };
 
-  const iconComponents: Record<string, any> = { MapPin, Phone, Clock, Mail };
+  const iconComponents: Record<string, any> = { 
+    MapPin: faLocationDot, 
+    Phone: faPhone, 
+    Clock: faClock, 
+    Mail: faEnvelope 
+  };
 
 
   // Removed category click handler as menu section was deleted
@@ -199,7 +206,7 @@ export default function App() {
                 lineHeight: '26px' 
               }}
             >
-              <X className="w-6 h-6" />
+              <FontAwesomeIcon icon={faXmark} className="w-6 h-6" />
             </motion.button>
           </div>
 
@@ -245,7 +252,7 @@ export default function App() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <ArrowRight className="w-5 h-5 mr-3" />
+                <FontAwesomeIcon icon={faArrowRight} className="w-5 h-5 mr-3" />
                 Sök produkter
               </motion.button>
             </motion.div>
@@ -266,7 +273,7 @@ export default function App() {
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Instagram className="w-6 h-6" />
+                  <FontAwesomeIcon icon={faInstagram} className="w-6 h-6" />
                 </motion.a>
                 <motion.a 
                   href="https://www.facebook.com/masterjacobsbageriochkonditori/?locale=sv_SE" 
@@ -276,7 +283,7 @@ export default function App() {
                   whileHover={{ scale: 1.1, rotate: -5 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Facebook className="w-6 h-6" />
+                  <FontAwesomeIcon icon={faFacebookF} className="w-6 h-6" />
                 </motion.a>
               </div>
             </motion.div>
@@ -480,7 +487,7 @@ export default function App() {
                           whileTap={{ scale: 0.95 }}
                         >
                           <span className="font-body font-medium text-black text-sm flex items-center space-x-2">
-                            <ArrowRight className="w-4 h-4" />
+                            <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
                             <span>Visa</span>
                           </span>
                         </motion.div>
@@ -642,7 +649,7 @@ export default function App() {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.8 + i * 0.1 }}
                     >
-                      <Star className="w-5 h-5 md:w-6 md:h-6 fill-current" />
+                      <FontAwesomeIcon icon={faStar} className="w-5 h-5 md:w-6 md:h-6 text-gold" />
                     </motion.div>
                   ))}
                 </div>
@@ -856,11 +863,11 @@ export default function App() {
                         transition={{ delay: 0.1 }}
                       >
                         <div className="flex items-center space-x-1 md:space-x-2">
-                          <span className="text-sm md:text-xl">❤️</span>
+                          <FontAwesomeIcon icon={faHeart} className="text-red-500 text-sm md:text-lg" />
                           <span className="font-heading font-bold text-sm md:text-base">{post.likes}</span>
                         </div>
                         <div className="flex items-center space-x-1 md:space-x-2">
-                          <span className="text-sm md:text-xl">💬</span>
+                          <FontAwesomeIcon icon={faComment} className="text-blue-400 text-sm md:text-lg" />
                           <span className="font-heading font-bold text-sm md:text-base">{post.comments}</span>
                         </div>
                       </motion.div>
@@ -892,7 +899,7 @@ export default function App() {
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Instagram className="w-6 h-6 md:w-8 md:h-8" />
+              <FontAwesomeIcon icon={faInstagram} className="text-xl md:text-2xl" />
             </motion.a>
             <motion.a 
               href="https://facebook.com/masterjacobsbageri" 
@@ -902,7 +909,7 @@ export default function App() {
               whileHover={{ scale: 1.1, rotate: -5 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Facebook className="w-6 h-6 md:w-8 md:h-8" />
+              <FontAwesomeIcon icon={faFacebookF} className="text-xl md:text-2xl" />
             </motion.a>
           </motion.div>
         </div>
@@ -974,7 +981,7 @@ export default function App() {
                             animate={{ y: [0, -5, 0] }}
                             transition={{ duration: 2, repeat: Infinity }}
                           >
-                            <MapPin className="w-5 h-5 md:w-7 md:h-7 text-gold flex-shrink-0 mt-1" />
+                            <FontAwesomeIcon icon={faLocationDot} className="w-5 h-5 md:w-7 md:h-7 text-gold flex-shrink-0 mt-1" />
                           </motion.div>
                           <div>
                             <p className="font-heading font-bold text-black text-sm md:text-base">Mäster Jacobs Bageri</p>
@@ -1013,12 +1020,12 @@ export default function App() {
                       className="space-y-4 md:space-y-5"
                     >
                       {contactInfo.map((item, index) => {
-                        const IconComponent = iconComponents[item.icon];
+                        const iconName = iconComponents[item.icon];
                         return (
                           <motion.div key={item.title} variants={staggerItem}>
                             <div className="flex items-start space-x-3 md:space-x-4">
                               <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center flex-shrink-0">
-                                <IconComponent className="w-5 h-5 md:w-6 md:h-6 text-gold" />
+                                <FontAwesomeIcon icon={iconName} className="w-5 h-5 md:w-6 md:h-6 text-gold" />
                               </div>
                               <div>
                                 <h4 className="font-heading font-light text-black mb-1 md:mb-1.5 text-sm md:text-base" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>{item.title}</h4>
@@ -1176,21 +1183,21 @@ export default function App() {
                   href="https://facebook.com/masterjacobsbageri" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="btn-ghost text-warm-gray hover:text-black text-sm md:text-base"
-                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                  whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Facebook
+                  <FontAwesomeIcon icon={faFacebookF} className="text-white text-lg md:text-xl" />
                 </motion.a>
                 <motion.a 
                   href="https://www.instagram.com/masterjacobsbageriochkonditori?igsh=aGxtcnJnbnF4Mmpu" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="btn-ghost text-warm-gray hover:text-black text-sm md:text-base"
-                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                  whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Instagram
+                  <FontAwesomeIcon icon={faInstagram} className="text-white text-lg md:text-xl" />
                 </motion.a>
               </div>
             </motion.div>

@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
-import { Menu, Search, ShoppingCart } from "lucide-react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 const logoHorizontal = "/images/logos/horizontal/Horizontal Logo inverse color lockup.svg";
 const logoStacked = "/images/logos/stacked/Stacked Logo full color lockup.svg";
 
@@ -43,7 +44,7 @@ export function Navigation({
                   : 'text-white hover:text-gold hover:bg-white/10'
               }`}
             >
-              <Menu className="w-5 h-5" />
+              <FontAwesomeIcon icon={faBars} className="w-5 h-5" />
             </motion.button>
           </div>
 
@@ -104,7 +105,7 @@ export function Navigation({
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <ShoppingCart className={`w-5 h-5 ${isScrolled ? 'text-black' : 'text-white'} hover:text-gold transition-colors cursor-pointer`} />
+              <FontAwesomeIcon icon={faShoppingCart} className={`w-5 h-5 ${isScrolled ? 'text-black' : 'text-white'} hover:text-gold transition-colors cursor-pointer`} />
               <motion.div 
                 className="w-5 h-5 bg-gradient-to-br from-gold to-yellow-600 rounded-full flex items-center justify-center shadow-lg"
                 initial={{ scale: 1 }}
@@ -125,7 +126,7 @@ export function Navigation({
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <Search className={`w-5 h-5 ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300 cursor-pointer`} />
+              <FontAwesomeIcon icon={faSearch} className={`w-5 h-5 ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300 cursor-pointer`} />
               <span className={`ml-2 font-body text-sm ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300`} style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>Sök produkter</span>
             </motion.div>
             
@@ -138,7 +139,7 @@ export function Navigation({
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7 }}
             >
-              <ShoppingCart className={`w-5 h-5 ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300 cursor-pointer`} />
+              <FontAwesomeIcon icon={faShoppingCart} className={`w-5 h-5 ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300 cursor-pointer`} />
               <span className={`font-body text-sm ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300`} style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>Varukorg</span>
               <motion.div 
                 className="w-6 h-6 bg-gradient-to-br from-gold to-yellow-600 rounded-full flex items-center justify-center shadow-lg"
