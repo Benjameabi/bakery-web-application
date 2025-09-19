@@ -63,7 +63,7 @@ export function Navigation({
                   isScrolled ? 'text-black' : 'text-white'
                 }`}
                 style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300, fontSize: '18px', lineHeight: '28px' }}
-                whileHover={{ y: -2 }}
+                whileHover={{ y: -2, scale: 1.02 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + index * 0.1 }}
@@ -82,7 +82,7 @@ export function Navigation({
           >
             <motion.div 
               className="flex items-center justify-center"
-              whileHover={{ scale: 1.05, rotate: 5 }}
+              whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
               <img 
@@ -121,7 +121,7 @@ export function Navigation({
             <motion.div 
               className="flex items-center cursor-pointer group"
               onClick={onSearchClick}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ y: -2, scale: 1.02 }}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6 }}
@@ -134,7 +134,7 @@ export function Navigation({
             <motion.div 
               className="flex items-center space-x-2 cursor-pointer group"
               onClick={onCartClick}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ y: -2, scale: 1.02 }}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7 }}
