@@ -137,13 +137,13 @@ export default function App() {
         <div className="container mx-auto px-2 md:px-4">
           <div className="flex items-center justify-center space-x-1 md:space-x-2">
             <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gold rounded-full animate-pulse"></div>
-            <span className="text-center leading-tight">
-              <span className="hidden sm:inline">HEMLEVERANS ERBJUDANDE: Fri frakt över 299kr - </span>
+            <span className="text-center leading-tight" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>
+              <span className="hidden sm:inline" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>HEMLEVERANS ERBJUDANDE: Fri frakt över 299kr - </span>
               <span className="underline text-gold font-medium" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 500 }}>
-                <span className="sm:hidden">LEVERANS IMORGON</span>
-                <span className="hidden sm:inline">BESTÄLL IDAG MED LEVERANS IMORGON</span>
+                <span className="sm:hidden" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 500 }}>LEVERANS IMORGON</span>
+                <span className="hidden sm:inline" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 500 }}>BESTÄLL IDAG MED LEVERANS IMORGON</span>
               </span>
-              <span className="hidden sm:inline"> HELA VÄSTERÅS OMRÅDET</span>
+              <span className="hidden sm:inline" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}> HELA VÄSTERÅS OMRÅDET</span>
             </span>
             <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gold rounded-full animate-pulse"></div>
           </div>
