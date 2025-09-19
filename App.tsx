@@ -5,9 +5,7 @@ import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import { CookieConsent } from "./components/CookieConsent";
 import { heroImages, heroSlideTexts, instagramPosts, contactInfo } from "./lib/constants";
 import { fadeInUp, fadeIn, staggerContainer, staggerItem } from "./lib/animations";
-import { MapPin, Phone, Clock, Mail, Star, Instagram, Facebook, Truck, CheckCircle, ArrowRight, X } from "lucide-react";
-import { Input } from "./components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
+import { MapPin, Phone, Clock, Mail, Star, Instagram, Facebook, ArrowRight, X } from "lucide-react";
 
 // Import logo
 const logoIcon = "/images/logos/stacked/Stacked Logo inverse color lockup.svg";
@@ -28,12 +26,6 @@ export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [postalCode, setPostalCode] = useState("");
-  const [deliveryResult, setDeliveryResult] = useState<{
-    available: boolean;
-    message: string;
-    zone: string | null;
-  } | null>(null);
 
   const [favoriteCategoryTiles, setFavoriteCategoryTiles] = useState<{ id: string; name: string; image: string }[]>([]);
 
@@ -103,33 +95,6 @@ export default function App() {
     setFavoriteCategoryTiles(tiles);
   }, []);
 
-  const checkDelivery = () => {
-    const cleanedPostal = postalCode.replace(/\s/g, '');
-    
-    if (cleanedPostal.length !== 5 || !/^\d{5}$/.test(cleanedPostal)) {
-      setDeliveryResult({
-        available: false,
-        message: "Ange ett giltigt 5-siffrigt postnummer.",
-        zone: null
-      });
-      return;
-    }
-    
-    // Check if postal code is in Västerås area (72x codes)
-    if (cleanedPostal.startsWith('72')) {
-      setDeliveryResult({
-        available: true,
-        message: "Fantastiskt! Vi levererar till ditt område i Västerås. Fri frakt över 299kr, minimum 200kr för leverans.",
-        zone: "Västerås"
-      });
-    } else {
-      setDeliveryResult({
-        available: false,
-        message: "Tyvärr levererar vi endast till Västerås kommun. Besök vår butik på Pettersbergatan 37 eller ring oss på 021-30 15 09!",
-        zone: null
-      });
-    }
-  };
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
@@ -596,10 +561,7 @@ export default function App() {
               className="max-w-4xl mx-auto space-y-6 md:space-y-8"
             >
               <p className="text-base sm:text-lg md:text-xl text-white font-body font-light leading-relaxed drop-shadow-lg text-center" style={{ fontFamily: 'Lato', fontWeight: 300 }}>
-                Våra skickliga bagare arbetar med traditionella metoder för att skapa bakverk av högsta kvalitet, precis som de gjort sedan 1982.
-              </p>
-              <p className="text-base sm:text-lg md:text-xl text-gray-200 font-body font-light leading-relaxed drop-shadow-lg text-center" style={{ fontFamily: 'Lato', fontWeight: 300 }}>
-                Varje morgon före gryningen börjar arbetet med att forma, baka och förbereda dagens färska sortiment med samma noggrannhet och passion som alltid präglat vårt hantverk.
+                Våra skickliga bagare arbetar med traditionella metoder för att skapa bakverk av högsta kvalitet.
               </p>
             </motion.div>
           </motion.div>
@@ -828,7 +790,7 @@ export default function App() {
               viewport={{ once: true }}
               style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
-              Följ oss på Instagram
+              Se våra hantverk och inspireras!
             </motion.h2>
             <motion.p 
               className="text-base md:text-lg text-gray-600 font-body font-light leading-relaxed"
@@ -946,7 +908,7 @@ export default function App() {
               viewport={{ once: true }}
               style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
-              Hitta Oss
+              Beställ nybakat hem till dörren
             </motion.h2>
             <motion.p 
               className="text-base md:text-lg text-gray-600 font-body font-light leading-relaxed"
@@ -956,37 +918,12 @@ export default function App() {
               viewport={{ once: true }}
               style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
-              Välkommen till vårt mysiga bageri där doften av nybakat bröd möter dig
+              Vi bakar varje morgon och levererar direkt hem till dig – enkelt, snabbt och alltid färskt.
             </motion.p>
           </motion.div>
 
           <div className="mb-12 md:mb-16">
-            <Tabs defaultValue="location" className="w-full">
-              <div className="flex justify-center mb-8 md:mb-12">
-                <motion.div
-                  className="bg-white/80 backdrop-blur-sm border-2 border-gold/20 p-1.5 md:p-2 shadow-lg"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  <TabsList className="bg-transparent gap-1 md:gap-2">
-                    <TabsTrigger 
-                      value="location" 
-                      className="px-4 md:px-8 py-3 md:py-4 font-heading font-semibold text-sm md:text-base data-[state=active]:bg-gradient-to-r data-[state=active]:from-gold data-[state=active]:to-yellow-500 data-[state=active]:text-black transition-all duration-300 data-[state=active]:shadow-lg"
-                    >
-                      Du hittar oss här
-                    </TabsTrigger>
-                    <TabsTrigger 
-                      value="delivery" 
-                      className="px-4 md:px-8 py-3 md:py-4 font-heading font-semibold text-sm md:text-base data-[state=active]:bg-gradient-to-r data-[state=active]:from-gold data-[state=active]:to-yellow-500 data-[state=active]:text-black transition-all duration-300 data-[state=active]:shadow-lg"
-                    >
-                      Hemleverans
-                    </TabsTrigger>
-                  </TabsList>
-                </motion.div>
-              </div>
-
-              <TabsContent value="location" className="space-y-8 md:space-y-12">
+            <div className="space-y-8 md:space-y-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
                   <motion.div 
                     initial={{ opacity: 0, x: -60 }}
@@ -1046,10 +983,9 @@ export default function App() {
                     className="space-y-6 md:space-y-8"
                   >
                     <div className="space-y-4 md:space-y-6">
-                      <h3 className="text-2xl md:text-3xl font-subheading font-light text-black" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>Besök Vårt Bageri</h3>
+                      <h3 className="text-2xl md:text-3xl font-subheading font-light text-black" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>Kontakta Oss</h3>
                       <p className="text-warm-gray font-body font-light text-base md:text-lg leading-relaxed" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
-                        Beläget i centrala Västerås på Pettersbergatan 37. Lätt att nå med kollektivtrafik, 
-                        till fots eller cykel. Parkering finns på närliggande gator.
+                      Har du frågor om din beställning eller vårt sortiment? Hör gärna av dig så hjälper vi dig snabbt.
                       </p>
                     </div>
                     
@@ -1104,125 +1040,7 @@ export default function App() {
                     </motion.div>
                   </motion.div>
                 </div>
-              </TabsContent>
-
-              <TabsContent value="delivery" className="space-y-8 md:space-y-12">
-                <motion.div 
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                  className="max-w-3xl mx-auto"
-                >
-                  <motion.div 
-                    className="bg-white/90 backdrop-blur-sm border-2 border-gold/20 p-8 md:p-12 text-center shadow-xl"
-                    whileHover={{ scale: 1.01 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <motion.div 
-                      className="flex justify-center mb-6 md:mb-8"
-                      initial={{ scale: 0, rotate: -180 }}
-                      animate={{ scale: 1, rotate: 0 }}
-                      transition={{ duration: 0.8, delay: 0.3 }}
-                    >
-                      <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-gold/20 to-yellow-100 rounded-full flex items-center justify-center shadow-lg">
-                        <Truck className="w-8 h-8 md:w-10 md:h-10 text-gold" />
-                      </div>
-                    </motion.div>
-                    
-                    <h3 className="text-2xl md:text-3xl font-subheading font-light mb-4 md:mb-6 text-black" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
-                      Kontrollera Hemleverans
-                    </h3>
-                    <p className="text-warm-gray font-body font-light mb-6 md:mb-8 text-base md:text-lg leading-relaxed" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
-                      Ange ditt postnummer för att se om vi levererar till ditt område. 
-                      Vi levererar dagligen inom Västerås med omnejd.
-                    </p>
-
-                    <div className="space-y-4 md:space-y-6">
-                      <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                        <Input
-                          placeholder="Skriv postnummer (t.ex. 11121)"
-                          value={postalCode}
-                          onChange={(e) => setPostalCode(e.target.value)}
-                          className="flex-1 border-2 border-gold/30 focus:border-gold bg-white/80 backdrop-blur-sm py-3 px-4 text-base md:text-lg font-body"
-                          maxLength={5}
-                        />
-                        <motion.button
-                          onClick={checkDelivery}
-                          className="btn-primary px-6 sm:px-8"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          Kontrollera
-                        </motion.button>
-                      </div>
-
-                      {deliveryResult && (
-                        <motion.div 
-                          initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          transition={{ duration: 0.5 }}
-                          className={`p-4 md:p-6 border-2 shadow-lg ${
-                            deliveryResult.available 
-                              ? 'bg-green-50/80 border-green-300 text-green-800' 
-                              : 'bg-red-50/80 border-red-300 text-red-800'
-                          }`}
-                        >
-                          <div className="flex items-center justify-center space-x-3 mb-3">
-                            <motion.div
-                              animate={{ scale: [1, 1.2, 1] }}
-                              transition={{ duration: 0.5 }}
-                            >
-                              {deliveryResult.available ? (
-                                <CheckCircle className="w-5 h-5 md:w-6 md:h-6" />
-                              ) : (
-                                <X className="w-5 h-5 md:w-6 md:h-6" />
-                              )}
-                            </motion.div>
-                            <span className="font-heading font-bold text-base md:text-lg">
-                              {deliveryResult.available ? 'Vi levererar hit!' : 'Levererar ej'}
-                            </span>
-                          </div>
-                          <p className="font-body mb-2 text-sm md:text-base">{deliveryResult.message}</p>
-                          {deliveryResult.zone && (
-                            <p className="text-xs md:text-sm font-body opacity-80">
-                              Leveransområde: {deliveryResult.zone}
-                            </p>
-                          )}
-                        </motion.div>
-                      )}
-                    </div>
-
-                    <motion.div 
-                      className="mt-8 md:mt-12 pt-6 md:pt-8 border-t-2 border-gold/20"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.5 }}
-                    >
-                      <h4 className="font-heading font-light mb-4 md:mb-6 text-black text-lg md:text-xl" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>Leveransinfo</h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 text-xs md:text-sm text-warm-gray font-body font-light" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
-                        {[
-                          "• Leverans samma dag för beställningar före 14:00",
-                          "• Fri frakt över 500kr, annars 49kr",
-                          "• Leveranstid: 15:00-19:00 vardagar, 10:00-16:00 helger",
-                          "• SMS bekräftelse med spårning"
-                        ].map((item, index) => (
-                          <motion.p
-                            key={index}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.7 + index * 0.1 }}
-                            className="text-left"
-                          >
-                            {item}
-                          </motion.p>
-                        ))}
-                      </div>
-                    </motion.div>
-                  </motion.div>
-                </motion.div>
-              </TabsContent>
-            </Tabs>
+            </div>
           </div>
         </div>
       </section>
