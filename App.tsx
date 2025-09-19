@@ -665,9 +665,9 @@ export default function App() {
                   viewport={{ once: true }}
                   className="ml-auto"
                 >
-                  <div className="w-16 h-16 md:w-20 md:h-20 bg-white rounded-lg shadow-lg border border-gold/20 p-2 flex items-center justify-center">
+                  <div className="w-20 h-20 md:w-28 md:h-28 bg-white rounded-lg shadow-lg border border-gold/20 p-2 flex items-center justify-center">
                     <img 
-                      src="/images/Qrkod-Recention-google.webp" 
+                      src="/images/Qrkod.webp" 
                       alt="QR-kod för Google recensioner" 
                       className="w-full h-full object-contain"
                     />
