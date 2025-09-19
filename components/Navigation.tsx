@@ -119,7 +119,7 @@ export function Navigation({
           <div className="hidden md:flex items-center space-x-4 lg:space-x-6 flex-1 justify-end">
             {/* Search */}
             <motion.div 
-              className="flex items-center cursor-pointer group"
+              className="flex items-center cursor-pointer group relative"
               onClick={onSearchClick}
               whileHover={{ y: -2, scale: 1.02 }}
               initial={{ opacity: 0, x: 20 }}
@@ -127,12 +127,15 @@ export function Navigation({
               transition={{ delay: 0.6 }}
             >
               <FontAwesomeIcon icon={faSearch} className={`w-5 h-5 ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300 cursor-pointer`} />
-              <span className={`ml-2 font-body ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300`} style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300, fontSize: '18px', lineHeight: '28px' }}>Sök produkter</span>
+              <span className={`ml-2 font-body ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300 relative`} style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300, fontSize: '18px', lineHeight: '28px' }}>
+                Sök produkter
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+              </span>
             </motion.div>
             
             {/* Shopping Cart */}
             <motion.div 
-              className="flex items-center space-x-2 cursor-pointer group"
+              className="flex items-center space-x-2 cursor-pointer group relative"
               onClick={onCartClick}
               whileHover={{ y: -2, scale: 1.02 }}
               initial={{ opacity: 0, x: 20 }}
@@ -140,7 +143,10 @@ export function Navigation({
               transition={{ delay: 0.7 }}
             >
               <FontAwesomeIcon icon={faShoppingCart} className={`w-5 h-5 ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300 cursor-pointer`} />
-              <span className={`font-body ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300`} style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300, fontSize: '18px', lineHeight: '28px' }}>Varukorg</span>
+              <span className={`font-body ${isScrolled ? 'text-black' : 'text-white'} group-hover:text-gold transition-all duration-300 relative`} style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300, fontSize: '18px', lineHeight: '28px' }}>
+                Varukorg
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+              </span>
               <motion.div 
                 className="w-6 h-6 bg-gradient-to-br from-gold to-yellow-600 rounded-full flex items-center justify-center shadow-lg"
                 initial={{ scale: 1 }}

@@ -74,7 +74,7 @@ export default function App() {
     const getCategoryImage = (name: string) => {
       const n = name.toLowerCase();
       if (n.includes('tårtor') || n === 'tårtor' || n.includes('tartor') || n === 'tartor') return '/images/Prinsesstårta.webp';
-      if (n.includes('bullar') || n === 'bullar') return '/images/Sockerkringla.webp';
+      if (n.includes('bullar') || n === 'bullar') return '/images/Kanelknut.webp';
       if (n.includes('bröd') || n === 'bröd' || n.includes('brod') || n === 'brod' || n.includes('matbröd')) return '/images/Aros grova.webp';
       if (n.includes('frukost')) return '/images/Frukost.webp';
       if (n.includes('smörgåstårta') || n.includes('smorgastarta')) return '/images/smorgastarta.webp';
