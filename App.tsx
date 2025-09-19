@@ -1048,14 +1048,16 @@ export default function App() {
                       className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-6 md:pt-8"
                     >
                       <motion.button 
-                        className="btn-primary flex-1"
+                        className="flex-1 bg-gold hover:bg-yellow-600 text-black px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg"
+                        style={{ fontFamily: 'Lato, sans-serif', fontWeight: 500 }}
                         whileHover={{ scale: 1.02, y: -2 }}
                         whileTap={{ scale: 0.98 }}
                       >
-                        Vägbeskrivning
+                        Webbshop
                       </motion.button>
                       <motion.button 
-                        className="btn-secondary flex-1"
+                        className="flex-1 bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg"
+                        style={{ fontFamily: 'Lato, sans-serif', fontWeight: 500 }}
                         whileHover={{ scale: 1.02, y: -2 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -1139,7 +1141,7 @@ export default function App() {
                     className="w-8 h-8 md:w-10 md:h-10 object-contain"
                   />
                   <div className="font-body font-normal text-sm md:text-base" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>
-                    <span className="font-normal">Swish</span>: 123 456 78 90
+                    <span className="font-normal">Swish</span>: 123 486 17 61
                   </div>
                 </div>
               </div>
