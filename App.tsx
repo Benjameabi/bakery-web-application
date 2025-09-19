@@ -132,13 +132,14 @@ export default function App() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="bg-gradient-to-r from-black via-gray-900 to-black text-white text-center py-2 md:py-3 text-xs md:text-sm font-body shadow-lg"
+        style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}
       >
         <div className="container mx-auto px-2 md:px-4">
           <div className="flex items-center justify-center space-x-1 md:space-x-2">
             <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gold rounded-full animate-pulse"></div>
             <span className="text-center leading-tight">
               <span className="hidden sm:inline">HEMLEVERANS ERBJUDANDE: Fri frakt över 299kr - </span>
-              <span className="underline text-gold font-semibold">
+              <span className="underline text-gold font-medium" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 500 }}>
                 <span className="sm:hidden">LEVERANS IMORGON</span>
                 <span className="hidden sm:inline">BESTÄLL IDAG MED LEVERANS IMORGON</span>
               </span>
@@ -1069,7 +1070,7 @@ export default function App() {
       </section>
 
       {/* Promotion Banner above Footer */}
-      <section className="py-8 md:py-10 bg-gradient-to-r from-gold to-yellow-500 text-black">
+      <section className="py-8 md:py-10 bg-yellow-500 text-black">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div 
             className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4"
