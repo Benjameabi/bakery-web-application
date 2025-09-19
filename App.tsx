@@ -49,10 +49,29 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Preload critical images for faster loading
+  useEffect(() => {
+    const criticalImages = [
+      '/images/logos/horizontal/Horizontal Logo inverse color lockup.svg',
+      '/images/logos/stacked/Stacked Logo full color lockup.svg',
+      '/images/Prinsesstårta.webp',
+      '/images/Kanelknut.webp',
+      '/images/Frukost.webp',
+      '/images/Aros grova.webp',
+      '/images/smorgastarta.webp',
+      '/images/Tillbehor.webp'
+    ];
+
+    criticalImages.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-    }, 6000);
+    }, 5000);
 
     return () => clearInterval(timer);
   }, []);
@@ -514,7 +533,7 @@ export default function App() {
           className="absolute inset-0"
           initial={{ scale: 1.1 }}
           whileInView={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           <ImageWithFallback
@@ -718,7 +737,7 @@ export default function App() {
           className="absolute inset-0"
           initial={{ scale: 1.1 }}
           whileInView={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           <ImageWithFallback
@@ -843,13 +862,14 @@ export default function App() {
               >
                 <motion.div
                   className="aspect-square overflow-hidden shadow-lg border border-gold/10"
-                  whileHover={{ scale: 1.02, y: -4 }}
-                  transition={{ duration: 0.3 }}
+                  whileHover={{ scale: 1.01, y: -2 }}
+                  transition={{ duration: 0.2 }}
                 >
                   <ImageWithFallback
                     src={post.image}
                     alt={post.caption}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
                   />
                   <motion.div 
                     className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
