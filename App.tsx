@@ -1120,7 +1120,7 @@ export default function App() {
                   className="h-8 md:h-10 w-auto object-contain"
                 />
               </div>
-              <p className="text-warm-gray font-body font-light text-base md:text-lg leading-relaxed" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
+              <p className="text-warm-gray font-body font-normal text-base md:text-lg leading-relaxed" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>
               Hantverks bageri & konditori i Västerås sedan 1982.
               </p>
               <div className="pt-2 md:pt-3">
@@ -1130,15 +1130,15 @@ export default function App() {
                     alt="Swish" 
                     className="w-8 h-8 md:w-10 md:h-10 object-contain"
                   />
-                  <div className="font-body font-light text-sm md:text-base" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
-                    <span className="font-light">Swish</span>: 123 456 78 90
+                  <div className="font-body font-normal text-sm md:text-base" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>
+                    <span className="font-normal">Swish</span>: 123 456 78 90
                   </div>
                 </div>
               </div>
             </motion.div>
             
             <motion.div variants={staggerItem} className="space-y-4 md:space-y-6">
-              <h4 className="font-heading font-light text-lg md:text-xl" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>Snabblänkar</h4>
+              <h4 className="font-heading font-medium text-lg md:text-xl" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 500 }}>Snabblänkar</h4>
               <ul className="space-y-2 md:space-y-3">
                 {[
                   { name: 'Hem', href: '#home', external: false },
@@ -1151,8 +1151,8 @@ export default function App() {
                     <motion.a 
                       href={item.external ? undefined : item.href}
                       onClick={item.external ? () => handleExternalRedirect(item.href) : undefined}
-                      className="text-warm-gray hover:text-white transition-colors font-body font-light text-base md:text-lg flex items-center group cursor-pointer"
-                      style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}
+                      className="text-warm-gray hover:text-white transition-colors font-body font-normal text-base md:text-lg flex items-center group cursor-pointer"
+                      style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}
                       whileHover={{ x: 5 }}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -1167,8 +1167,8 @@ export default function App() {
             </motion.div>
             
             <motion.div variants={staggerItem} className="space-y-4 md:space-y-6">
-              <h4 className="font-heading font-light text-lg md:text-xl" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>Följ Oss</h4>
-              <p className="text-warm-gray font-body font-light text-base md:text-lg leading-relaxed" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
+              <h4 className="font-heading font-medium text-lg md:text-xl" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 500 }}>Följ Oss</h4>
+              <p className="text-warm-gray font-body font-normal text-base md:text-lg leading-relaxed" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>
                 Håll dig uppdaterad med våra dagliga specialiteter och nya produkter.
               </p>
               <div className="flex space-x-3 md:space-x-4">
@@ -1203,7 +1203,7 @@ export default function App() {
             viewport={{ once: true }}
             className="border-t border-warm-gray/30 mt-8 md:mt-12 pt-6 md:pt-8 text-center"
           >
-            <p className="font-body font-light text-warm-gray text-base md:text-lg" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
+            <p className="font-body font-normal text-warm-gray text-base md:text-lg" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>
               &copy; 2025 Mäster Jacobs Bageri & Konditori. Alla rättigheter förbehållna.
             </p>
           </motion.div>
