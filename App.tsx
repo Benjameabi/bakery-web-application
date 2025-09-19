@@ -1096,9 +1096,9 @@ export default function App() {
         className="relative text-white py-12 md:py-16 overflow-hidden"
         style={{
           backgroundImage: "url('/images/Pattern 2.svg')",
-          backgroundSize: 'cover',
+          backgroundSize: 'auto',
           backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+          backgroundRepeat: 'repeat'
         }}
       >
         {/* Gradient overlay for text readability */}
