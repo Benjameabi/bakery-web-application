@@ -650,6 +650,22 @@ export default function App() {
                   <span className="text-lg md:text-xl font-heading font-bold text-black">4.9/5</span>
                   <span className="text-warm-gray font-body ml-2 text-sm md:text-base">från 500+ recensioner</span>
                 </div>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 1.2 }}
+                  viewport={{ once: true }}
+                  className="ml-auto"
+                >
+                  <div className="w-16 h-16 md:w-20 md:h-20 bg-white rounded-lg shadow-lg border border-gold/20 p-2 flex items-center justify-center">
+                    <img 
+                      src="/images/Qrkod-Recention-google.webp" 
+                      alt="QR-kod för Google recensioner" 
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <p className="text-xs text-warm-gray text-center mt-1 font-body">Scanna & recensera</p>
+                </motion.div>
               </motion.div>
             </motion.div>
             
@@ -1077,9 +1093,18 @@ export default function App() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
-        className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-12 md:py-16"
+        className="relative text-white py-12 md:py-16 overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/Pattern 2.svg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
       >
-        <div className="container mx-auto px-4 md:px-6">
+        {/* Gradient overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60"></div>
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div 
             variants={staggerContainer}
             initial="initial"
@@ -1088,22 +1113,15 @@ export default function App() {
             className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12"
           >
             <motion.div variants={staggerItem} className="space-y-4 md:space-y-6">
-              <div className="flex items-center space-x-3 md:space-x-4">
-                <motion.div
-                  className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-gold/20 to-yellow-100/20 rounded-xl flex items-center justify-center"
-                  animate={{ rotate: [0, 5, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                >
-                  <img 
-                    src={logoIcon} 
-                    alt="Mäster Jacobs Logo" 
-                    className="w-8 h-8 md:w-10 md:h-10 object-contain brightness-0 invert"
-                  />
-                </motion.div>
-                <span className="text-xl md:text-2xl font-heading font-light" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>Mäster Jacobs</span>
+              <div className="mb-2 md:mb-4">
+                <img 
+                  src="/images/logos/horizontal/Horizontal Logo whitecolor lockup.svg" 
+                  alt="Mäster Jacobs Logo" 
+                  className="h-8 md:h-10 w-auto object-contain"
+                />
               </div>
               <p className="text-warm-gray font-body font-light text-base md:text-lg leading-relaxed" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
-                Betjänar gemenskapen med färska, hantverksbakverk sedan 1982.
+              Hantverks bageri & konditori i Västerås sedan 1982.
               </p>
               <div className="pt-2 md:pt-3">
                 <div className="flex items-center space-x-3">
@@ -1186,7 +1204,7 @@ export default function App() {
             className="border-t border-warm-gray/30 mt-8 md:mt-12 pt-6 md:pt-8 text-center"
           >
             <p className="font-body font-light text-warm-gray text-base md:text-lg" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
-              &copy; 2024 Mäster Jacobs Bageri & Konditori. Alla rättigheter förbehållna.
+              &copy; 2025 Mäster Jacobs Bageri & Konditori. Alla rättigheter förbehållna.
             </p>
           </motion.div>
         </div>
