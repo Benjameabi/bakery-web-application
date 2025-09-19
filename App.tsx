@@ -11,6 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 
 // Import logo
 const logoIcon = "/images/logos/stacked/Stacked Logo inverse color lockup.svg";
+const logoIconInverse = "/images/logos/stacked/Stacked Logo inverse color lockup.svg";
 
 // CakeItEasy URLs - All ordering/checkout handled by CakeItEasy backend
 const EXTERNAL_URLS = {
@@ -466,7 +467,7 @@ export default function App() {
               viewport={{ once: true }}
               style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
-              De mest älskade bakverken från vårt sortiment - svenska klassiker som våra kunder återkommer för igen och igen.
+              De mest älskade bakverken från vårt sortiment Svenska klassiker!
             </motion.p>
           </motion.div>
 
@@ -545,7 +546,7 @@ export default function App() {
         >
           <ImageWithFallback
             src="/images/Allatårtor.webp"
-            alt="Hantverk i Varje Detalj" 
+            alt="Hantverks bageri & konditori i Västerås sedan 1982" 
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
@@ -569,10 +570,9 @@ export default function App() {
             >
               <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 bg-gradient-to-br from-gold/20 to-yellow-100/20 rounded-full flex items-center justify-center backdrop-blur-sm">
                 <img 
-                  src={logoIcon} 
+                  src={logoIconInverse} 
                   alt="Mäster Jacobs Logo small" 
-                  className="w-8 h-8 md:w-12 md:h-12 object-contain brightness-0 invert"
-                  style={{ filter: 'brightness(0) invert(1) sepia(1) saturate(10000%) hue-rotate(35deg)' }}
+                  className="w-8 h-8 md:w-12 md:h-12 object-contain"
                 />
               </div>
             </motion.div>
@@ -585,7 +585,7 @@ export default function App() {
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-white mb-6 md:mb-8 drop-shadow-2xl leading-tight tracking-tight text-center"
               style={{ fontFamily: 'Lato', fontWeight: 300 }}
             >
-              Hantverk i Varje Detalj
+              Hantverks bageri & konditori i Västerås sedan 1982
             </motion.h2>
             
             <motion.div
