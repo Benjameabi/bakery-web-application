@@ -890,27 +890,27 @@ export default function App() {
           <motion.div 
             {...fadeIn}
             viewport={{ once: true }}
-            className="flex justify-center items-center space-x-4 md:space-x-6"
+            className="flex justify-center items-center space-x-6 md:space-x-8"
           >
             <motion.a 
               href="https://www.instagram.com/masterjacobsbageriochkonditori?igsh=aGxtcnJnbnF4Mmpu" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-gold to-yellow-600 hover:from-yellow-600 hover:to-gold text-black transition-all duration-300 shadow-xl border border-gold/20"
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              whileTap={{ scale: 0.9 }}
+              className="group flex items-center justify-center w-14 h-14 md:w-20 md:h-20 bg-white hover:bg-gradient-to-br hover:from-pink-500 hover:to-purple-600 text-gray-800 hover:text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-gray-200 hover:border-transparent"
+              whileHover={{ scale: 1.1, y: -3 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <FontAwesomeIcon icon={faInstagram} className="text-xl md:text-2xl" />
+              <FontAwesomeIcon icon={faInstagram} className="text-2xl md:text-3xl transition-colors duration-300" />
             </motion.a>
             <motion.a 
               href="https://facebook.com/masterjacobsbageri" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-gold to-yellow-600 hover:from-yellow-600 hover:to-gold text-black transition-all duration-300 shadow-xl border border-gold/20"
-              whileHover={{ scale: 1.1, rotate: -5 }}
-              whileTap={{ scale: 0.9 }}
+              className="group flex items-center justify-center w-14 h-14 md:w-20 md:h-20 bg-white hover:bg-blue-600 text-gray-800 hover:text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-gray-200 hover:border-transparent"
+              whileHover={{ scale: 1.1, y: -3 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <FontAwesomeIcon icon={faFacebookF} className="text-xl md:text-2xl" />
+              <FontAwesomeIcon icon={faFacebookF} className="text-2xl md:text-3xl transition-colors duration-300" />
             </motion.a>
           </motion.div>
         </div>
