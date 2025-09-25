@@ -30,7 +30,7 @@ export function Navigation({
       initial={{ opacity: 0, y: -30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className={"relative w-full z-50 bg-transparent"}
+      className={"absolute left-0 right-0 top-0 z-50 bg-transparent"}
     >
       <div className="container mx-auto px-4 md:px-6" style={{ height: isShrunk ? '120px' : '160px', transition: 'height 300ms ease' }}>
         <div className="flex items-center h-full relative">
