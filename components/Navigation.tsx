@@ -40,7 +40,7 @@ export function Navigation({
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsMobileMenuOpen(true)}
-              className={"p-2 rounded-xl transition-all duration-300 text-black hover:text-gold hover:bg-gold/5"}
+              className={"p-2 rounded-xl transition-all duration-300 text-white hover:text-gold hover:bg-white/10"}
             >
               <FontAwesomeIcon icon={faBars} className="w-5 h-5" />
             </motion.button>
@@ -57,7 +57,7 @@ export function Navigation({
                 key={item.name}
                 href={item.external ? undefined : item.href}
                 onClick={item.external ? item.onClick : undefined}
-                className={"font-body text-black hover:text-gold transition-all duration-300 relative group cursor-pointer"}
+                className={"font-body text-white hover:text-gold transition-all duration-300 relative group cursor-pointer"}
                 style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300, fontSize: '18px', lineHeight: '28px' }}
                 whileHover={{ y: -2, scale: 1.02 }}
                 initial={{ opacity: 0, y: 20 }}
@@ -84,13 +84,13 @@ export function Navigation({
               <img
                 src={logoStackedInverse}
                 alt="Mäster Jacobs Logo"
-                className={`block lg:hidden object-contain drop-shadow-lg transition-all duration-300 ${isShrunk ? 'w-32 h-20 md:w-40 md:h-24' : 'w-40 h-24 md:w-56 md:h-28'}`}
+                className={`block lg:hidden object-contain drop-shadow-lg transition-all duration-300 ${isShrunk ? 'w-28 h-16 md:w-36 md:h-20' : 'w-32 h-20 md:w-48 md:h-24'}`}
               />
               {/* Desktop (Web): Horizontal logo (inverse) */}
               <img
                 src={logoHorizontalInverse}
                 alt="Mäster Jacobs Logo"
-                className={`hidden lg:block object-contain drop-shadow-lg transition-all duration-300 ${isShrunk ? 'lg:w-56 lg:h-20' : 'lg:w-80 lg:h-28'}`}
+                className={`hidden lg:block object-contain drop-shadow-lg transition-all duration-300 ${isShrunk ? 'lg:w-48 lg:h-20' : 'lg:w-64 lg:h-24'}`}
               />
             </motion.div>
           </motion.div>
@@ -103,7 +103,7 @@ export function Navigation({
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <FontAwesomeIcon icon={faShoppingCart} className={"w-5 h-5 text-black hover:text-gold transition-colors cursor-pointer"} />
+              <FontAwesomeIcon icon={faShoppingCart} className={"w-5 h-5 text-white hover:text-gold transition-colors cursor-pointer"} />
               <motion.div 
                 className="w-5 h-5 bg-gradient-to-br from-gold to-yellow-600 rounded-full flex items-center justify-center shadow-lg"
                 initial={{ scale: 1 }}
@@ -124,8 +124,8 @@ export function Navigation({
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <FontAwesomeIcon icon={faSearch} className={"w-5 h-5 text-black group-hover:text-gold transition-all duration-300 cursor-pointer"} />
-              <span className={"ml-2 font-body text-black group-hover:text-gold transition-all duration-300 relative"} style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300, fontSize: '18px', lineHeight: '28px' }}>
+              <FontAwesomeIcon icon={faSearch} className={"w-5 h-5 text-white group-hover:text-gold transition-all duration-300 cursor-pointer"} />
+              <span className={"ml-2 font-body text-white group-hover:text-gold transition-all duration-300 relative"} style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300, fontSize: '18px', lineHeight: '28px' }}>
                 Sök produkter
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
               </span>
@@ -140,8 +140,8 @@ export function Navigation({
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7 }}
             >
-              <FontAwesomeIcon icon={faShoppingCart} className={"w-5 h-5 text-black group-hover:text-gold transition-all duration-300 cursor-pointer"} />
-              <span className={"font-body text-black group-hover:text-gold transition-all duration-300 relative"} style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300, fontSize: '18px', lineHeight: '28px' }}>
+              <FontAwesomeIcon icon={faShoppingCart} className={"w-5 h-5 text-white group-hover:text-gold transition-all duration-300 cursor-pointer"} />
+              <span className={"font-body text-white group-hover:text-gold transition-all duration-300 relative"} style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300, fontSize: '18px', lineHeight: '28px' }}>
                 Varukorg
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
               </span>
