@@ -30,9 +30,9 @@ export function Navigation({
       initial={{ opacity: 0, y: -30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className={"absolute left-0 right-0 top-0 z-50 bg-transparent"}
+      className={"relative w-full z-50 bg-transparent lg:absolute lg:left-0 lg:right-0 lg:top-0"}
     >
-      <div className="container mx-auto px-4 md:px-6" style={{ height: isShrunk ? '120px' : '160px', transition: 'height 300ms ease' }}>
+      <div className="container mx-auto px-3 sm:px-4 md:px-6" style={{ height: isShrunk ? '104px' : '136px', transition: 'height 300ms ease' }}>
         <div className="flex items-center h-full relative">
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
@@ -47,7 +47,7 @@ export function Navigation({
           </div>
 
           {/* Desktop Left Menu */}
-          <div className="hidden md:flex items-center space-x-6 lg:space-x-8 flex-1">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8 flex-1">
             {[
               { name: 'Vår butik', href: '#contact', external: false },
               { name: 'Kontakta oss', href: '#contact', external: false },
@@ -72,7 +72,7 @@ export function Navigation({
           
           {/* Centered Logo */}
           <motion.div 
-            className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+            className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <motion.div 
@@ -84,13 +84,13 @@ export function Navigation({
               <img
                 src={logoStackedInverse}
                 alt="Mäster Jacobs Logo"
-                className={`block lg:hidden object-contain drop-shadow-lg transition-all duration-300 ${isShrunk ? 'w-28 h-16 md:w-36 md:h-20' : 'w-32 h-20 md:w-48 md:h-24'}`}
+                className={`block lg:hidden object-contain drop-shadow-lg transition-all duration-300 ${isShrunk ? 'w-24 h-14 md:w-32 md:h-18' : 'w-28 h-16 md:w-40 md:h-20'}`}
               />
               {/* Desktop (Web): Horizontal logo (inverse) */}
               <img
                 src={logoHorizontalInverse}
                 alt="Mäster Jacobs Logo"
-                className={`hidden lg:block object-contain drop-shadow-lg transition-all duration-300 ${isShrunk ? 'lg:w-48 lg:h-20' : 'lg:w-64 lg:h-24'}`}
+                className={`hidden lg:block object-contain drop-shadow-lg transition-all duration-300 ${isShrunk ? 'lg:w-44 lg:h-16' : 'lg:w-56 lg:h-20'}`}
               />
             </motion.div>
           </motion.div>

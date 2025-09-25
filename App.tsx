@@ -141,21 +141,21 @@ export default function App() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="bg-gradient-to-r from-black via-gray-900 to-black text-white text-center py-2 md:py-3 text-xs md:text-sm font-body shadow-lg"
+        className="bg-gradient-to-r from-black via-gray-900 to-black text-white text-center py-2 md:py-2 text-xs md:text-sm font-body shadow-lg"
         style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}
       >
         <div className="container mx-auto px-2 md:px-4">
           <div className="flex items-center justify-center space-x-1 md:space-x-2">
-            <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gold rounded-full animate-pulse"></div>
+            <div className="hidden md:block w-2 h-2 bg-gold rounded-full animate-pulse"></div>
             <span className="text-center leading-tight" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>
               <span className="hidden sm:inline" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>HEMLEVERANS ERBJUDANDE: Fri frakt över 299kr - </span>
               <span className="underline text-gold font-medium" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 500 }}>
                 <span className="sm:hidden" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 500 }}>BESTÄLL IDAG MED LEVERANS IMORGON</span>
                 <span className="hidden sm:inline" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 500 }}>BESTÄLL IDAG MED LEVERANS IMORGON</span>
               </span>
-              <span className="hidden sm:inline" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}> HELA VÄSTERÅS OMRÅDET</span>
+              <span className="hidden md:inline" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}> HELA VÄSTERÅS OMRÅDET</span>
             </span>
-            <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gold rounded-full animate-pulse"></div>
+            <div className="hidden md:block w-2 h-2 bg-gold rounded-full animate-pulse"></div>
           </div>
         </div>
       </motion.div>
