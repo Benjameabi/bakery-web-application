@@ -1092,7 +1092,7 @@ export default function App() {
       </section>
 
       {/* Promotion Banner above Footer */}
-      <section className="py-8 md:py-10 bg-yellow-500 text-black">
+      <section className="py-8 md:py-10 bg-[#D0B05D] text-white">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div 
             className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4"
@@ -1106,7 +1106,7 @@ export default function App() {
               <div className="font-body font-light text-sm md:text-base opacity-90" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>Beställ enkelt i mobilen – smidigt och bekvämt.</div>
             </div>
             <motion.button
-              className="btn-primary btn-large"
+              className="btn-large bg-black text-white rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg hover:bg-black/90"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
