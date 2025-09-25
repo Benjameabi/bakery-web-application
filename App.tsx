@@ -945,7 +945,7 @@ export default function App() {
             className="text-center mb-12 md:mb-20 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-body font-semibold text-black leading-tight tracking-tight mb-6 md:mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-semibold text-black leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
@@ -1027,7 +1027,7 @@ export default function App() {
                     className="space-y-6 md:space-y-8"
                   >
                     <div className="space-y-4 md:space-y-6">
-                      <h3 className="text-3xl md:text-4xl font-subheading font-semibold text-black" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 600 }}>Kontakta Oss</h3>
+                      <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-subheading font-semibold text-black" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 600 }}>Kontakta Oss</h3>
                       <p className="text-warm-gray font-body font-light text-base md:text-lg leading-relaxed" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
                       Har du frågor om din beställning eller vårt sortiment? Hör gärna av dig så hjälper vi dig snabbt.
                       </p>
