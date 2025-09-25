@@ -150,7 +150,7 @@ export default function App() {
             <span className="text-center leading-tight" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>
               <span className="hidden sm:inline" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>HEMLEVERANS ERBJUDANDE: Fri frakt över 299kr - </span>
               <span className="underline text-gold font-medium" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 500 }}>
-                <span className="sm:hidden" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 500 }}>LEVERANS IMORGON</span>
+                <span className="sm:hidden" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 500 }}>BESTÄLL IDAG MED LEVERANS IMORGON</span>
                 <span className="hidden sm:inline" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 500 }}>BESTÄLL IDAG MED LEVERANS IMORGON</span>
               </span>
               <span className="hidden sm:inline" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}> HELA VÄSTERÅS OMRÅDET</span>
@@ -364,7 +364,7 @@ export default function App() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 font-body mb-8 md:mb-12 leading-relaxed max-w-3xl mx-auto drop-shadow-lg text-center px-2"
+            className="text-base md:text-lg text-white/95 font-body mb-8 md:mb-12 leading-relaxed max-w-3xl mx-auto drop-shadow-lg text-center px-2"
             style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}
           >
             <span className="block sm:hidden">
@@ -383,7 +383,7 @@ export default function App() {
             className="flex justify-center items-center"
           >
             <motion.button
-              className="btn-raised btn-large rounded-[var(--button-radius)]"
+              className="btn-raised btn-small text-white rounded-[var(--button-radius)]"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
@@ -506,7 +506,7 @@ export default function App() {
                   </motion.div>
                   
                   <div className="text-center">
-                    <h3 className="font-body text-black leading-tight">
+                    <h3 className="font-body text-black leading-tight text-base md:text-lg">
                       {tile.name}
                     </h3>
                   </div>
@@ -765,10 +765,10 @@ export default function App() {
               viewport={{ once: true }}
               className="max-w-4xl mx-auto space-y-6 md:space-y-8"
             >
-              <p className="text-base sm:text-lg md:text-xl text-white font-body font-light leading-relaxed drop-shadow-lg text-center" style={{ fontFamily: 'Lato', fontWeight: 300 }}>
+              <p className="text-base md:text-lg text-white font-body font-light leading-relaxed drop-shadow-lg text-center" style={{ fontFamily: 'Lato', fontWeight: 300 }}>
                 Beställ dina favoriter direkt i mobilen – snabbt, enkelt och smidigt.
               </p>
-              <p className="text-base sm:text-lg md:text-xl text-gray-200 font-body font-light leading-relaxed drop-shadow-lg text-center" style={{ fontFamily: 'Lato', fontWeight: 300 }}>
+              <p className="text-base md:text-lg text-gray-200 font-body font-light leading-relaxed drop-shadow-lg text-center" style={{ fontFamily: 'Lato', fontWeight: 300 }}>
                 Fri hemleverans inom Västerås vid köp över 299 kr. Vi levererar dagligen till dörren med samma kvalitet och fräschör som i vårt bageri.
               </p>
             </motion.div>
@@ -781,7 +781,7 @@ export default function App() {
               className="mt-6 md:mt-8"
             >
               <motion.button
-                className="btn-primary btn-large px-14 py-6 text-xl rounded-[var(--button-radius)]"
+                className="btn-raised btn-small text-white rounded-[var(--button-radius)]"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
