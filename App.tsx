@@ -945,12 +945,12 @@ export default function App() {
             className="text-center mb-12 md:mb-20 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-body font-light text-black leading-tight tracking-tight mb-6 md:mb-8"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-body font-semibold text-black leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato', fontWeight: 300 }}
+              style={{ fontFamily: 'Lato', fontWeight: 600 }}
             >
               Beställ nybakat hem till dörren
             </motion.h2>
@@ -1027,7 +1027,7 @@ export default function App() {
                     className="space-y-6 md:space-y-8"
                   >
                     <div className="space-y-4 md:space-y-6">
-                      <h3 className="text-2xl md:text-3xl font-subheading font-light text-black" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>Kontakta Oss</h3>
+                      <h3 className="text-3xl md:text-4xl font-subheading font-semibold text-black" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 600 }}>Kontakta Oss</h3>
                       <p className="text-warm-gray font-body font-light text-base md:text-lg leading-relaxed" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
                       Har du frågor om din beställning eller vårt sortiment? Hör gärna av dig så hjälper vi dig snabbt.
                       </p>
@@ -1102,8 +1102,8 @@ export default function App() {
             viewport={{ once: true }}
           >
             <div className="text-center md:text-left">
-              <div className="font-heading font-light text-lg md:text-2xl tracking-wide" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>KAMPANJ: Fri hemleverans i Västerås över 299 kr</div>
-              <div className="font-body font-light text-sm md:text-base opacity-90" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>Beställ enkelt i mobilen – smidigt och bekvämt.</div>
+              <div className="font-heading font-semibold text-xl md:text-3xl tracking-wide" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 600 }}>KAMPANJ: Fri hemleverans i Västerås över 299 kr</div>
+              <div className="font-body font-medium text-base md:text-lg opacity-90" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 500 }}>Beställ enkelt i mobilen – smidigt och bekvämt.</div>
             </div>
             <motion.button
               className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg"
