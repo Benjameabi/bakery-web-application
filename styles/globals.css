@@ -405,3 +405,16 @@
 html {
   font-size: var(--font-size);
 }
+
+/* Ensure paragraph text is clearly visible and larger (responsive) */
+@layer base {
+  p {
+    color: var(--black);
+    font-size: clamp(1.143rem, 1rem + 0.8vw, 1.286rem);
+    line-height: 1.75;
+  }
+
+  .dark p {
+    color: var(--foreground);
+  }
+}
