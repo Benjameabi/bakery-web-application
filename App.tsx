@@ -135,7 +135,7 @@ export default function App() {
   // Removed product aggregation and filtering
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-cream/20 to-white">
+    <div className="min-h-screen bg-transparent">
       {/* Top Banner */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}

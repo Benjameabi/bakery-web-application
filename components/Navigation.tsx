@@ -30,9 +30,9 @@ export function Navigation({
       initial={{ opacity: 0, y: -30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className={"relative w-full z-50 bg-transparent lg:absolute lg:left-0 lg:right-0 lg:top-0"}
+      className={"absolute left-0 right-0 top-[40px] md:top-[48px] lg:top-0 z-50 bg-transparent"}
     >
-      <div className="container mx-auto px-3 sm:px-4 md:px-6" style={{ height: isShrunk ? '104px' : '136px', transition: 'height 300ms ease' }}>
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 bg-transparent" style={{ height: isShrunk ? '92px' : '112px', transition: 'height 300ms ease' }}>
         <div className="flex items-center h-full relative">
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
