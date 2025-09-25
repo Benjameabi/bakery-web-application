@@ -383,7 +383,7 @@ export default function App() {
             className="flex justify-center items-center"
           >
             <motion.button
-              className="btn-raised"
+              className="btn-raised btn-large rounded-[var(--button-radius)]"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
@@ -781,7 +781,7 @@ export default function App() {
               className="mt-6 md:mt-8"
             >
               <motion.button
-                className="btn-primary btn-large"
+                className="btn-primary btn-large px-14 py-6 text-xl rounded-[var(--button-radius)]"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}

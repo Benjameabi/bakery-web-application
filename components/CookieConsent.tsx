@@ -47,7 +47,7 @@ export function CookieConsent() {
               </div>
               <motion.button
                 onClick={acceptCookies}
-                className="btn-primary btn-small px-8 py-2 text-sm"
+                className="btn-primary btn-small px-8 py-2 text-sm rounded-[var(--button-radius)]"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
