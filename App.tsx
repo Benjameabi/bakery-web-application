@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { Navigation } from "./components/Navigation";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import { CookieConsent } from "./components/CookieConsent";
-import { heroImages, heroSlideTexts, instagramPosts, contactInfo } from "./lib/constants";
+import { heroImages, heroSlideTexts, lightWidgetSrc, contactInfo } from "./lib/constants";
 import { fadeInUp, fadeIn, staggerContainer, staggerItem } from "./lib/animations";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -837,65 +837,19 @@ export default function App() {
             </motion.p>
           </motion.div>
 
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-12"
-          >
-            {instagramPosts.map((post, index) => (
-              <motion.div 
-                key={index} 
-                variants={staggerItem} 
-                className="relative group cursor-pointer"
-              >
-                <motion.div
-                  className="aspect-square overflow-hidden shadow-lg border border-gold/10"
-                  whileHover={{ scale: 1.01, y: -2 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <ImageWithFallback
-                    src={post.image}
-                    alt={post.caption}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                  >
-                    <div className="text-white text-center p-2 md:p-4">
-                      <motion.div 
-                        className="flex items-center justify-center space-x-3 md:space-x-6 mb-2 md:mb-3"
-                        initial={{ y: 20, opacity: 0 }}
-                        whileHover={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.1 }}
-                      >
-                        <div className="flex items-center space-x-1 md:space-x-2">
-                          <FontAwesomeIcon icon={faHeart} className="text-red-500 text-sm md:text-lg" />
-                          <span className="font-heading font-bold text-sm md:text-base">{post.likes}</span>
-                        </div>
-                        <div className="flex items-center space-x-1 md:space-x-2">
-                          <FontAwesomeIcon icon={faComment} className="text-blue-400 text-sm md:text-lg" />
-                          <span className="font-heading font-bold text-sm md:text-base">{post.comments}</span>
-                        </div>
-                      </motion.div>
-                      <motion.p 
-                        className="text-xs md:text-sm font-body leading-relaxed"
-                        initial={{ y: 20, opacity: 0 }}
-                        whileHover={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                      >
-                        {post.caption}
-                      </motion.p>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </motion.div>
+          <div className="mb-8 md:mb-12">
+            <div className="relative overflow-hidden rounded-xl border border-gold/20 shadow-lg bg-white">
+              <iframe
+                title="Instagram Feed"
+                src={lightWidgetSrc}
+                className="w-full"
+                style={{ border: 0, overflow: 'hidden', width: '100%', height: '100%' }}
+                scrolling="no"
+                loading="lazy"
+                allowTransparency
+              />
+            </div>
+          </div>
 
           <motion.div 
             {...fadeIn}

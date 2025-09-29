@@ -30,57 +30,10 @@ export const heroSlideTexts = [
   }
 ];
 
-// Instagram posts data - using local bakery images
-export const instagramPosts = [
-  {
-    image: "/images/Prinsesstårta.webp",
-    likes: 342,
-    comments: 28,
-    caption: "Färsk Prinsesstårta denna morgon! Den svenska klassikern i all sin prakt 🇸🇪✨ #prinsesstårta #svenskklassiker"
-  },
-  {
-    image: "/images/Kanelknut.webp",
-    likes: 567,
-    comments: 45,
-    caption: "Perfekt Kanelknut för dagens fika ☕️🥐 Bakad på äkta smör och kanel #kanelknut #fika #hantverksbageri"
-  },
-  {
-    image: "/images/Gräddtårta.webp",
-    likes: 289,
-    comments: 19,
-    caption: "Gräddtårta med färska säsongens bär 🍓🫐 Perfekt för alla tillfällen! #gräddtårta #färskabär"
-  },
-  {
-    image: "/images/Aros grova.webp",
-    likes: 412,
-    comments: 32,
-    caption: "Nybakat Aros grova bröd - perfekt till frukost! 🍞 Rikt på smak och näring #arosbröd #nybakat"
-  },
-  {
-    image: "/images/smorgastarta.webp",
-    likes: 234,
-    comments: 15,
-    caption: "Smörgåstårta för alla tillfällen! 🎉 Beställ för fest, kalas eller bara för att unna sig #smörgåstårta #fest"
-  },
-  {
-    image: "/images/Sockerkringla.webp",
-    likes: 445,
-    comments: 38,
-    caption: "Klassisk Sockerkringla - en svensk favorit sedan generationer 🥨✨ #sockerkringla #tradition"
-  },
-  {
-    image: "/images/Surdegsbröd.webp",
-    likes: 623,
-    comments: 52,
-    caption: "Vårt hantverksmässiga surdegsbröd - kärlek i varje skiva 🍞❤️ #surdegsbröd #hantverk #kärlek"
-  },
-  {
-    image: "/images/section-cake.webp",
-    likes: 378,
-    comments: 29,
-    caption: "Bakom kulisserna på Mäster Jacobs - våra bagare arbetar redan från gryningen 👨‍🍳🌅 #bakemkul #gryning"
-  }
-];
+// LightWidget Instagram embed
+// Replace the value below with your LightWidget embed URL from lightwidget.com
+// Example format: "https://lightwidget.com/widgets/xxxxxxxx.html"
+export const lightWidgetSrc = "https://lightwidget.com/widgets/YOUR_WIDGET_ID.html";
 
 // Contact info data
 // Real contact information from Mäster Jacobs API
@@ -98,11 +51,11 @@ export const contactInfo = [
   { 
     icon: "Clock", 
     title: "Öppettider", 
-    content: "Mån-Fre: Beställ före 12:00\nOns: Beställ före 13:00\nLör-Sön: Stängt för beställningar" 
+    content: "Mån - fre\n08:30 - 20:00\nLör - sön\n11:00 - 20:00" 
   },
   { 
     icon: "Mail", 
     title: "E-post", 
-    content: "info@masterjacobs.se\nbeställning@masterjacobs.se" 
+    content: "info@masterjacobs.se" 
   }
 ];
