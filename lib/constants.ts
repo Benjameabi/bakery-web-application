@@ -17,7 +17,7 @@ export const heroSlideTexts = [
   {
     line1: "Bullar, längder & wienerbröd",
     line2: "alltid",
-    accent: "nygräddade.",
+    accent: "nygräddade",
     descriptionMobile: "Bullar, längder & wienerbröd alltid nygräddade. ",
     descriptionDesktop: "Från klassiska kanelbullar till saftiga längder och frasiga wienerbröd, bakade för att njutas varje dag."
   },
