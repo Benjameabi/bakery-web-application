@@ -30,10 +30,7 @@ export const heroSlideTexts = [
   }
 ];
 
-// LightWidget Instagram embed
-// Replace the value below with your LightWidget embed URL from lightwidget.com
-// Example format: "https://lightwidget.com/widgets/xxxxxxxx.html"
-export const lightWidgetSrc = "https://lightwidget.com/widgets/YOUR_WIDGET_ID.html";
+// LightWidget removed per request
 
 // Contact info data
 // Real contact information from Mäster Jacobs API

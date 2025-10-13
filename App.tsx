@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { Navigation } from "./components/Navigation";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import { CookieConsent } from "./components/CookieConsent";
-import { heroImages, heroSlideTexts, lightWidgetSrc, contactInfo } from "./lib/constants";
+import { heroImages, heroSlideTexts, contactInfo } from "./lib/constants";
 import { fadeInUp, fadeIn, staggerContainer, staggerItem } from "./lib/animations";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -1067,95 +1067,7 @@ export default function App() {
       </div>
     </section>
 
-      {/* 7. Instagram Feed Section - Följ oss */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-white via-cream/10 to-white relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
-          {/* Section Header */}
-          <motion.div
-            {...fadeInUp}
-            viewport={{ once: true }}
-            className="text-center mb-12 md:mb-20 max-w-4xl mx-auto relative z-10"
-          >
-            <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-black leading-tight tracking-tight mb-6 md:mb-8"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-              style={{ fontFamily: 'Lato sans-serif' }}
-            >
-              Se våra hantverk och inspireras!
-            </motion.h2>
-            <motion.p
-              className="text-base md:text-lg text-gray-600 font-body leading-relaxed max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              viewport={{ once: true }}
-              style={{ fontFamily: 'Lato sans-serif' }}
-            >
-              Se vad som är färskt ur våra ugnar dagligen och bli en del av vår gemenskap av bakentusiaster.
-            </motion.p>
-          </motion.div>
-
-          {/* Instagram Feed / Gallery */}
-          <div className="mb-12 md:mb-16 relative z-10">
-            <div className="relative overflow-hidden rounded-2xl border border-gold/20 shadow-2xl bg-white">
-              <iframe
-                title="Instagram Feed"
-                src={lightWidgetSrc}
-                className="w-full h-[500px] md:h-[600px] lg:h-[700px]"
-                style={{ border: 0, overflow: 'hidden', width: '100%', height: '100%' }}
-                scrolling="no"
-                loading="lazy"
-                allowTransparency
-              />
-              {/* Overlay for subtle depth */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-transparent pointer-events-none"></div>
-            </div>
-          </div>
-
-          {/* Social Buttons */}
-          <motion.div
-            {...fadeIn}
-            viewport={{ once: true }}
-            className="flex justify-center items-center space-x-6 md:space-x-8 relative z-10"
-          >
-            <motion.a
-              href="https://www.instagram.com/masterjacobsbageriochkonditori?igsh=aGxtcnJnbnF4Mmpu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-white hover:bg-gradient-to-br hover:from-pink-500 hover:to-purple-600 text-gray-800 hover:text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 border-2 border-gray-200 hover:border-transparent"
-              whileHover={{ scale: 1.15, y: -4 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FontAwesomeIcon icon={faInstagram} className="text-3xl md:text-4xl transition-colors duration-300" />
-            </motion.a>
-            <motion.a
-              href="https://facebook.com/masterjacobsbageri"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-white hover:bg-blue-600 text-gray-800 hover:text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 border-2 border-gray-200 hover:border-transparent"
-              whileHover={{ scale: 1.15, y: -4 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FontAwesomeIcon icon={faFacebookF} className="text-3xl md:text-4xl transition-colors duration-300" />
-            </motion.a>
-          </motion.div>
-
-          {/* Floating Decorative Shapes */}
-          <motion.div
-            className="absolute top-0 left-1/4 w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-gold/20 to-transparent rounded-full blur-2xl hidden md:block"
-            animate={{ y: [0, -15, 0], rotate: [0, 15, 0] }}
-            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <motion.div
-            className="absolute bottom-10 right-1/3 w-20 h-20 md:w-28 md:h-28 bg-gradient-to-br from-cream/30 to-transparent rounded-full blur-2xl hidden md:block"
-            animate={{ y: [0, 20, 0], rotate: [0, -15, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          />
-        </div>
-      </section>
+      {/* 7. Instagram Feed Section - Följ oss (removed LightWidget embed per request) */}
 
 
       {/* 8. Contact Section - Hitta Oss */}
