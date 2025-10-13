@@ -550,7 +550,7 @@ export default function App() {
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto"
+            className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6 max-w-5xl mx-auto"
           >
             {favoriteCategoryTiles.map((tile, index) => (
               <motion.div 
@@ -597,8 +597,8 @@ export default function App() {
                     </motion.div>
                   </motion.div>
                   
-                  <div className="text-center">
-                    <h3 className="font-body text-black leading-tight text-base md:text-lg"
+                  <div className="text-center bg-white p-4 md:p-5 border border-gold/10">
+                    <h3 className="font-body text-black leading-tight text-sm sm:text-base md:text-lg"
                         style={{ fontFamily: 'Lato', fontWeight: 400 }}>
                       {tile.name}
                     </h3>
@@ -992,13 +992,13 @@ export default function App() {
           <div className="hidden sm:block flex-1 max-w-[160px] h-px bg-gray-300"></div>
         </div>
 
-        {/* Posts Grid 3x3 */}
+        {/* Posts Grid 3x3 (2 columns on mobile) */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+          className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6"
         >
           {displayedPosts.map((post) => (
             <motion.a
@@ -1020,7 +1020,7 @@ export default function App() {
                 decoding="async"
               />
               {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center p-4">
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 lg:flex hidden items-center justify-center p-4 transition duration-500">
                 <p className="text-white text-center text-sm md:text-base leading-relaxed">
                   {post.text}
                 </p>
