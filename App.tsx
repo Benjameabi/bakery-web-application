@@ -6,7 +6,6 @@ import { CookieConsent } from "./components/CookieConsent";
 import { heroImages, heroSlideTexts, contactInfo } from "./lib/constants";
 import { fadeInUp, fadeIn, staggerContainer, staggerItem } from "./lib/animations";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faInstagram } from '@fortawesome/free-brands-svg-icons';
 // import { FaInstagram } from "react-icons/fa";
 import { faHeart, faComment, faLocationDot, faPhone, faClock, faEnvelope, faStar, faArrowRight, faXmark } from '@fortawesome/free-solid-svg-icons';
@@ -111,15 +110,8 @@ export default function App() {
 
   //   fetchInstagramPosts();
   // }, []);
-  const [page, setPage] = useState(0);
-  const postsPerPage = 9;
-  const totalPages = Math.ceil(instagramPosts.length / postsPerPage);
-
-  const startIndex = page * postsPerPage;
-  const displayedPosts = instagramPosts.slice(startIndex, startIndex + postsPerPage);
-
-  const nextPage = () => page < totalPages - 1 && setPage(page + 1);
-  const prevPage = () => page > 0 && setPage(page - 1);
+  // Instagram grid: fixed 9 items (3x3), no pagination
+  const displayedPosts = instagramPosts.slice(0, 9);
 
   const slideText = heroSlideTexts[currentSlide] || {
     line1: "Bakverk som",
@@ -979,36 +971,25 @@ export default function App() {
     </section> */}
     <section className="py-12 bg-white">
       <div className="container mx-auto px-4 md:px-6">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-8">
+        {/* Header centered with flanking lines */}
+        <div className="flex items-center justify-center mb-8">
+          <div className="hidden sm:block flex-1 max-w-[160px] h-px bg-gray-300"></div>
           <h2
-            className="text-2xl md:text-3xl font-light tracking-tight"
+            className="mx-4 text-center tracking-wide text-gray-900 text-sm sm:text-base md:text-lg font-medium"
             style={{ fontFamily: "Lato, sans-serif" }}
           >
-            Följ oss på{" "}
-            <span className="font-semibold text-[#D0B05D]">Instagram</span>
+            FÖLJ OSS PÅ INSTAGRAM
           </h2>
-          <a
-            href="https://www.instagram.com/masterjacobsbageriochkonditori/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center space-x-2 text-[#D0B05D] hover:text-black transition"
-          >
-            <FontAwesomeIcon
-              icon={faInstagram}
-              className="text-3xl md:text-4xl transition-colors duration-300"
-            />
-            <span className="font-medium hidden md:inline">Se fler inlägg</span>
-          </a>
+          <div className="hidden sm:block flex-1 max-w-[160px] h-px bg-gray-300"></div>
         </div>
 
-        {/* Posts Grid */}
+        {/* Posts Grid 3x3 */}
         <motion.div
-          key={page}
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
         >
           {displayedPosts.map((post) => (
             <motion.a
@@ -1016,7 +997,7 @@ export default function App() {
               key={post.id}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer"
+              className="group relative overflow-hidden cursor-pointer"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -1025,10 +1006,10 @@ export default function App() {
               <img
                 src={post.image}
                 alt={`Instagram post ${post.id}`}
-                className="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500"
+                className="w-full aspect-square object-cover transform group-hover:scale-105 transition duration-500"
               />
               {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center p-4">
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center p-4">
                 <p className="text-white text-center text-sm md:text-base leading-relaxed">
                   {post.text}
                 </p>
@@ -1036,34 +1017,6 @@ export default function App() {
             </motion.a>
           ))}
         </motion.div>
-
-        {/* Navigation */}
-        {totalPages > 1 && (
-          <div className="flex justify-center items-center mt-10 gap-6">
-            <button
-              onClick={prevPage}
-              disabled={page === 0}
-              className={`p-3 rounded-full bg-[#D0B05D] text-white hover:bg-black transition-all ${
-                page === 0 ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-            >
-              <FontAwesomeIcon icon={faChevronLeft} className="w-6 h-6" />
-            </button>
-            <p className="text-sm text-gray-600"
-              style={{ fontFamily: 'Lato sans-serif' }}>
-              Sida {page + 1} av {totalPages}
-            </p>
-            <button
-              onClick={nextPage}
-              disabled={page === totalPages - 1}
-              className={`p-3 rounded-full bg-[#D0B05D] text-white hover:bg-black transition-all ${
-                page === totalPages - 1 ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-            >
-              <FontAwesomeIcon icon={faChevronRight} className="w-6 h-6" />
-            </button>
-          </div>
-        )}
       </div>
     </section>
 
