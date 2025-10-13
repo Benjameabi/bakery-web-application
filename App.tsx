@@ -1016,6 +1016,8 @@ export default function App() {
                 src={post.image}
                 alt={`Instagram post ${post.id}`}
                 className="w-full aspect-square object-cover transform group-hover:scale-105 transition duration-500"
+                loading="lazy"
+                decoding="async"
               />
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center p-4">
