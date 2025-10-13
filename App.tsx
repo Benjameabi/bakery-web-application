@@ -360,8 +360,8 @@ export default function App() {
             >
               <p className="text-sm font-body text-warm-gray mb-6 font-semibold">Följ oss på sociala medier</p>
               <div className="flex space-x-4">
-              <motion.a 
-                  href="https://www.instagram.com/masterjacobsbageriochkonditori?igsh=aGxtcnJnbnF4Mmpu" 
+            <motion.a 
+                  href="https://www.instagram.com/masterjacobsbageriochkonditori/?utm_source=site" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-gold to-yellow-600 hover:from-yellow-600 hover:to-gold text-black transition-all duration-300 rounded-xl shadow-lg"
@@ -1040,7 +1040,7 @@ export default function App() {
             className="flex justify-center items-center space-x-6 md:space-x-8"
           >
             <motion.a
-              href="https://www.instagram.com/masterjacobsbageriochkonditori?igsh=aGxtcnJnbnF4Mmpu"
+              href="https://www.instagram.com/masterjacobsbageriochkonditori/?utm_source=site"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-white hover:bg-gradient-to-br hover:from-pink-500 hover:to-purple-600 text-gray-800 hover:text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-200 hover:border-transparent"
