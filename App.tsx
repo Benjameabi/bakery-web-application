@@ -6,7 +6,9 @@ import { CookieConsent } from "./components/CookieConsent";
 import { heroImages, heroSlideTexts, lightWidgetSrc, contactInfo } from "./lib/constants";
 import { fadeInUp, fadeIn, staggerContainer, staggerItem } from "./lib/animations";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faInstagram } from '@fortawesome/free-brands-svg-icons';
+// import { FaInstagram } from "react-icons/fa";
 import { faHeart, faComment, faLocationDot, faPhone, faClock, faEnvelope, faStar, faArrowRight, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 // Import logo
@@ -23,12 +25,101 @@ const EXTERNAL_URLS = {
   bakeryInfo: "https://mybakery.cakeiteasy.se/api/store/info"
 };
 
+const instagramPosts = [
+  {
+    id: 1,
+    image: "public/images/posts/post-1.jpg",
+    text: "Nu kan vi inte hålla oss längre – imorgon hittar ni dessa godbitar!",
+    link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DHYL_bKt_td/",
+  },
+  {
+    id: 2,
+    image: "public/images/posts/post-2.jpg",
+    text: "Chokladbakelser fyllda med kärlek och magi 🍫✨",
+    link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DHJKpNPtlvt/",
+  },
+  {
+    id: 3,
+    image: "public/images/posts/post-3.jpg",
+    text: "Färgglada tårtor som passar alla kalas 🎉🎂",
+    link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DHYL_bKt_td/",
+  },
+  {
+    id: 4,
+    image: "public/images/posts/post-4.jpg",
+    text: "En liten bit av lycka i varje tårtbit 🌈🍰",
+    link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DICgYWMNsHp/",
+  },
+  {
+    id: 5,
+    image: "public/images/posts/post-5.jpg",
+    text: "Vår passion för bakverk – direkt till ditt bord 🥐❤️",
+    link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DHxdNtZtsB6/",
+  },
+  {
+    id: 6,
+    image: "public/images/posts/post-6.jpg",
+    text: "Tårtor som gör varje dag lite sötare 🍰✨",
+    link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DHLf0ObtN16/",
+  },
+  {
+    id: 7,
+    image: "public/images/posts/post-7.jpg",
+    text: "Små konstverk gjorda av choklad och kärlek 🍫🎨",
+    link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DHF1JpqtU9v/",
+  },
+  {
+    id: 8,
+    image: "public/images/posts/post-8.jpg",
+    text: "Skapa minnen med våra färgglada bakverk 🌸🎂",
+    link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DHA1iEztkEk/",
+  },
+  {
+    id: 9,
+    image: "public/images/posts/post-9.jpg",
+    text: "En fest för ögonen och smaklökarna 🎉🍰",
+    link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DGfV7iYtz6D/",
+  },
+  {
+    id: 10,
+    image: "public/images/posts/post-10.jpg",
+    text: "Njut av våra bakverk som sprider glädje i varje tugga 😍🍪",
+    link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DGdxRNmNzu-/",
+  },
+];
+
 
 export default function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [favoriteCategoryTiles, setFavoriteCategoryTiles] = useState<{ id: string; name: string; image: string }[]>([]);
+  // const [posts, setPosts] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchInstagramPosts : any = async () => {
+  //     try {
+  //       const res = await fetch(
+  //         `https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink&access_token=YOUR_ACCESS_TOKEN`
+  //       );
+  //       const data = await res.json() as any;
+  //       setPosts(data.data || []);
+  //     } catch (error) {
+  //       console.error("Error fetching Instagram posts:", error);
+  //     }
+  //   };
+
+  //   fetchInstagramPosts();
+  // }, []);
+  const [page, setPage] = useState(0);
+  const postsPerPage = 9;
+  const totalPages = Math.ceil(instagramPosts.length / postsPerPage);
+
+  const startIndex = page * postsPerPage;
+  const displayedPosts = instagramPosts.slice(startIndex, startIndex + postsPerPage);
+
+  const nextPage = () => page < totalPages - 1 && setPage(page + 1);
+  const prevPage = () => page > 0 && setPage(page - 1);
 
   const slideText = heroSlideTexts[currentSlide] || {
     line1: "Bakverk som",
@@ -354,9 +445,9 @@ export default function App() {
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold text-white mb-6 md:mb-8 leading-tight drop-shadow-2xl text-center"
             style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}
           >
-            <span className="block text-4xl sm:text-5xl md:text-6xl">{slideText.line1}</span>
-            <span className="block text-4xl sm:text-5xl md:text-6xl">{slideText.line2}</span>{" "}
-            <span className="text-gold font-extrabold drop-shadow-lg text-5xl sm:text-6xl md:text-7xl">{slideText.accent}</span>
+            <span className="block text-3xl sm:text-4xl md:text-5xl" style={{ fontFamily: 'Lato, sans-serif' }}>{slideText.line1}</span>
+            <span className="block text-3xl sm:text-4xl md:text-5xl" style={{ fontFamily: 'Lato, sans-serif' }}>{slideText.line2}</span>{" "}
+            <span className="text-gold font-extrabold drop-shadow-lg text-4xl sm:text-5xl md:text-6xl" style={{ fontFamily: 'Lato, sans-serif' }}>{slideText.accent}</span>
           </motion.h1>
 
           {/* Description */}
@@ -431,7 +522,7 @@ export default function App() {
             className="text-center mb-16 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight tracking-tight mb-6 md:mb-8 drop-shadow-lg"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-black leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
@@ -496,7 +587,8 @@ export default function App() {
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
-                          <span className="font-body font-medium text-black text-sm flex items-center space-x-2">
+                          <span className="font-body font-medium text-black text-sm flex items-center space-x-2"
+                                style={{ fontFamily: 'Lato', fontWeight: 400 }}>
                             <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
                             <span>Visa</span>
                           </span>
@@ -506,7 +598,8 @@ export default function App() {
                   </motion.div>
                   
                   <div className="text-center">
-                    <h3 className="font-body text-black leading-tight text-base md:text-lg">
+                    <h3 className="font-body text-black leading-tight text-base md:text-lg"
+                        style={{ fontFamily: 'Lato', fontWeight: 400 }}>
                       {tile.name}
                     </h3>
                   </div>
@@ -562,7 +655,8 @@ export default function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             viewport={{ once: true }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-4 md:mb-6 leading-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white mb-4 md:mb-6 leading-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+            style={{ fontFamily: 'Lato', fontWeight: 400 }}
           >
             Hantverks bageri & konditori <br className="hidden sm:block"/> i Västerås sedan 1982
           </motion.h2>
@@ -574,6 +668,7 @@ export default function App() {
             transition={{ duration: 0.8, delay: 0.9 }}
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl font-light text-white leading-relaxed drop-shadow-xl"
+            style={{ fontFamily: 'Lato sans-serif', fontWeight: 400 }}
           >
             Våra skickliga bagare arbetar med traditionella metoder för att skapa bakverk av högsta kvalitet.
           </motion.p>
@@ -589,6 +684,7 @@ export default function App() {
             <a
               href="#favorites"
               className="inline-block uppercase px-8 py-4 text-lg font-semibold bg-gradient-to-r from-gold to-yellow-500 text-black rounded-full shadow-lg hover:scale-105 hover:shadow-2xl transition-transform duration-300"
+              style={{ fontFamily: 'Lato sans-serif', fontWeight: 400 }}
             >
               Utforska våra bakverk
             </a>
@@ -626,12 +722,12 @@ export default function App() {
           {/* Section Heading */}
           <div className="text-center max-w-5xl mx-auto mb-16 md:mb-20">
             <motion.h2 
-              className="text-3xl font-black sm:text-4xl md:text-5xl lg:text-6xl text-black leading-tight tracking-tight mb-6 md:mb-8"
+              className="text-2xl font-light sm:text-3xl md:text-4xl lg:text-5xl text-black leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato' }}
+              style={{ fontFamily: 'Lato sans-serif' }}
             >
               Vår Historia
             </motion.h2>
@@ -643,16 +739,20 @@ export default function App() {
               transition={{ duration: 1, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <p className="text-justify">
+              <p className="text-justify"
+                  style={{ fontFamily: 'Lato sans-serif' }}>
                 I över 40 år har Mäster Jacobs bageri & konditori bakat och levererat det finaste hantverksbrödet och traditionella svenska bakverk.
               </p>
-              <p className="text-justify">
+              <p className="text-justify"
+                  style={{ fontFamily: 'Lato sans-serif' }}>
                 Det började som ett litet familjeföretag i Skultuna, på Mäster Jacobs väg. Redan 2 år senare var det dags att bygga ut och flytta in till "stan" sedan dess har vi funnits i Västerås och du hittar oss på Pettersbergsgatan 37.
               </p>
-              <p className="text-justify">
+              <p className="text-justify"
+                  style={{ fontFamily: 'Lato sans-serif' }}>
                 Härifrån levererar vi dagligen, 7 dagar i veckan till hotell, caféer, restaurang, företag och privatpersoner.
               </p>
-              <p className="text-justify">
+              <p className="text-justify"
+                  style={{ fontFamily: 'Lato sans-serif' }}>
                 Numer kan även du med några enkla knappval lägga din beställning idag och få leverans imorgon. Vårt signum är svenska klassiker!
               </p>
             </motion.div>
@@ -795,8 +895,8 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               viewport={{ once: true }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 md:mb-8 drop-shadow-2xl leading-tight"
-              style={{ fontFamily: 'Lato' }}
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6 md:mb-8 drop-shadow-2xl leading-tight"
+              style={{ fontFamily: 'Lato sans-serif' }}
             >
               Fri hemleverans i Västerås – över 299 kr
             </motion.h2>
@@ -808,11 +908,14 @@ export default function App() {
               transition={{ duration: 0.8, delay: 0.8 }}
               viewport={{ once: true }}
               className="max-w-3xl mx-auto space-y-4 md:space-y-6 text-base md:text-lg lg:text-xl text-white/90 leading-relaxed text-justify backdrop-blur-sm bg-black/20 p-6 rounded-2xl shadow-lg"
+              style={{ fontFamily: 'Lato sans-serif' }}
             >
-              <p className="text-white">
+              <p className="text-white"
+                  style={{ fontFamily: 'Lato sans-serif' }}>
                 Beställ dina favoriter direkt i mobilen – snabbt, enkelt och smidigt.
               </p>
-              <p className="text-white">
+              <p className="text-white"
+                  style={{ fontFamily: 'Lato sans-serif' }}>
                 Fri hemleverans inom Västerås vid köp över 299 kr. Vi levererar dagligen till dörren med samma kvalitet och fräschör som i vårt bageri.
               </p>
             </motion.div>
@@ -830,17 +933,139 @@ export default function App() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
+                style={{ fontFamily: 'Lato sans-serif' }}
               >
                 Beställ idag
               </motion.button>
-              <div className="text-white/90 font-body mt-3 md:mt-4 text-sm md:text-base">Leverans imorgon</div>
+              <div className="text-white/90 font-body mt-3 md:mt-4 text-sm md:text-base"
+                    style={{ fontFamily: 'Lato sans-serif' }}>Leverans imorgon</div>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
+    {/* <section className="py-12 bg-[#0f172a] text-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex items-center justify-center gap-3 mb-10">
+          <FontAwesomeIcon icon={faInstagram} className="text-3xl md:text-4xl transition-colors duration-300" />
+          <h2 className="text-3xl font-bold uppercase tracking-wide">
+            Follow us on Instagram
+          </h2>
+        </div>
 
-      
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.slice(0, 6).map((post) => (
+            <a
+              key={post.id}
+              href={post.permalink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer"
+            >
+              <img
+                src={post.media_url}
+                alt={post.caption || "Instagram post"}
+                className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-center p-4">
+                <p className="text-white text-sm md:text-base">
+                  {post.caption?.slice(0, 100) || "View post"}…
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section> */}
+    <section className="py-12 bg-white">
+      <div className="container mx-auto px-4 md:px-6">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-8">
+          <h2
+            className="text-2xl md:text-3xl font-light tracking-tight"
+            style={{ fontFamily: "Lato, sans-serif" }}
+          >
+            Följ oss på{" "}
+            <span className="font-semibold text-[#D0B05D]">Instagram</span>
+          </h2>
+          <a
+            href="https://www.instagram.com/masterjacobsbageriochkonditori/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 text-[#D0B05D] hover:text-black transition"
+          >
+            <FontAwesomeIcon
+              icon={faInstagram}
+              className="text-3xl md:text-4xl transition-colors duration-300"
+            />
+            <span className="font-medium hidden md:inline">Se fler inlägg</span>
+          </a>
+        </div>
+
+        {/* Posts Grid */}
+        <motion.div
+          key={page}
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {displayedPosts.map((post) => (
+            <motion.a
+              href={post.link}
+              key={post.id}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <img
+                src={post.image}
+                alt={`Instagram post ${post.id}`}
+                className="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500"
+              />
+              {/* Hover Overlay */}
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center p-4">
+                <p className="text-white text-center text-sm md:text-base leading-relaxed">
+                  {post.text}
+                </p>
+              </div>
+            </motion.a>
+          ))}
+        </motion.div>
+
+        {/* Navigation */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center mt-10 gap-6">
+            <button
+              onClick={prevPage}
+              disabled={page === 0}
+              className={`p-3 rounded-full bg-[#D0B05D] text-white hover:bg-black transition-all ${
+                page === 0 ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              <FontAwesomeIcon icon={faChevronLeft} className="w-6 h-6" />
+            </button>
+            <p className="text-sm text-gray-600"
+              style={{ fontFamily: 'Lato sans-serif' }}>
+              Sida {page + 1} av {totalPages}
+            </p>
+            <button
+              onClick={nextPage}
+              disabled={page === totalPages - 1}
+              className={`p-3 rounded-full bg-[#D0B05D] text-white hover:bg-black transition-all ${
+                page === totalPages - 1 ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              <FontAwesomeIcon icon={faChevronRight} className="w-6 h-6" />
+            </button>
+          </div>
+        )}
+      </div>
+    </section>
 
       {/* 7. Instagram Feed Section - Följ oss */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-white via-cream/10 to-white relative overflow-hidden">
@@ -852,12 +1077,12 @@ export default function App() {
             className="text-center mb-12 md:mb-20 max-w-4xl mx-auto relative z-10"
           >
             <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight tracking-tight mb-6 md:mb-8 drop-shadow-lg"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-black leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato' }}
+              style={{ fontFamily: 'Lato sans-serif' }}
             >
               Se våra hantverk och inspireras!
             </motion.h2>
@@ -867,7 +1092,7 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato' }}
+              style={{ fontFamily: 'Lato sans-serif' }}
             >
               Se vad som är färskt ur våra ugnar dagligen och bli en del av vår gemenskap av bakentusiaster.
             </motion.p>
@@ -958,7 +1183,7 @@ export default function App() {
             className="text-center mb-16 md:mb-24 max-w-4xl mx-auto"
           >
             <motion.h2
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-gray-900 leading-tight tracking-tight mb-6 md:mb-8"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
@@ -1027,13 +1252,13 @@ export default function App() {
               <div>
                 <h3
                   className="text-3xl md:text-4xl font-light text-gray-900 mb-3"
-                  style={{ fontFamily: "Lato, sans-serif", fontWeight: 300 }}
+                  style={{ fontFamily: "Lato, sans-serif"}}
                 >
                   Kontakta <span className="text-gold font-medium">Oss</span>
                 </h3>
                 <p
                   className="text-gray-600 text-base md:text-lg leading-relaxed"
-                  style={{ fontFamily: "Lato, sans-serif", fontWeight: 300 }}
+                  style={{ fontFamily: "Lato, sans-serif"}}
                 >
                   Har du frågor om din beställning eller vårt sortiment? Hör gärna av dig — vi hjälper dig snabbt.
                 </p>
@@ -1058,7 +1283,7 @@ export default function App() {
                         </h4>
                         <p
                           className="text-gray-600 text-sm leading-relaxed whitespace-pre-line"
-                          style={{ fontFamily: "Lato, sans-serif", fontWeight: 300 }}
+                          style={{ fontFamily: "Lato, sans-serif"}}
                         >
                           {item.content}
                         </p>
@@ -1092,9 +1317,6 @@ export default function App() {
         </div>
       </section>
 
-
-
-
       {/* Promotion Banner above Footer */}
       <section className="py-8 md:py-10 bg-gradient-to-r from-[#D0B05D] via-[#E3C56C] to-[#D0B05D] text-black">
         <div className="container mx-auto px-4 md:px-6">
@@ -1106,10 +1328,10 @@ export default function App() {
             viewport={{ once: true }}
           >
             <div className="text-center md:text-left space-y-1">
-              <div className="font-heading font-light text-2xl md:text-3xl tracking-wide drop-shadow-sm" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
+              <div className="font-heading font-light text-2xl md:text-3xl tracking-wide drop-shadow-sm" style={{ fontFamily: 'Lato, sans-serif' }}>
                 KAMPANJ: Fri hemleverans i Västerås över 299 kr
               </div>
-              <div className="font-body font-light text-base md:text-lg opacity-90 drop-shadow-sm" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
+              <div className="font-body font-light text-base md:text-lg opacity-90 drop-shadow-sm" style={{ fontFamily: 'Lato, sans-serif'}}>
                 Beställ enkelt i mobilen – smidigt och bekvämt.
               </div>
             </div>
