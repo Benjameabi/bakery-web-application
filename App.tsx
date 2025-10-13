@@ -1017,6 +1017,39 @@ export default function App() {
             </motion.a>
           ))}
         </motion.div>
+
+        {/* Below grid: text and social media icons */}
+        <div className="mt-8 md:mt-10 text-center">
+          <p className="text-sm md:text-base text-gray-600 mb-4" style={{ fontFamily: 'Lato, sans-serif' }}>
+            Se fler inlägg och följ oss
+          </p>
+          <motion.div
+            {...fadeIn}
+            viewport={{ once: true }}
+            className="flex justify-center items-center space-x-6 md:space-x-8"
+          >
+            <motion.a
+              href="https://www.instagram.com/masterjacobsbageriochkonditori?igsh=aGxtcnJnbnF4Mmpu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-white hover:bg-gradient-to-br hover:from-pink-500 hover:to-purple-600 text-gray-800 hover:text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-200 hover:border-transparent"
+              whileHover={{ scale: 1.1, y: -3 }}
+              whileTap={{ scale: 0.96 }}
+            >
+              <FontAwesomeIcon icon={faInstagram} className="text-2xl md:text-3xl transition-colors duration-300" />
+            </motion.a>
+            <motion.a
+              href="https://facebook.com/masterjacobsbageri"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-white hover:bg-blue-600 text-gray-800 hover:text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-200 hover:border-transparent"
+              whileHover={{ scale: 1.1, y: -3 }}
+              whileTap={{ scale: 0.96 }}
+            >
+              <FontAwesomeIcon icon={faFacebookF} className="text-2xl md:text-3xl transition-colors duration-300" />
+            </motion.a>
+          </motion.div>
+        </div>
       </div>
     </section>
 
