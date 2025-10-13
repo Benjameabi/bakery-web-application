@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 const logoHorizontalInverse = "/images/logos/horizontal/Horizontal Logo inverse color lockup.svg";
 const logoStackedInverse = "/images/logos/stacked/Stacked Logo inverse color lockup.svg";
+const WEBBSHOP_URL = "https://mybakery.cakeiteasy.se/";
 
 interface NavigationProps {
   setIsMobileMenuOpen: (open: boolean) => void;
@@ -41,6 +42,9 @@ export function Navigation({
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsMobileMenuOpen(true)}
               className={"p-2 rounded-xl transition-all duration-300 text-white hover:text-gold hover:bg-white/10"}
+              aria-label="Öppna meny"
+              aria-controls="mobile-menu"
+              aria-expanded={false}
             >
               <FontAwesomeIcon icon={faBars} className="w-5 h-5" />
             </motion.button>
@@ -51,11 +55,11 @@ export function Navigation({
             {[
               { name: 'Vår butik', href: '#contact', external: false },
               { name: 'Kontakta oss', href: '#contact', external: false },
-              { name: 'Webbshop', href: "", external: true, onClick: onWebbshopClick }
+              { name: 'Webbshop', href: WEBBSHOP_URL, external: true, onClick: onWebbshopClick }
             ].map((item, index) => (
               <motion.a
                 key={item.name}
-                href={item.external ? undefined : item.href}
+                href={item.href}
                 onClick={item.external ? item.onClick : undefined}
                 className={"font-body text-white hover:text-gold transition-all duration-300 relative group cursor-pointer"}
                 style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300, fontSize: '18px', lineHeight: '28px' }}
@@ -63,6 +67,7 @@ export function Navigation({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + index * 0.1 }}
+                aria-label={item.name}
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
@@ -119,6 +124,9 @@ export function Navigation({
             <motion.div 
               className="flex items-center cursor-pointer group relative"
               onClick={onSearchClick}
+              role="button"
+              tabIndex={0}
+              aria-label="Sök produkter"
               whileHover={{ y: -2, scale: 1.02 }}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -135,6 +143,9 @@ export function Navigation({
             <motion.div 
               className="flex items-center space-x-2 cursor-pointer group relative"
               onClick={onCartClick}
+              role="button"
+              tabIndex={0}
+              aria-label="Öppna varukorg"
               whileHover={{ y: -2, scale: 1.02 }}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}

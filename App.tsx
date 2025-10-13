@@ -298,6 +298,7 @@ export default function App() {
                 fontSize: '15px', 
                 lineHeight: '26px' 
               }}
+              aria-label="Stäng meny"
             >
               <FontAwesomeIcon icon={faXmark} className="w-6 h-6" />
             </motion.button>
@@ -419,13 +420,16 @@ export default function App() {
             <motion.button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`transition-all duration-500 rounded-full ${
+              className={`transition-all duration-500 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 ${
                 index === currentSlide 
-                  ? 'w-8 md:w-12 h-2 md:h-3 bg-white shadow-lg' 
-                  : 'w-2 md:w-3 h-2 md:h-3 bg-white/60 hover:bg-white/80'
+                  ? 'w-3.5 md:w-4 h-3.5 md:h-4 bg-white shadow-lg' 
+                  : 'w-3 md:w-3.5 h-3 md:h-3.5 bg-white/60 hover:bg-white/80'
               }`}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
+              aria-label={`Gå till bild ${index + 1}`}
+              aria-pressed={index === currentSlide}
+              title={`Gå till bild ${index + 1}`}
             />
           ))}
         </div>
