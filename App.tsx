@@ -27,61 +27,61 @@ const EXTERNAL_URLS = {
 const instagramPosts = [
   {
     id: 1,
-    image: "public/images/posts/post-1.jpg",
+    image: "/images/posts/post-1.jpg",
     text: "Nu kan vi inte hålla oss längre – imorgon hittar ni dessa godbitar!",
     link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DHYL_bKt_td/",
   },
   {
     id: 2,
-    image: "public/images/posts/post-2.jpg",
+    image: "/images/posts/post-2.jpg",
     text: "Chokladbakelser fyllda med kärlek och magi 🍫✨",
     link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DHJKpNPtlvt/",
   },
   {
     id: 3,
-    image: "public/images/posts/post-3.jpg",
+    image: "/images/posts/post-3.jpg",
     text: "Färgglada tårtor som passar alla kalas 🎉🎂",
     link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DHYL_bKt_td/",
   },
   {
     id: 4,
-    image: "public/images/posts/post-4.jpg",
+    image: "/images/posts/post-4.jpg",
     text: "En liten bit av lycka i varje tårtbit 🌈🍰",
     link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DICgYWMNsHp/",
   },
   {
     id: 5,
-    image: "public/images/posts/post-5.jpg",
+    image: "/images/posts/post-5.jpg",
     text: "Vår passion för bakverk – direkt till ditt bord 🥐❤️",
     link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DHxdNtZtsB6/",
   },
   {
     id: 6,
-    image: "public/images/posts/post-6.jpg",
+    image: "/images/posts/post-6.jpg",
     text: "Tårtor som gör varje dag lite sötare 🍰✨",
     link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DHLf0ObtN16/",
   },
   {
     id: 7,
-    image: "public/images/posts/post-7.jpg",
+    image: "/images/posts/post-7.jpg",
     text: "Små konstverk gjorda av choklad och kärlek 🍫🎨",
     link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DHF1JpqtU9v/",
   },
   {
     id: 8,
-    image: "public/images/posts/post-8.jpg",
+    image: "/images/posts/post-8.jpg",
     text: "Skapa minnen med våra färgglada bakverk 🌸🎂",
     link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DHA1iEztkEk/",
   },
   {
     id: 9,
-    image: "public/images/posts/post-9.jpg",
+    image: "/images/posts/post-9.jpg",
     text: "En fest för ögonen och smaklökarna 🎉🍰",
     link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DGfV7iYtz6D/",
   },
   {
     id: 10,
-    image: "public/images/posts/post-10.jpg",
+    image: "/images/posts/post-10.jpg",
     text: "Njut av våra bakverk som sprider glädje i varje tugga 😍🍪",
     link: "https://www.instagram.com/masterjacobsbageriochkonditori/reel/DGdxRNmNzu-/",
   },
@@ -314,7 +314,7 @@ export default function App() {
             ].map((item, index) => (
               <motion.a
                 key={item.name}
-                href={item.external ? undefined : item.href}
+                href={item.href}
                 onClick={item.external ? () => {
                   handleExternalRedirect(item.href);
                   closeMobileMenu();
@@ -325,6 +325,7 @@ export default function App() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 + index * 0.1 }}
                 whileHover={{ x: 8 }}
+                aria-label={item.name}
               >
                 {item.name}
               </motion.a>
@@ -358,11 +359,12 @@ export default function App() {
             >
               <p className="text-sm font-body text-warm-gray mb-6 font-semibold">Följ oss på sociala medier</p>
               <div className="flex space-x-4">
-                <motion.a 
+              <motion.a 
                   href="https://www.instagram.com/masterjacobsbageriochkonditori?igsh=aGxtcnJnbnF4Mmpu" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-gold to-yellow-600 hover:from-yellow-600 hover:to-gold text-black transition-all duration-300 rounded-xl shadow-lg"
+                aria-label="Besök vår Instagram"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -373,6 +375,7 @@ export default function App() {
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-gold to-yellow-600 hover:from-yellow-600 hover:to-gold text-black transition-all duration-300 rounded-xl shadow-lg"
+                  aria-label="Besök vår Facebook"
                   whileHover={{ scale: 1.1, rotate: -5 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -470,6 +473,7 @@ export default function App() {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
+              aria-label="Gå till webbshoppen"
             >
               Beställ online
             </motion.button>
@@ -920,12 +924,13 @@ export default function App() {
               viewport={{ once: true }}
               className="mt-6 md:mt-8"
             >
-              <motion.button
+            <motion.button
                 className="bg-gradient-to-r uppercase from-gold to-yellow-500 text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
                 style={{ fontFamily: 'Lato sans-serif' }}
+              aria-label="Beställ idag"
               >
                 Beställ idag
               </motion.button>
