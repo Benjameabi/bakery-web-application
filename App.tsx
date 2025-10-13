@@ -1054,6 +1054,7 @@ export default function App() {
               className="group flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-white hover:bg-blue-600 text-gray-800 hover:text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-200 hover:border-transparent"
               whileHover={{ scale: 1.1, y: -3 }}
               whileTap={{ scale: 0.96 }}
+              aria-label="Följ oss på Facebook"
             >
               <FontAwesomeIcon icon={faFacebookF} className="text-2xl md:text-3xl transition-colors duration-300" />
             </motion.a>
@@ -1349,7 +1350,7 @@ export default function App() {
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <FontAwesomeIcon icon={faFacebookF} className="text-white text-lg md:text-xl" />
+                  <FontAwesomeIcon icon={faFacebookF} className="text-white text-lg md:text-xl" aria-label="Facebook" />
                 </motion.a>
                 <motion.a 
                   href="https://www.instagram.com/masterjacobsbageriochkonditori?igsh=aGxtcnJnbnF4Mmpu" 
