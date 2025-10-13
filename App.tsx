@@ -442,11 +442,11 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold text-white mb-6 md:mb-8 leading-tight drop-shadow-2xl text-center"
-            style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}
+            style={{ fontFamily: 'Montserrat, Open Sans, sans-serif', fontWeight: 700 }}
           >
-            <span className="block text-3xl sm:text-4xl md:text-5xl" style={{ fontFamily: 'Lato, sans-serif' }}>{slideText.line1}</span>
-            <span className="block text-3xl sm:text-4xl md:text-5xl" style={{ fontFamily: 'Lato, sans-serif' }}>{slideText.line2}</span>{" "}
-            <span className="text-gold font-extrabold drop-shadow-lg text-4xl sm:text-5xl md:text-6xl" style={{ fontFamily: 'Lato, sans-serif' }}>{slideText.accent}</span>
+            <span className="block text-3xl sm:text-4xl md:text-5xl" style={{ fontFamily: 'Montserrat, sans-serif' }}>{slideText.line1}</span>
+            <span className="block text-3xl sm:text-4xl md:text-5xl" style={{ fontFamily: 'Montserrat, sans-serif' }}>{slideText.line2}</span>{" "}
+            <span className="text-gold font-extrabold drop-shadow-lg text-4xl sm:text-5xl md:text-6xl" style={{ fontFamily: 'Montserrat, sans-serif' }}>{slideText.accent}</span>
           </motion.h1>
 
           {/* Description */}
@@ -455,7 +455,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-base md:text-lg text-white/95 font-body mb-8 md:mb-12 leading-relaxed max-w-3xl mx-auto drop-shadow-lg text-center px-2"
-            style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}
+            style={{ fontFamily: 'Open Sans, sans-serif', fontWeight: 400 }}
           >
             <span className="block sm:hidden">
               {slideText.descriptionMobile}
@@ -522,23 +522,23 @@ export default function App() {
             className="text-center mb-16 max-w-4xl mx-auto"
           >
             <motion.h2 
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-black leading-tight tracking-tight mb-6 md:mb-8"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black leading-tight tracking-tight mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato', fontWeight: 300 }}
+              style={{ fontFamily: 'Montserrat, Open Sans, sans-serif', fontWeight: 700 }}
             >
               Välj Bland Våra Favoriter
             </motion.h2>
             
             <motion.p 
-              className="text-base md:text-lg text-gray-600 font-body font-light leading-relaxed"
+              className="text-base md:text-lg text-gray-600 font-body leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Lato', fontWeight: 300 }}
+              style={{ fontFamily: 'Open Sans, sans-serif', fontWeight: 400 }}
             >
               De mest älskade bakverken från vårt sortiment Svenska klassiker!
             </motion.p>
@@ -599,7 +599,7 @@ export default function App() {
                   
                   <div className="text-center bg-white p-4 md:p-5 border border-gold/10">
                     <h3 className="font-body text-black leading-tight text-sm sm:text-base md:text-lg"
-                        style={{ fontFamily: 'Lato', fontWeight: 400 }}>
+                        style={{ fontFamily: 'Open Sans, sans-serif', fontWeight: 400 }}>
                       {tile.name}
                     </h3>
                   </div>
