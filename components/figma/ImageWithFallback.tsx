@@ -22,6 +22,16 @@ export function ImageWithFallback(props: React.ImgHTMLAttributes<HTMLImageElemen
       </div>
     </div>
   ) : (
-    <img src={src} alt={alt} className={className} style={style} {...rest} onError={handleError} loading={loading ?? 'lazy'} decoding={decoding ?? 'async'} />
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      style={style}
+      {...rest}
+      onError={handleError}
+      loading={loading ?? 'lazy'}
+      decoding={decoding ?? 'async'}
+      srcSet={rest.width && typeof rest.width === 'number' ? undefined : undefined}
+    />
   )
 }

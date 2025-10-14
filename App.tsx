@@ -280,6 +280,8 @@ export default function App() {
                   src={logoIcon} 
                   alt="Mäster Jacobs Logo" 
                   className="w-12 h-12 object-contain"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div>
@@ -406,6 +408,9 @@ export default function App() {
                 src={image}
                 alt={`Bakery slideshow ${index + 1}`}
                 className="w-full h-full object-cover"
+                loading={index === 0 ? 'eager' : 'lazy'}
+                decoding={index === 0 ? 'sync' : 'async'}
+                fetchPriority={index === 0 ? ('high' as const) : ('auto' as const)}
               />
             </motion.div>
           ))}
@@ -645,6 +650,8 @@ export default function App() {
                 src={logoIconInverse} 
                 alt="Mäster Jacobs Logo small" 
                 className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </motion.div>
@@ -803,6 +810,8 @@ export default function App() {
                       src="/images/Qrkod.webp" 
                       alt="QR-kod för Google recensioner" 
                       className="w-full h-full object-contain"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <p className="text-xs text-warm-gray text-center mt-1 font-body">Scanna & recensera</p>
@@ -1286,10 +1295,12 @@ export default function App() {
           >
             <motion.div variants={staggerItem} className="space-y-4 md:space-y-6">
               <div className="mb-2 md:mb-4">
-                <img 
+                  <img 
                   src="/images/logos/horizontal/Horizontal Logo inverse color lockup.svg" 
                   alt="Mäster Jacobs Logo" 
-                  className="h-8 md:h-10 w-auto object-contain"
+                    className="h-8 md:h-10 w-auto object-contain"
+                    loading="lazy"
+                    decoding="async"
                 />
               </div>
               <p className="text-warm-gray font-body font-normal text-base md:text-lg leading-relaxed" style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}>
