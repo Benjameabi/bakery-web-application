@@ -14,6 +14,27 @@ import { faHeart, faComment, faLocationDot, faPhone, faClock, faEnvelope, faStar
 const logoIcon = "/images/logos/stacked/Stacked Logo inverse color lockup.svg";
 const logoIconInverse = "/images/logos/stacked/Stacked Logo inverse color lockup.svg";
 
+// Responsive image srcsets via vite-imagetools (build-time optimization)
+// Allatårtor
+// @ts-ignore
+import allatartorAvif from '/images/Allatårtor.webp?w=480;768;1024;1410;1920&format=avif&as=srcset';
+// @ts-ignore
+import allatartorWebp from '/images/Allatårtor.webp?w=480;768;1024;1410;1920&format=webp&as=srcset';
+// @ts-ignore
+import allatartorJpg from '/images/Allatårtor.webp?w=480;768;1024;1410;1920&format=jpg&as=srcset';
+// @ts-ignore
+import allatartorFallback from '/images/Allatårtor.webp?w=1410&format=jpg&as=url';
+
+// Section cake
+// @ts-ignore
+import sectionCakeAvif from '/images/section-cake.webp?w=480;768;1024;1410;1920&format=avif&as=srcset';
+// @ts-ignore
+import sectionCakeWebp from '/images/section-cake.webp?w=480;768;1024;1410;1920&format=webp&as=srcset';
+// @ts-ignore
+import sectionCakeJpg from '/images/section-cake.webp?w=480;768;1024;1410;1920&format=jpg&as=srcset';
+// @ts-ignore
+import sectionCakeFallback from '/images/section-cake.webp?w=1410&format=jpg&as=url';
+
 // CakeItEasy URLs - All ordering/checkout handled by CakeItEasy backend
 const EXTERNAL_URLS = {
   webbshop: "https://mybakery.cakeiteasy.se/",
@@ -620,11 +641,18 @@ export default function App() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <ImageWithFallback
-            src="/images/Allatårtor.webp"
-            alt="Hantverks bageri & konditori i Västerås sedan 1982"
-            className="w-full h-full object-cover"
-          />
+          <picture>
+            <source srcSet={allatartorAvif} type="image/avif" />
+            <source srcSet={allatartorWebp} type="image/webp" />
+            <source srcSet={allatartorJpg} type="image/jpeg" />
+            <img
+              src={allatartorFallback}
+              alt="Hantverks bageri & konditori i Västerås sedan 1982"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
           {/* Layered gradient overlays for better depth */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40"></div>
@@ -858,11 +886,18 @@ export default function App() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <ImageWithFallback
-            src="/images/section-cake.webp"
-            alt="Fri hemleverans i Västerås"
-            className="w-full h-full object-cover"
-          />
+          <picture>
+            <source srcSet={sectionCakeAvif} type="image/avif" />
+            <source srcSet={sectionCakeWebp} type="image/webp" />
+            <source srcSet={sectionCakeJpg} type="image/jpeg" />
+            <img
+              src={sectionCakeFallback}
+              alt="Fri hemleverans i Västerås"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
           {/* Dark gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50"></div>
