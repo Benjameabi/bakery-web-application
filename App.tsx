@@ -577,11 +577,19 @@ export default function App() {
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.4 }}
                     >
-                      <ImageWithFallback
-                        src={tile.image}
-                        alt={tile.name}
-                        className="w-full h-full object-cover"
-                      />
+                      <picture>
+                        <source media="(min-width: 768px)" srcSet={tile.image.replace('.webp', '-768.webp').replace('.jpg','-768.jpg')} />
+                        <source media="(min-width: 0px)" srcSet={tile.image.replace('.webp', '-488.webp').replace('.jpg','-488.jpg')} />
+                        <img
+                          src={tile.image}
+                          alt={tile.name}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                          decoding="async"
+                          width={488}
+                          height={488}
+                        />
+                      </picture>
                       <motion.div 
                         className="absolute inset-0 bg-gold/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
                         initial={{ opacity: 0 }}
@@ -625,11 +633,19 @@ export default function App() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <ImageWithFallback
-            src="/images/Allatårtor.webp"
-            alt="Hantverks bageri & konditori i Västerås sedan 1982"
-            className="w-full h-full object-cover"
-          />
+          <picture>
+            <source media="(min-width: 1024px)" srcSet="/images/Allatårtor-1920.webp" type="image/webp" />
+            <source media="(min-width: 640px)" srcSet="/images/Allatårtor-1410.webp" type="image/webp" />
+            <img
+              src="/images/Allatårtor.webp"
+              alt="Hantverks bageri & konditori i Västerås sedan 1982"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+              width={1920}
+              height={1080}
+            />
+          </picture>
           {/* Layered gradient overlays for better depth */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40"></div>
@@ -867,11 +883,19 @@ export default function App() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <ImageWithFallback
-            src="/images/section-cake.webp"
-            alt="Fri hemleverans i Västerås"
-            className="w-full h-full object-cover"
-          />
+          <picture>
+            <source media="(min-width: 1024px)" srcSet="/images/section-cake-1920.webp" type="image/webp" />
+            <source media="(min-width: 640px)" srcSet="/images/section-cake-1410.webp" type="image/webp" />
+            <img
+              src="/images/section-cake.webp"
+              alt="Fri hemleverans i Västerås"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+              width={1920}
+              height={1080}
+            />
+          </picture>
           {/* Dark gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50"></div>
@@ -1021,13 +1045,19 @@ export default function App() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <img
-                src={post.image}
-                alt={`Instagram post ${post.id}`}
-                className="w-full aspect-square object-cover transform group-hover:scale-105 transition duration-500"
-                loading="lazy"
-                decoding="async"
-              />
+              <picture>
+                <source media="(min-width: 1024px)" srcSet={post.image.replace('.jpg','-600.jpg').replace('.webp','-600.webp')} />
+                <source media="(min-width: 0px)" srcSet={post.image.replace('.jpg','-360.jpg').replace('.webp','-360.webp')} />
+                <img
+                  src={post.image}
+                  alt={`Instagram post ${post.id}`}
+                  className="w-full aspect-square object-cover transform group-hover:scale-105 transition duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width={600}
+                  height={600}
+                />
+              </picture>
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 lg:flex hidden items-center justify-center p-4 transition duration-500">
                 <p className="text-white text-center text-sm md:text-base leading-relaxed">
@@ -1332,7 +1362,7 @@ export default function App() {
                 ].map((item, index) => (
                   <motion.li key={item.name}>
                     <motion.a 
-                      href={item.external ? undefined : item.href}
+                      href={item.href}
                       onClick={item.external ? () => handleExternalRedirect(item.href) : undefined}
                       className="text-warm-gray hover:text-white transition-colors font-body font-normal text-base md:text-lg flex items-center group cursor-pointer"
                       style={{ fontFamily: 'Lato, sans-serif', fontWeight: 400 }}
@@ -1340,6 +1370,7 @@ export default function App() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.2 + index * 0.1 }}
+                      aria-label={item.name}
                     >
                       <span className="w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-4 mr-2"></span>
                       {item.name}
