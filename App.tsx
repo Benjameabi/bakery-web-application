@@ -14,6 +14,18 @@ import { faHeart, faComment, faLocationDot, faPhone, faClock, faEnvelope, faStar
 const logoIcon = "/images/logos/stacked/Stacked Logo inverse color lockup.svg";
 const logoIconInverse = "/images/logos/stacked/Stacked Logo inverse color lockup.svg";
 
+// Helper to reference resized variants placed in public/images
+function getVariantPath(originalSrc: string, size: number): string {
+  if (!originalSrc) return originalSrc;
+  const lastDotIdx = originalSrc.lastIndexOf('.')
+  if (lastDotIdx === -1) return originalSrc;
+  const ext = originalSrc.slice(lastDotIdx + 1);
+  let base = originalSrc.slice(0, lastDotIdx);
+  // Normalize Swedish å to combining form used in filenames inside /public
+  base = base.replace(/Å/g, 'Å').replace(/å/g, 'å');
+  return `${base}-${size}.${ext}`;
+}
+
 // CakeItEasy URLs - All ordering/checkout handled by CakeItEasy backend
 const EXTERNAL_URLS = {
   webbshop: "https://mybakery.cakeiteasy.se/",
@@ -578,8 +590,8 @@ export default function App() {
                       transition={{ duration: 0.4 }}
                     >
                       <picture>
-                        <source media="(min-width: 768px)" srcSet={tile.image.replace('.webp', '-768.webp').replace('.jpg','-768.jpg')} />
-                        <source media="(min-width: 0px)" srcSet={tile.image.replace('.webp', '-488.webp').replace('.jpg','-488.jpg')} />
+                        <source media="(min-width: 768px)" srcSet={getVariantPath(tile.image, 768)} />
+                        <source media="(min-width: 0px)" srcSet={getVariantPath(tile.image, 488)} />
                         <img
                           src={tile.image}
                           alt={tile.name}
@@ -634,8 +646,8 @@ export default function App() {
           viewport={{ once: true }}
         >
           <picture>
-            <source media="(min-width: 1024px)" srcSet="/images/Allatårtor-1920.webp" type="image/webp" />
-            <source media="(min-width: 640px)" srcSet="/images/Allatårtor-1410.webp" type="image/webp" />
+            <source media="(min-width: 1024px)" srcSet={getVariantPath('/images/Allatårtor.webp', 1920)} type="image/webp" />
+            <source media="(min-width: 640px)" srcSet={getVariantPath('/images/Allatårtor.webp', 1410)} type="image/webp" />
             <img
               src="/images/Allatårtor.webp"
               alt="Hantverks bageri & konditori i Västerås sedan 1982"
@@ -884,8 +896,8 @@ export default function App() {
           viewport={{ once: true }}
         >
           <picture>
-            <source media="(min-width: 1024px)" srcSet="/images/section-cake-1920.webp" type="image/webp" />
-            <source media="(min-width: 640px)" srcSet="/images/section-cake-1410.webp" type="image/webp" />
+            <source media="(min-width: 1024px)" srcSet={getVariantPath('/images/section-cake.webp', 1920)} type="image/webp" />
+            <source media="(min-width: 640px)" srcSet={getVariantPath('/images/section-cake.webp', 1410)} type="image/webp" />
             <img
               src="/images/section-cake.webp"
               alt="Fri hemleverans i Västerås"
@@ -1046,8 +1058,8 @@ export default function App() {
               viewport={{ once: true }}
             >
               <picture>
-                <source media="(min-width: 1024px)" srcSet={post.image.replace('.jpg','-600.jpg').replace('.webp','-600.webp')} />
-                <source media="(min-width: 0px)" srcSet={post.image.replace('.jpg','-360.jpg').replace('.webp','-360.webp')} />
+                <source media="(min-width: 1024px)" srcSet={getVariantPath(post.image, 600)} />
+                <source media="(min-width: 0px)" srcSet={getVariantPath(post.image, 360)} />
                 <img
                   src={post.image}
                   alt={`Instagram post ${post.id}`}
