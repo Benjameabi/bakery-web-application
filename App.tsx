@@ -363,7 +363,7 @@ export default function App() {
               transition={{ delay: 0.8 }}
             >
               <motion.button
-                className="w-full justify-start font-extrabold btn-secondary flex items-center"
+                className="w-full justify-start btn-secondary btn-text flex items-center"
                 onClick={() => {
                   handleExternalRedirect(EXTERNAL_URLS.search);
                   closeMobileMenu();
@@ -469,11 +469,11 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold text-white mb-6 md:mb-8 leading-tight drop-shadow-2xl text-center"
-            style={{ fontFamily: 'Montserrat, Open Sans, sans-serif', fontWeight: 700 }}
+            style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}
           >
-            <span className="block text-3xl sm:text-4xl md:text-5xl" style={{ fontFamily: 'Montserrat, sans-serif' }}>{slideText.line1}</span>
-            <span className="block text-3xl sm:text-4xl md:text-5xl" style={{ fontFamily: 'Montserrat, sans-serif' }}>{slideText.line2}</span>{" "}
-            <span className="text-gold font-extrabold drop-shadow-lg text-4xl sm:text-5xl md:text-6xl" style={{ fontFamily: 'Montserrat, sans-serif' }}>{slideText.accent}</span>
+            <span className="block text-3xl sm:text-4xl md:text-5xl" style={{ fontFamily: 'Lato, sans-serif' }}>{slideText.line1}</span>
+            <span className="block text-3xl sm:text-4xl md:text-5xl" style={{ fontFamily: 'Lato, sans-serif' }}>{slideText.line2}</span>{" "}
+            <span className="text-gold font-extrabold drop-shadow-lg text-4xl sm:text-5xl md:text-6xl" style={{ fontFamily: 'Lato, sans-serif' }}>{slideText.accent}</span>
           </motion.h1>
 
           {/* Description */}
@@ -500,7 +500,7 @@ export default function App() {
             className="flex justify-center items-center"
           >
             <motion.button
-              className=" text-base uppercase btn-raised btn-small text-white rounded-[var(--button-radius) sm:text-sm]"
+              className="btn-raised btn-small btn-text text-white rounded-[var(--button-radius) sm:text-sm]"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
@@ -549,7 +549,7 @@ export default function App() {
             className="text-center mb-16 max-w-4xl mx-auto"
           >
             <motion.h2 
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black leading-tight tracking-tight mb-6 md:mb-8"
+            className="heading-mobile lg:heading-desktop text-black mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
@@ -560,12 +560,12 @@ export default function App() {
             </motion.h2>
             
             <motion.p 
-              className="text-base md:text-lg text-gray-600 font-body leading-relaxed"
+              className="body-mobile lg:body-desktop text-gray-600"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
               viewport={{ once: true }}
-              style={{ fontFamily: 'Open Sans, sans-serif', fontWeight: 400 }}
+              style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}
             >
               De mest älskade bakverken från vårt sortiment Svenska klassiker!
             </motion.p>
@@ -638,7 +638,7 @@ export default function App() {
                   
                   <div className="text-center bg-white p-4 md:p-5 border border-gold/10">
                     <h3 className="font-body text-black leading-tight text-sm sm:text-base md:text-lg"
-                        style={{ fontFamily: 'Open Sans, sans-serif', fontWeight: 400 }}>
+                        style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300 }}>
                       {tile.name}
                     </h3>
                   </div>
@@ -704,8 +704,8 @@ export default function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white mb-4 md:mb-6 leading-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
-            style={{ fontFamily: 'Lato', fontWeight: 400 }}
+            className="heading-mobile lg:heading-desktop text-white mb-4 md:mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+            style={{ fontFamily: 'Lato', fontWeight: 300 }}
           >
             Hantverks bageri & konditori <br className="hidden sm:block"/> i Västerås sedan 1982
           </motion.h2>
@@ -716,8 +716,8 @@ export default function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl font-light text-white leading-relaxed drop-shadow-xl"
-            style={{ fontFamily: 'Lato sans-serif', fontWeight: 400 }}
+            className="body-mobile lg:body-desktop text-white max-w-3xl mx-auto drop-shadow-xl"
+            style={{ fontFamily: 'Lato sans-serif', fontWeight: 300 }}
           >
             Våra skickliga bagare arbetar med traditionella metoder för att skapa bakverk av högsta kvalitet.
           </motion.p>
@@ -988,7 +988,7 @@ export default function App() {
               className="mt-6 md:mt-8"
             >
               <motion.button
-                className="bg-gradient-to-r uppercase from-gold to-yellow-500 text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
+                className="bg-gradient-to-r from-gold to-yellow-500 text-black px-6 py-3 md:px-8 md:py-4 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 btn-text"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
@@ -1158,7 +1158,7 @@ export default function App() {
             className="text-center mb-16 md:mb-24 max-w-4xl mx-auto"
           >
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 leading-tight tracking-tight mb-6 md:mb-8"
+              className="heading-mobile lg:heading-desktop text-gray-900 mb-6 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
@@ -1167,7 +1167,7 @@ export default function App() {
               Beställ <span className="text-gold font-semibold">nybakat</span> hem till dörren
             </motion.h2>
             <motion.p
-              className="text-base md:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto"
+              className="body-mobile lg:body-desktop text-gray-600 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
@@ -1315,8 +1315,7 @@ export default function App() {
               </div>
             </div>
             <motion.button
-              className="uppercase bg-[#B68E2F] hover:bg-[#A47A1F] text-black px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300"
-              style={{ fontFamily: 'Lato, sans-serif' }}
+              className="bg-[#B68E2F] hover:bg-[#A47A1F] text-black px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 btn-text"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}

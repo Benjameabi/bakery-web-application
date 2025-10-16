@@ -62,7 +62,7 @@ export function Navigation({
                 href={item.href}
                 onClick={item.external ? item.onClick : undefined}
                 className={"font-body text-white hover:text-gold transition-all duration-300 relative group cursor-pointer"}
-                style={{ fontFamily: 'Open Sans, sans-serif', fontWeight: 400, fontSize: '18px', lineHeight: '28px' }}
+                style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300, fontSize: '18px', lineHeight: '28px' }}
                 whileHover={{ y: -2, scale: 1.02 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -133,7 +133,7 @@ export function Navigation({
               transition={{ delay: 0.6 }}
             >
               <FontAwesomeIcon icon={faSearch} className={"w-5 h-5 text-white group-hover:text-gold transition-all duration-300 cursor-pointer"} />
-              <span className={"ml-2 font-body text-white group-hover:text-gold transition-all duration-300 relative"} style={{ fontFamily: 'Open Sans, sans-serif', fontWeight: 400, fontSize: '18px', lineHeight: '28px' }}>
+              <span className={"ml-2 font-body text-white group-hover:text-gold transition-all duration-300 relative"} style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300, fontSize: '18px', lineHeight: '28px' }}>
                 Sök produkter
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
               </span>
@@ -152,7 +152,7 @@ export function Navigation({
               transition={{ delay: 0.7 }}
             >
               <FontAwesomeIcon icon={faShoppingCart} className={"w-5 h-5 text-white group-hover:text-gold transition-all duration-300 cursor-pointer"} />
-              <span className={"font-body text-white group-hover:text-gold transition-all duration-300 relative"} style={{ fontFamily: 'Open Sans, sans-serif', fontWeight: 400, fontSize: '18px', lineHeight: '28px' }}>
+              <span className={"font-body text-white group-hover:text-gold transition-all duration-300 relative"} style={{ fontFamily: 'Lato, sans-serif', fontWeight: 300, fontSize: '18px', lineHeight: '28px' }}>
                 Varukorg
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
               </span>
