@@ -26,14 +26,24 @@ function getVariantPath(originalSrc: string, size: number): string {
   return `${base}-${size}.${ext}`;
 }
 
-// CakeItEasy URLs - All ordering/checkout handled by CakeItEasy backend
+// External URLs - updated to new webbshop domain
 const EXTERNAL_URLS = {
-  webbshop: "https://mybakery.cakeiteasy.se/",
-  search: "https://mybakery.cakeiteasy.se/search",
-  cart: "https://mybakery.cakeiteasy.se/cart",
-  products: "https://mybakery.cakeiteasy.se/products",
+  webbshop: "https://www.webbshop.masterjacobs.se/shop/",
+  search: "https://www.webbshop.masterjacobs.se/shop/",
+  cart: "https://www.webbshop.masterjacobs.se/shop/",
+  products: "https://www.webbshop.masterjacobs.se/shop/",
 
-  bakeryInfo: "https://mybakery.cakeiteasy.se/api/store/info"
+  bakeryInfo: "https://www.webbshop.masterjacobs.se/shop/"
+};
+
+// Category deep links for favorites
+const CATEGORY_LINKS: Record<string, string> = {
+  'tårtor': 'https://www.webbshop.masterjacobs.se/shop/kategori/tartor-bakelser-3753',
+  'bullar': 'https://www.webbshop.masterjacobs.se/shop/kategori/matbrod-bullar-3755',
+  'bröd': 'https://www.webbshop.masterjacobs.se/shop/kategori/matbrod-bullar-3755',
+  'frukost': 'https://www.webbshop.masterjacobs.se/shop/kategori/frukost-4791',
+  'smörgåstårta': 'https://www.webbshop.masterjacobs.se/shop/kategori/frukost-4791',
+  'tillbehor': 'https://www.webbshop.masterjacobs.se/shop/kategori/tillbehor'
 };
 
 const instagramPosts = [
@@ -258,8 +268,8 @@ export default function App() {
       {/* Navigation */}
       <Navigation 
         setIsMobileMenuOpen={setIsMobileMenuOpen}
-        onSearchClick={() => handleExternalRedirect(EXTERNAL_URLS.search)}
-        onCartClick={() => handleExternalRedirect(EXTERNAL_URLS.cart)}
+        onSearchClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
+        onCartClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
         onWebbshopClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
       />
 
@@ -574,7 +584,11 @@ export default function App() {
                 key={tile.id} 
                 variants={staggerItem}
                 className="group cursor-pointer"
-                onClick={() => handleExternalRedirect(EXTERNAL_URLS.products)}
+                onClick={() => {
+                  const key = tile.id.toLowerCase();
+                  const url = CATEGORY_LINKS[key] || EXTERNAL_URLS.products;
+                  handleExternalRedirect(url);
+                }}
                 whileHover={{ y: -4, scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
@@ -973,7 +987,7 @@ export default function App() {
               viewport={{ once: true }}
               className="mt-6 md:mt-8"
             >
-            <motion.button
+              <motion.button
                 className="bg-gradient-to-r uppercase from-gold to-yellow-500 text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
@@ -1263,6 +1277,7 @@ export default function App() {
                   style={{ fontFamily: "Lato, sans-serif" }}
                   whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.97 }}
+                  onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
                 >
                   Webbshop
                 </motion.button>
@@ -1271,6 +1286,7 @@ export default function App() {
                   style={{ fontFamily: "Lato, sans-serif" }}
                   whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.97 }}
+                  onClick={() => window.open('tel:+4621301509')}
                 >
                   Ring Oss
                 </motion.button>

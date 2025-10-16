@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 const logoHorizontalInverse = "/images/logos/horizontal/Horizontal Logo inverse color lockup.svg";
 const logoStackedInverse = "/images/logos/stacked/Stacked Logo inverse color lockup.svg";
-const WEBBSHOP_URL = "https://masterjacobs.cakeiteasy.se/";
+const WEBBSHOP_URL = "https://www.webbshop.masterjacobs.se/shop/";
 
 interface NavigationProps {
   setIsMobileMenuOpen: (open: boolean) => void;
@@ -55,7 +55,7 @@ export function Navigation({
             {[
               { name: 'Vår butik', href: '#contact', external: false },
               { name: 'Kontakta oss', href: '#contact', external: false },
-              { name: 'Webbshop', href: WEBBSHOP_URL, external: true, onClick: onWebbshopClick }
+              { name: 'Webbshop', href: WEBBSHOP_URL, external: true, onClick: () => window.location.href = WEBBSHOP_URL }
             ].map((item, index) => (
               <motion.a
                 key={item.name}
