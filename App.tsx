@@ -19,10 +19,14 @@ function getVariantPath(originalSrc: string, size: number): string {
   if (!originalSrc) return originalSrc;
   const lastDotIdx = originalSrc.lastIndexOf('.')
   if (lastDotIdx === -1) return originalSrc;
-  const ext = originalSrc.slice(lastDotIdx + 1);
+  let ext = originalSrc.slice(lastDotIdx + 1);
   let base = originalSrc.slice(0, lastDotIdx);
   // Normalize Swedish å to combining form used in filenames inside /public
   base = base.replace(/Å/g, 'Å').replace(/å/g, 'å');
+  // For Instagram posts, prefer .webp variants
+  if (base.includes('/posts/post-') && ext === 'jpg') {
+    ext = 'webp';
+  }
   return `${base}-${size}.${ext}`;
 }
 
@@ -150,12 +154,12 @@ export default function App() {
     const criticalImages = [
       '/images/logos/horizontal/Horizontal Logo inverse color lockup.svg',
       '/images/logos/stacked/Stacked Logo full color lockup.svg',
-      '/images/Prinsesstårta.webp',
-      '/images/Kanelknut.webp',
-      '/images/Frukost.webp',
-      '/images/Aros grova.webp',
-      '/images/smorgastarta.webp',
-      '/images/Tillbehor.webp'
+      '/images/Prinsesstårta-488.webp',
+      '/images/Kanelknut-488.webp',
+      '/images/Frukost-488.webp',
+      '/images/Aros grova-488.webp',
+      '/images/smorgastarta-488.webp',
+      '/images/Tillbehor-488.webp'
     ];
 
     criticalImages.forEach(src => {
@@ -188,16 +192,16 @@ export default function App() {
   useEffect(() => {
     const getCategoryImage = (name: string) => {
       const n = name.toLowerCase();
-      if (n.includes('tårtor') || n === 'tårtor' || n.includes('tartor') || n === 'tartor') return '/images/Prinsesstårta.webp';
-      if (n.includes('bullar') || n === 'bullar') return '/images/Kanelknut.webp';
-      if (n.includes('bröd') || n === 'bröd' || n.includes('brod') || n === 'brod' || n.includes('matbröd')) return '/images/Aros grova.webp';
-      if (n.includes('frukost')) return '/images/Frukost.webp';
-      if (n.includes('smörgåstårta') || n.includes('smorgastarta')) return '/images/smorgastarta.webp';
-      if (n.includes('tillbehör') || n.includes('tillbehor')) return '/images/Tillbehor.webp';
+      if (n.includes('tårtor') || n === 'tårtor' || n.includes('tartor') || n === 'tartor') return '/images/Prinsesstårta-488.webp';
+      if (n.includes('bullar') || n === 'bullar') return '/images/Kanelknut-488.webp';
+      if (n.includes('bröd') || n === 'bröd' || n.includes('brod') || n === 'brod' || n.includes('matbröd')) return '/images/Aros grova-488.webp';
+      if (n.includes('frukost')) return '/images/Frukost-488.webp';
+      if (n.includes('smörgåstårta') || n.includes('smorgastarta')) return '/images/smorgastarta-488.webp';
+      if (n.includes('tillbehör') || n.includes('tillbehor')) return '/images/Tillbehor-488.webp';
       // Fallback images for unused categories
       if (n.includes('fika')) return '/images/Sockerkringla.webp';
-      if (n.includes('lunch') || n.includes('sallad')) return '/images/Aros grova.webp';
-      return '/images/Prinsesstårta.webp';
+      if (n.includes('lunch') || n.includes('sallad')) return '/images/Aros grova-488.webp';
+      return '/images/Prinsesstårta-488.webp';
     };
 
     const tiles: { id: string; name: string; image: string }[] = [
@@ -426,21 +430,27 @@ export default function App() {
               animate={{ scale: index === currentSlide ? 1 : 1.1 }}
               transition={{ duration: 6 }}
             >
-              <picture>
-                <source media="(min-width: 1024px)" srcSet={getVariantPath(image, 1920)} type="image/webp" />
-                <source media="(min-width: 640px)" srcSet={getVariantPath(image, 1440)} type="image/webp" />
-                <img
-                  src={image}
-                  alt={`Bakery slideshow ${index + 1}`}
-                  className="w-full h-full object-cover"
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                  decoding={index === 0 ? 'sync' : 'async'}
-                  {...(index === 0 ? { fetchPriority: 'high' as const } : {})}
-                  width={1920}
-                  height={1080}
-                  sizes="100vw"
-                />
-              </picture>
+              {(() => {
+                const base = image.substring(0, image.lastIndexOf('.'));
+                const ext = image.substring(image.lastIndexOf('.'));
+                return (
+                  <picture>
+                    <source media="(min-width: 1024px)" srcSet={`${base}-1920${ext}`} type="image/webp" />
+                    <source media="(min-width: 640px)" srcSet={`${base}-1440${ext}`} type="image/webp" />
+                    <img
+                      src={`${base}-1440${ext}`}
+                      alt={`Bakery slideshow ${index + 1}`}
+                      className="w-full h-full object-cover"
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      decoding={index === 0 ? 'sync' : 'async'}
+                      {...(index === 0 ? { fetchPriority: 'high' as const } : {})}
+                      width={1920}
+                      height={1080}
+                      sizes="100vw"
+                    />
+                  </picture>
+                );
+              })()}
             </motion.div>
           ))}
           {/* Gradient Overlay for Text Readability */}
@@ -610,19 +620,15 @@ export default function App() {
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.4 }}
                     >
-                      <picture>
-                        <source media="(min-width: 1024px)" srcSet={getVariantPath(tile.image, 768)} />
-                        <source media="(min-width: 0px)" srcSet={getVariantPath(tile.image, 488)} />
-                        <img
-                          src={tile.image}
-                          alt={tile.name}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                          decoding="async"
-                          width={488}
-                          height={488}
-                        />
-                      </picture>
+                      <img
+                        src={tile.image}
+                        alt={tile.name}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                        width={488}
+                        height={488}
+                      />
                       <motion.div 
                         className="absolute inset-0 bg-gold/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
                         initial={{ opacity: 0 }}
@@ -667,10 +673,10 @@ export default function App() {
           viewport={{ once: true }}
         >
           <picture>
-            <source media="(min-width: 1024px)" srcSet={getVariantPath('/images/Allatårtor.webp', 1920)} type="image/webp" />
-            <source media="(min-width: 640px)" srcSet={getVariantPath('/images/Allatårtor.webp', 1410)} type="image/webp" />
+            <source media="(min-width: 1024px)" srcSet="/images/Allatårtor-1920.webp" type="image/webp" />
+            <source media="(min-width: 640px)" srcSet="/images/Allatårtor-1410.webp" type="image/webp" />
             <img
-              src="/images/Allatårtor.webp"
+              src="/images/Allatårtor-1410.webp"
               alt="Hantverks bageri & konditori i Västerås sedan 1982"
               className="w-full h-full object-cover"
               loading="lazy"
@@ -856,11 +862,13 @@ export default function App() {
                 >
                   <div className="w-24 h-24 md:w-28 md:h-28 bg-white rounded-lg shadow-lg border border-gold/20 p-2 flex items-center justify-center">
                     <img 
-                      src="/images/Qrkod.webp" 
+                      src="/images/Qrkod-512.webp" 
                       alt="QR-kod för Google recensioner" 
                       className="w-full h-full object-contain"
                       loading="lazy"
                       decoding="async"
+                      width={512}
+                      height={512}
                     />
                   </div>
                   <p className="text-xs text-warm-gray text-center mt-1 font-body">Scanna & recensera</p>
@@ -881,11 +889,19 @@ export default function App() {
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.5 }}
               >
-                <ImageWithFallback
-                  src="/images/Historia.webp"
-                  alt="Vår Historia - Mäster Jacobs Bageri"
-                  className="w-full h-96 object-cover"
-                />
+                <picture>
+                  <source media="(min-width: 1024px)" srcSet="/images/Historia-1280.webp" type="image/webp" />
+                  <source media="(min-width: 640px)" srcSet="/images/Historia-1024.webp" type="image/webp" />
+                  <img
+                    src="/images/Historia-1024.webp"
+                    alt="Vår Historia - Mäster Jacobs Bageri"
+                    className="w-full h-96 object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    width={1280}
+                    height={869}
+                  />
+                </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               </motion.div>
 
@@ -917,10 +933,10 @@ export default function App() {
           viewport={{ once: true }}
         >
           <picture>
-            <source media="(min-width: 1024px)" srcSet={getVariantPath('/images/section-cake.webp', 1920)} type="image/webp" />
-            <source media="(min-width: 640px)" srcSet={getVariantPath('/images/section-cake.webp', 1410)} type="image/webp" />
+            <source media="(min-width: 1024px)" srcSet="/images/section-cake-1920.webp" type="image/webp" />
+            <source media="(min-width: 640px)" srcSet="/images/section-cake-1410.webp" type="image/webp" />
             <img
-              src="/images/section-cake.webp"
+              src="/images/section-cake-1410.webp"
               alt="Fri hemleverans i Västerås"
               className="w-full h-full object-cover"
               loading="lazy"
@@ -1079,10 +1095,10 @@ export default function App() {
               viewport={{ once: true }}
             >
               <picture>
-                <source media="(min-width: 1024px)" srcSet={getVariantPath(post.image, 600)} />
-                <source media="(min-width: 0px)" srcSet={getVariantPath(post.image, 360)} />
+                <source media="(min-width: 1024px)" srcSet={getVariantPath(post.image, 600)} type="image/webp" />
+                <source media="(min-width: 0px)" srcSet={getVariantPath(post.image, 360)} type="image/webp" />
                 <img
-                  src={post.image}
+                  src={getVariantPath(post.image, 360)}
                   alt={`Instagram post ${post.id}`}
                   className="w-full aspect-square object-cover transform group-hover:scale-105 transition duration-500"
                   loading="lazy"
