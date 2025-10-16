@@ -284,6 +284,14 @@ export default function App() {
         transition={{ duration: 0.4 }}
         className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-50 md:hidden ${isMobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
         onClick={closeMobileMenu}
+        onKeyDown={(e) => {
+          if (e.key === 'Escape') {
+            closeMobileMenu();
+          }
+        }}
+        role="button"
+        tabIndex={-1}
+        aria-label="Stäng mobilmeny"
       />
 
       {/* Mobile Menu */}
@@ -374,6 +382,7 @@ export default function App() {
                 }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                aria-label="Sök produkter i webbshoppen"
               >
                 <FontAwesomeIcon icon={faArrowRight} className="w-5 h-5 mr-3" />
                 Sök produkter
@@ -606,8 +615,19 @@ export default function App() {
                   const url = CATEGORY_LINKS[key] || EXTERNAL_URLS.products;
                   handleExternalRedirect(url);
                 }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const key = tile.id.toLowerCase();
+                    const url = CATEGORY_LINKS[key] || EXTERNAL_URLS.products;
+                    handleExternalRedirect(url);
+                  }
+                }}
                 whileHover={{ y: -4, scale: 1.02 }}
                 transition={{ duration: 0.3 }}
+                role="button"
+                tabIndex={0}
+                aria-label={`Utforska ${tile.name}`}
               >
                 <motion.div className="w-full">
                   <motion.div 
@@ -1093,6 +1113,7 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
+              aria-label={post.text || `Instagram inlägg ${post.id}`}
             >
               <picture>
                 <source media="(min-width: 1024px)" srcSet={getVariantPath(post.image, 600)} type="image/webp" />
@@ -1134,6 +1155,7 @@ export default function App() {
               className="group flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-white hover:bg-gradient-to-br hover:from-pink-500 hover:to-purple-600 text-gray-800 hover:text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-200 hover:border-transparent"
               whileHover={{ scale: 1.1, y: -3 }}
               whileTap={{ scale: 0.96 }}
+              aria-label="Följ oss på Instagram"
             >
               <FontAwesomeIcon icon={faInstagram} className="text-2xl md:text-3xl transition-colors duration-300" />
             </motion.a>
@@ -1301,6 +1323,7 @@ export default function App() {
                   whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                   onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
+                  aria-label="Gå till webbshoppen"
                 >
                   Webbshop
                 </motion.button>
@@ -1310,6 +1333,7 @@ export default function App() {
                   whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                   onClick={() => window.open('tel:+4621301509')}
+                  aria-label="Ring oss på telefon"
                 >
                   Ring Oss
                 </motion.button>
@@ -1342,6 +1366,7 @@ export default function App() {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleExternalRedirect(EXTERNAL_URLS.webbshop)}
+              aria-label="Beställ nu från webbshoppen"
             >
               Beställ nu
             </motion.button>
@@ -1455,6 +1480,7 @@ export default function App() {
                   className="w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
+                  aria-label="Följ oss på Instagram"
                 >
                   <FontAwesomeIcon icon={faInstagram} className="text-white text-lg md:text-xl" />
                 </motion.a>

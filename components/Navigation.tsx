@@ -105,8 +105,17 @@ export function Navigation({
             <motion.div 
               className="flex items-center space-x-2 cursor-pointer p-1.5"
               onClick={onCartClick}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onCartClick();
+                }
+              }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              role="button"
+              tabIndex={0}
+              aria-label="Öppna varukorg"
             >
               <FontAwesomeIcon icon={faShoppingCart} className={"w-5 h-5 text-white hover:text-gold transition-colors cursor-pointer"} />
               <motion.div 
@@ -124,6 +133,12 @@ export function Navigation({
             <motion.div 
               className="flex items-center cursor-pointer group relative"
               onClick={onSearchClick}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSearchClick();
+                }
+              }}
               role="button"
               tabIndex={0}
               aria-label="Sök produkter"
@@ -143,6 +158,12 @@ export function Navigation({
             <motion.div 
               className="flex items-center space-x-2 cursor-pointer group relative"
               onClick={onCartClick}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onCartClick();
+                }
+              }}
               role="button"
               tabIndex={0}
               aria-label="Öppna varukorg"
