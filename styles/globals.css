@@ -252,32 +252,40 @@
   .heading-mobile {
     font-family: 'Lato', sans-serif;
     font-weight: 300;
-    @apply text-2xl sm:text-3xl leading-tight tracking-tight;
+    font-size: clamp(1.75rem, 6vw, 3rem);
+    line-height: 1.2;
+    letter-spacing: 0;
   }
 
   .body-mobile {
     font-family: 'Lato', sans-serif;
     font-weight: 300;
-    @apply text-base sm:text-lg leading-relaxed;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.5;
   }
 
   .heading-desktop {
     font-family: 'Lato', sans-serif;
     font-weight: 300;
-    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight;
+    font-size: clamp(1.75rem, 6vw, 3rem);
+    line-height: 1.2;
   }
 
   .body-desktop {
     font-family: 'Lato', sans-serif;
     font-weight: 300;
-    @apply text-base md:text-lg lg:text-xl leading-relaxed;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.5;
   }
 
   /* Uniform button text styling */
   .btn-text {
     font-family: 'Lato', sans-serif;
-    font-weight: 600;
-    @apply uppercase tracking-wide;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    line-height: 1.5;
   }
   .btn-primary {
     @apply relative inline-flex items-center justify-center;
