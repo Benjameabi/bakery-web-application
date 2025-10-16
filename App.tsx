@@ -426,14 +426,21 @@ export default function App() {
               animate={{ scale: index === currentSlide ? 1 : 1.1 }}
               transition={{ duration: 6 }}
             >
-              <ImageWithFallback
-                src={image}
-                alt={`Bakery slideshow ${index + 1}`}
-                className="w-full h-full object-cover"
-                loading={index === 0 ? 'eager' : 'lazy'}
-                decoding={index === 0 ? 'sync' : 'async'}
-                fetchPriority={index === 0 ? ('high' as const) : ('auto' as const)}
-              />
+              <picture>
+                <source media="(min-width: 1024px)" srcSet={getVariantPath(image, 1920)} type="image/webp" />
+                <source media="(min-width: 640px)" srcSet={getVariantPath(image, 1440)} type="image/webp" />
+                <img
+                  src={image}
+                  alt={`Bakery slideshow ${index + 1}`}
+                  className="w-full h-full object-cover"
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  decoding={index === 0 ? 'sync' : 'async'}
+                  {...(index === 0 ? { fetchPriority: 'high' as const } : {})}
+                  width={1920}
+                  height={1080}
+                  sizes="100vw"
+                />
+              </picture>
             </motion.div>
           ))}
           {/* Gradient Overlay for Text Readability */}
@@ -604,7 +611,7 @@ export default function App() {
                       transition={{ duration: 0.4 }}
                     >
                       <picture>
-                        <source media="(min-width: 768px)" srcSet={getVariantPath(tile.image, 768)} />
+                        <source media="(min-width: 1024px)" srcSet={getVariantPath(tile.image, 768)} />
                         <source media="(min-width: 0px)" srcSet={getVariantPath(tile.image, 488)} />
                         <img
                           src={tile.image}
