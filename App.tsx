@@ -1173,12 +1173,13 @@ export default function App() {
               className="relative rounded-2xl overflow-hidden shadow-2xl border border-gold/30 h-full flex flex-col"
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2019.234567890123!2d16.546399!3d59.611591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465dcb5119640bcb%3A0xa80d27d3679d7766!2sPettersbergatan%2037%2C%20V%C3%A4ster%C3%A5s%2C%20Sweden!5e0!3m2!1sen!2sse!4v1703025123456!5m2!1sen!2sse"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1010.7449690529807!2d16.547748!3d59.611585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465dcb5119640bcb%3A0xa80d27d3679d7766!2sPettersbergsgatan%2037%2C%20723%2042%20V%C3%A4ster%C3%A5s%2C%20Sweden!5e0!3m2!1sen!2sse!4v1703025123456!5m2!1sen!2sse"
                 className="w-full h-full"
                 style={{ border: 0, minHeight: "400px" }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Mäster Jacobs Bageri Västerås Location"
+                allowFullScreen
               ></iframe>
 
               <motion.div
