@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 const logoHorizontalInverse = "/images/logos/horizontal/Horizontal Logo inverse color lockup.svg";
 const logoStackedInverse = "/images/logos/stacked/Stacked Logo inverse color lockup.svg";
-const WEBBSHOP_URL = "https://mybakery.cakeiteasy.se/";
+const WEBBSHOP_URL = "https://masterjacobs.cakeiteasy.se/";
 
 interface NavigationProps {
   setIsMobileMenuOpen: (open: boolean) => void;
