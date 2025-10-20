@@ -42,12 +42,12 @@ const EXTERNAL_URLS = {
 
 // Category deep links for favorites
 const CATEGORY_LINKS: Record<string, string> = {
-  'tårtor': 'https://www.webbshop.masterjacobs.se/shop/kategori/tartor-bakelser-3753',
-  'bullar': 'https://www.webbshop.masterjacobs.se/shop/kategori/matbrod-bullar-3755',
+  'tårtor': 'https://www.webbshop.masterjacobs.se/shop/kategori/tartor-3753',
+  'bullar': 'https://www.webbshop.masterjacobs.se/shop/kategori/bullar-3755',
   'bröd': 'https://www.webbshop.masterjacobs.se/shop/kategori/matbrod-bullar-3755',
   'frukost': 'https://www.webbshop.masterjacobs.se/shop/kategori/frukost-4791',
-  'smörgåstårta': 'https://www.webbshop.masterjacobs.se/shop/kategori/frukost-4791',
-  'tillbehor': 'https://www.webbshop.masterjacobs.se/shop/kategori/tillbehor'
+  'smörgåstårta': 'https://www.webbshop.masterjacobs.se/shop/kategori/smorgastarta-3756',
+  'tillbehor': 'https://www.webbshop.masterjacobs.se/shop/kategori/tillbehor-3919'
 };
 
 const instagramPosts = [
