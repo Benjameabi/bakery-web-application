@@ -32,22 +32,22 @@ function getVariantPath(originalSrc: string, size: number): string {
 
 // External URLs - updated to new webbshop domain
 const EXTERNAL_URLS = {
-  webbshop: "https://www.webbshop.masterjacobs.se/shop/",
-  search: "https://www.webbshop.masterjacobs.se/shop/",
-  cart: "https://www.webbshop.masterjacobs.se/shop/",
-  products: "https://www.webbshop.masterjacobs.se/shop/",
+  webbshop: "https://webbshop.masterjacobs.se/",
+  search: "https://webbshop.masterjacobs.se/",
+  cart: "https://webbshop.masterjacobs.se/",
+  products: "https://webbshop.masterjacobs.se/",
 
-  bakeryInfo: "https://www.webbshop.masterjacobs.se/shop/"
+  bakeryInfo: "https://webbshop.masterjacobs.se/"
 };
 
 // Category deep links for favorites
 const CATEGORY_LINKS: Record<string, string> = {
-  'tårtor': 'https://www.webbshop.masterjacobs.se/shop/kategori/tartor-3753',
-  'bullar': 'https://www.webbshop.masterjacobs.se/shop/kategori/bullar-3755',
-  'bröd': 'https://www.webbshop.masterjacobs.se/shop/kategori/matbrod-bullar-3755',
-  'frukost': 'https://www.webbshop.masterjacobs.se/shop/kategori/frukost-4791',
-  'smörgåstårta': 'https://www.webbshop.masterjacobs.se/shop/kategori/smorgastarta-3756',
-  'tillbehor': 'https://www.webbshop.masterjacobs.se/shop/kategori/tillbehor-3919'
+  'tårtor': 'https://webbshop.masterjacobs.se/shop/kategori/tartor-3753',
+  'bullar': 'https://webbshop.masterjacobs.se/shop/kategori/bullar-3755',
+  'bröd': 'https://webbshop.masterjacobs.se/shop/kategori/brod-mat-3756',
+  'frukost': 'https://webbshop.masterjacobs.se/shop/kategori/frukost-4791',
+  'smörgåstårta': 'https://webbshop.masterjacobs.se/shop/kategori/smorgastarta-3756',
+  'tillbehor': 'https://webbshop.masterjacobs.se/shop/kategori/tillbehor-3919'
 };
 
 const instagramPosts = [
