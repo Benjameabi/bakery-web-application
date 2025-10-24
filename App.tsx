@@ -409,7 +409,7 @@ export default function App() {
                   <FontAwesomeIcon icon={faInstagram} className="w-6 h-6" />
                 </motion.a>
                 <motion.a 
-                  href="https://www.facebook.com/masterjacobsbageriochkonditori/?locale=sv_SE" 
+                  href="https://www.facebook.com/share/1DqZ5bzwts/?mibextid=wwXIfr" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-gold to-yellow-600 hover:from-yellow-600 hover:to-gold text-black transition-all duration-300 rounded-xl shadow-lg"
@@ -1160,7 +1160,7 @@ export default function App() {
               <FontAwesomeIcon icon={faInstagram} className="text-2xl md:text-3xl transition-colors duration-300" />
             </motion.a>
             <motion.a
-              href="https://facebook.com/masterjacobsbageri"
+              href="https://www.facebook.com/share/1DqZ5bzwts/?mibextid=wwXIfr"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-white hover:bg-blue-600 text-gray-800 hover:text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-200 hover:border-transparent"
@@ -1464,7 +1464,7 @@ export default function App() {
               </p>
               <div className="flex space-x-3 md:space-x-4">
                 <motion.a 
-                  href="https://facebook.com/masterjacobsbageri" 
+                  href="https://www.facebook.com/share/1DqZ5bzwts/?mibextid=wwXIfr" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
