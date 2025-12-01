@@ -1,9 +1,10 @@
 export const heroImages = [
   "/images/Jul bröd.webp", // Jul bröd
   "/images/Gräddtårta.webp", // Gräddtårta
-  "/images/Kanelknut.webp", // Kanelknut
   "/images/Dansk Råglimpa.webp" // Dansk Råglimpa
 ];
+// Note: previously showed "/images/Kanelknut.webp" (Bullar, längder & wienerbröd).
+// Keep this reference for future seasonal slides if the hero needs a pastry focus again.
 
 // Text content to pair with each hero image
 // The array order must match heroImages indexes
@@ -23,13 +24,6 @@ export const heroSlideTexts = [
     descriptionDesktop: "Handgjorda gräddtårtor med len grädde och färska bär. Beställ för födelsedag, bröllop och fest."
   },
   {
-    line1: "Bullar, längder & wienerbröd",
-    line2: "alltid",
-    accent: "nygräddade",
-    descriptionMobile: "Bullar, längder & wienerbröd alltid nygräddade. ",
-    descriptionDesktop: "Från klassiska kanelbullar till saftiga längder och frasiga wienerbröd, bakade för att njutas varje dag."
-  },
-  {
     line1: "Klassiska limpor/nybakat",
     line2: "bröd varje",
     accent: "morgon",
@@ -37,6 +31,16 @@ export const heroSlideTexts = [
     descriptionDesktop: "Klassiska limpor och nybakat bröd varje morgon. Perfekt till frukost, lunch eller middag med sitt rika smak."
   }
 ];
+/*
+  Reserved slide copy (Bullar, längder & wienerbröd):
+  {
+    line1: "Bullar, längder & wienerbröd",
+    line2: "alltid",
+    accent: "nygräddade",
+    descriptionMobile: "Bullar, längder & wienerbröd alltid nygräddade.",
+    descriptionDesktop: "Från klassiska kanelbullar till saftiga längder och frasiga wienerbröd, bakade för att njutas varje dag."
+  }
+*/
 
 // LightWidget removed per request
 
