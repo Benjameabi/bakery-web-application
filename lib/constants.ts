@@ -1,7 +1,8 @@
 export const heroImages = [
   "/images/Gräddtårta.webp", // Gräddtårta
   "/images/Kanelknut.webp", // Kanelknut
-  "/images/Dansk Råglimpa.webp" // Dansk Råglimpa
+  "/images/Dansk Råglimpa.webp", // Dansk Råglimpa
+  "/images/Jul bro\u0308d.webp" // Jul bröd
 ];
 
 // Text content to pair with each hero image
@@ -27,6 +28,13 @@ export const heroSlideTexts = [
     accent: "morgon",
     descriptionMobile: "Klassiska limpor och nybakat bröd varje morgon.",
     descriptionDesktop: "Klassiska limpor och nybakat bröd varje morgon. Perfekt till frukost, lunch eller middag med sitt rika smak."
+  },
+  {
+    line1: "Julens juvliga",
+    line2: "smaker är",
+    accent: "här!",
+    descriptionMobile: "Fira advent med vårt Jul bröd fullt av kryddor och värme.",
+    descriptionDesktop: "Julens juvliga smaker är här! Njut av vårt saftiga Jul bröd bakat med klassiska kryddor, perfekt till glöggstunder och vintermys."
   }
 ];
 
