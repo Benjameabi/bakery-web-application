@@ -440,14 +440,19 @@ export default function App() {
               transition={{ duration: 6 }}
             >
               {(() => {
-                const base = image.substring(0, image.lastIndexOf('.'));
-                const ext = image.substring(image.lastIndexOf('.'));
+                const lastDotIndex = image.lastIndexOf('.');
+                const base = image.substring(0, lastDotIndex);
+                const ext = image.substring(lastDotIndex).toLowerCase();
+                const mimeType = ext === '.webp' ? 'image/webp' : ext === '.png' ? 'image/png' : 'image/jpeg';
+                const src1920 = encodeURI(`${base}-1920${ext}`);
+                const src1440 = encodeURI(`${base}-1440${ext}`);
+                const fallbackSrc = src1440;
                 return (
                   <picture>
-                    <source media="(min-width: 1024px)" srcSet={`${base}-1920${ext}`} type="image/webp" />
-                    <source media="(min-width: 640px)" srcSet={`${base}-1440${ext}`} type="image/webp" />
+                    <source media="(min-width: 1024px)" srcSet={src1920} type={mimeType} />
+                    <source media="(min-width: 640px)" srcSet={src1440} type={mimeType} />
                     <img
-                      src={`${base}-1440${ext}`}
+                      src={fallbackSrc}
                       alt={`Bakery slideshow ${index + 1}`}
                       className="w-full h-full object-cover"
                       loading={index === 0 ? 'eager' : 'lazy'}
